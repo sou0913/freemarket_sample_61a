@@ -1,8 +1,48 @@
-#サンプルです by酒井
+# mercari  DB設計
+## usersテーブル
 
-# README
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: true|
+|image|string||
+|group_id|integer|null: true, foreign_key: true|
+|user_id|integer|null: true, foreign_key: true|
 
-# ishizuka
+### Association
+- belongs_to :group
+- belongs_to :user
 
-# さらに追加
-## さらに追加２
+## itemsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :users, through: :groups_users
+- has_many :groups_users
+- has_many :messages
+
+## perchacesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, index|
+|email|string|null: false, unique: true, index|
+|password|string|null: false|
+
+### Association
+- has_many :groups, through: :groups_users
+- has_many :groups_users
+- has_many :messages
+
+## groups_usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
