@@ -106,6 +106,7 @@
 |------|----|-------|
 |cards_id|integer|null: false|
 |cards_number|integer||
+|cards_user_name|string|null: false|
 ### Association
  
 ## brandsテーブル
