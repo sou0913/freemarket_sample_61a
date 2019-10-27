@@ -5,6 +5,7 @@
 |nickname|string|null: false|
 |profile|text|default: ""|
 |image|string|default: ""|
+|password|string|null: false|
  
 ### Association
 - has_many :items
