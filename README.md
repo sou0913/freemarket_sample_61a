@@ -34,7 +34,7 @@
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string|null: false|
-|user|references|null: false, foreign_key: true|
+|user|references|foreign_key: true|
  
 ### Association
 - belongs_to :user
@@ -43,8 +43,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |price|integer|null: false|
-|description|string|
-|title|string||null: false|
+|description|string|null: false|
+|title|string||null: false|null: false|
 |category|references|foreign_key: true|
 |status|integer|null: false|
 |region|integer|null: false|
@@ -94,7 +94,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-- has_many :images
 
 ### Association
 - belongs_to :item
@@ -102,8 +101,9 @@
 ## purchasesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user|references|null: false, foreign_key: true|
-|item|references|null: false, foreign_key: true|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
+
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -121,6 +121,7 @@
 |house_number|string|null: false|
 |building_name|string|null: false|
 |phone_number|string|null: false, unique: true|
-|user|references|null: false, foreign_key: true|
+|user|references|foreign_key: true|
+
 ### Association
 - belongs_to :user
