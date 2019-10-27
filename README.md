@@ -46,7 +46,7 @@
 |price|integer|null: false|
 |description|string|null: false|
 |title|string||null: false|null: false|
-|s_category|references|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
 |status|integer|null: false|
 |region|integer|null: false|
 |shipping_charge|integer|null: false|
@@ -59,7 +59,7 @@
  
 ### Association
 - belongs_to :user
-- belongs_to :s_category
+- belongs_to :category
 - belongs_to :brand
 - has_many :comments
 - has_many :images
@@ -93,34 +93,16 @@
 ### Association
 - has_many :items
  
-## l_categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |text|text||
+|parent|references|index: true|
 
 ### Association
-- has_many :m_categories
-
-## m_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|text|text||
-|l_category|references|null: false, foreign_key: true|
-### Association
-- belongs_to :l_category
-- has_many :s_categories
-
-## s_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|text|text||
-|m_category|references|null: false, foreign_key: true|
-### Association
-- belongs_to :m_category
-- has_many :items
+- belongs_to :parent, class_name: :Category
+- has_many :children, class_name: :Category, foreign_key: :parent_id
 
 ## purchasesテーブル
 |Column|Type|Options|
