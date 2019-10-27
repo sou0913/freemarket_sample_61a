@@ -44,7 +44,7 @@
 |price|integer|null: false|
 |description|string|
 |title|string||null: false|
-|category_id|integer|null: false|
+|category|references|foreign_key: true|
 |statuses|string|null: false|
 |regions|string|null: false|
 |shipping_charge|integer|null: false|
@@ -52,9 +52,8 @@
 |shipping_days|integer|null: false|
 |shipping_method|string|null: false|
 |dealing|integer|null: false default: 0|
-|user_id|integer|null: false|
-|brand_id|integer|null: false|
-|like_id|integer|null: false|
+|user|references|foreign_key: true|
+|brand|references|foreign_key: true|
  
 ### Association
 - belongs_to :user
@@ -66,8 +65,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|string||null: false|
-|user_id|integer|null: false|
-|item_id|integer|null: false|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
  
 ### Association
 - belongs_to :itme
@@ -77,7 +76,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |number|integer|null: false|
-|user_name|string|null: false|
+|user|references|foreign_key: true|
 ### Association
 - belongs_to :user
  
@@ -98,20 +97,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|string||null: false|
-|user_id|integer|null: false|
-|item_id|integer|null: false|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
  
 ### Association
-- belongs_to :itme
- 
- 
-## cardsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|number|integer|null: false|
-|user_name|string|null: false|
-### Association
-- belongs_to :user
+- belongs_to :item
  
 ## brandsテーブル
 |Column|Type|Options|
@@ -124,3 +114,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+
+### Association
+- belongs_to :item
