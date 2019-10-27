@@ -18,7 +18,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item|references|foreign_key:true|
+|item|references|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :item
@@ -35,7 +35,7 @@
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string|null: false|
-|user|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
  
 ### Association
 - belongs_to :user
@@ -46,7 +46,7 @@
 |price|integer|null: false|
 |description|string|null: false|
 |title|string||null: false|null: false|
-|category|references|foreign_key: true|
+|category|references|null: false, foreign_key: true|
 |status|integer|null: false|
 |region|integer|null: false|
 |shipping_charge|integer|null: false|
@@ -54,8 +54,8 @@
 |shipping_day|integer|null: false|
 |shipping_method|integer|null: false|
 |dealing|integer|null: false default: 0|
-|user|references|foreign_key: true|
-|brand|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|brand|references|null: false, foreign_key: true|
  
 ### Association
 - belongs_to :user
@@ -67,8 +67,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|string||null: false|
-|user|references|foreign_key: true|
-|item|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -78,7 +78,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |number|integer|null: false|
-|user|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -102,8 +102,8 @@
 ## purchasesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user|references|foreign_key: true|
-|item|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -122,7 +122,7 @@
 |house_number|string|null: false|
 |building_name|string|null: false|
 |phone_number|string|null: false, unique: true|
-|user|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
