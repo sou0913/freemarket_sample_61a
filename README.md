@@ -3,7 +3,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|profile|text|default: ""|
+|profile|text||
 |image|string|default: ""|
 |password|string|null: false|
  
@@ -46,7 +46,7 @@
 |price|integer|null: false|
 |description|string|null: false|
 |title|string||null: false|null: false|
-|category|references|null: false, foreign_key: true|
+|s_category|references|null: false, foreign_key: true|
 |status|integer|null: false|
 |region|integer|null: false|
 |shipping_charge|integer|null: false|
@@ -59,7 +59,8 @@
  
 ### Association
 - belongs_to :user
-- has_many :categories
+- belongs_to :s_category
+- belongs_to :brand
 - has_many :comments
 - has_many :images
  
@@ -72,6 +73,7 @@
 
 ### Association
 - belongs_to :item
+- belongs_to :user
  
  
 ## cardsテーブル
@@ -89,15 +91,36 @@
 |name|string|null: false|
 
 ### Association
-- belongs_to :item
+- has_many :items
  
-## categoriesテーブル
+## l_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|text|text||
 
 ### Association
-- belongs_to :item
+- has_many :m_categories
+
+## m_categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|text|text||
+|l_category|references|null: false, foreign_key: true|
+### Association
+- belongs_to :l_category
+- has_many :s_categories
+
+## s_categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|text|text||
+|m_category|references|null: false, foreign_key: true|
+### Association
+- belongs_to :m_category
+- has_many :items
 
 ## purchasesテーブル
 |Column|Type|Options|
