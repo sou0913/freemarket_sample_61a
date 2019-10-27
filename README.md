@@ -18,6 +18,7 @@
 |------|----|-------|
 |image|string|null: false|
 |item|references|foreign_key:true|
+
 ### Association
 - belongs_to :item
  
@@ -67,9 +68,9 @@
 |text|string||null: false|
 |user|references|foreign_key: true|
 |item|references|foreign_key: true|
- 
+
 ### Association
-- belongs_to :itme
+- belongs_to :item
  
  
 ## cardsテーブル
@@ -77,6 +78,7 @@
 |------|----|-------|
 |number|integer|null: false|
 |user|references|foreign_key: true|
+
 ### Association
 - belongs_to :user
  
@@ -84,6 +86,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+
 ### Association
 - belongs_to :item
  
@@ -92,28 +95,7 @@
 |------|----|-------|
 |name|string|null: false|
 - has_many :images
- 
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|string||null: false|
-|user|references|foreign_key: true|
-|item|references|foreign_key: true|
- 
-### Association
-- belongs_to :item
- 
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- belongs_to :item
- 
-## categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
 
 ### Association
 - belongs_to :item
+ 
