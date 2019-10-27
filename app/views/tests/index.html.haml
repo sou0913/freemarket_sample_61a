@@ -15,11 +15,11 @@
         %header
           .header__contents
             .header__contents-top
-              .header__contents-logo
+              .header__contents-top-logo
                 %a.logo{:href => "#"}
-                  %img{:alt => "Mercari", :src => "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg"}/
+                  %img{:alt => "Mercari", :src => "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", :class => "mercari-logo"}/
               %form.search
-                %input.search__form{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :value => ""}/
+                %input.search__form{:name => "keyword", :placeholder => "何をお探しですか？", :type => "search", :value => ""}/
                 %button.search__button
                   %svg
                     %path
