@@ -3,6 +3,7 @@ lock "~> 3.11.2"
 
 set :application, "freemarket_sample_61a"
 set :repo_url, "git@github.com:sakai51/freemarket_sample_61a.git"
+set :branch, ENV['BRANCH'] || "master"
 set :linked_ders, fetch(:linked_dirs, []).push("log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads")
 
 set :rbenv_type, :user
