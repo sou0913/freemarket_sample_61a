@@ -64,7 +64,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-gem 'unicorn', '5.4.1'
+gem 'unicorn'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
