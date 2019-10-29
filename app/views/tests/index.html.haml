@@ -22,44 +22,38 @@
               %form.search
                 %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
                 %button.search__button
-                  %svg
-                    %path
+                  %i.fas.fa-search
             .header__contents-bottom
               .header__contents-bottom-left
                 .header__contents-bottom-left-type
                   %a{href: "#", class: "type"}
-                    %svg
-                      %path
-                  カテゴリーから探す
-                  %div 
+                    %i.fas.fa-list-ul.icon
+                    カテゴリーから探す
+                  -# %div 
                     -# %ul
                       -# li
                 .header__contents-bottom-left-type
                   %a{href: "#", class: "type"}
-                    %svg
-                      %path
-                  ブランドから探す
-                  %div 
+                    %i.fas.fa-tags.icon
+                    ブランドから探す
+                  -# %div 
                     -# %ul
                       -# li 
               %ul.header__list
                 %li.header__list-item
                   %a{href: "#"}
-                    %svg
+                    -# %i
                 %li.header__list-item
                   %a.list{href: "#"}
-                    %svg
-                      %path
+                    %i.far.fa-bell.icon
                     お知らせ
                 %li.header__list-item
                   %a.list{href: "#"}
-                    %svg
-                      %path
+                    %i.fas.fa-check.icon
                     やることリスト
                 %li.header__list-item
                   %a.list{href: "#"}
-                    %svg
-                      %path
+                    %img{src: "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"}
                     マイページ
         / ヘッダーここまで
 
@@ -68,9 +62,14 @@
           .main__contents
             .main__contents__header
               %a{href: "#"}
-                .slider-img
+                -# div
               .main__contents__header-slider
-                %img{alt: "", src: "#"}/
+                %img{alt: "", src: "https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?465897195", class: "slide-img"}/
+              .prev
+                %i.fas.fa-chevron-left
+              .next
+                %i.fas.fa-chevron-right
+
             .main__contents__categories
               %h2.main__contents__categories-heading 人気のカテゴリー
               .categories__list
@@ -89,8 +88,8 @@
                     %a
             .main__contents__categories-wrapper
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading レディース新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title レディース新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -123,8 +122,8 @@
                                 %span.price ¥ 58,000
                                 %img{alt: "Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"", src: "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img"}/
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading メンズ新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title メンズ新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -157,8 +156,8 @@
                                 %span.price ¥ 1,500
                                 %img{alt: "Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\"", src: "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", class: "img"}/
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading 家電・スマホ・カメラ新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection 
                   %div
@@ -191,8 +190,8 @@
                                 %span.price ¥ 3,000
                                 %img{alt: "Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\"", src: "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", class: "img"}/
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading おもちゃ・ホビー・グッズ新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -243,8 +242,8 @@
                     %a
             .main__contents__brands-wrapper
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading シャネル新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title シャネル新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -278,8 +277,8 @@
                                 %img{alt: "Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\"", src: "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", class: "img"}/
 
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading ルイヴィトン新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title ルイヴィトン新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -312,8 +311,8 @@
                                 %span.price ¥ 26,000
                                 %img{alt: "Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\"", src: "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", class: "img"}/
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading シュプリーム新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title シュプリーム新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -346,8 +345,8 @@
                                 %span.price ¥ 8,000
                                 %img{alt: "Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\"", src: "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", class: "img"}/
               .new__item
-                %div{name: "#"}
-                  %h3.new__item-heading ナイキ新着アイテム
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title ナイキ新着アイテム
                   %a{href: "#", class: "look"} もっと見る
                 .new__item-collection
                   %div
@@ -387,13 +386,13 @@
             .exhibit-item
               .style 出品
               %i.fas.fa-camera
-                
               / 出品ボタンここまで
 
         / aside
         %aside
           .aside__menu
           .aside__menu__list
+            -# = image_tag 'https://i.gyazo.com/e47c61c022e53a3911dbeb16abfd3197.png', alt: '', height: '', width: '100%', class: ''
             .aside__menu__list-item
               .aside__menu__list-item-left
                 .aside__menu__list-item-left-text1 スマホでかんたんフリマアプリ
@@ -424,12 +423,10 @@
                   %a.infomation{href: "https://jp-news.mercari.com/", target: "blank"} 公式ブログ
                 %li
                   %a.infomation{href: "/jp/logo-guidelines/"} メルカリロゴ利用ガイドライン
-                %a.icon{href: "https://twitter.com/mercari_jp", target: "blank"}
-                  %svg
-                    %path
-                %a.icon{href: "https://www.facebook.com/mercarijp", target: "blank"}
-                  %svg
-                    %path
+                %a.icons{href: "https://twitter.com/mercari_jp", target: "blank"}
+                  %i.fab.fa-twitter.icon
+                %a.icons{href: "https://www.facebook.com/mercarijp", target: "blank"}
+                  %i.fab.fa-facebook-square.icon
             .footer__nav__infomation-top-right
               %h2.footer__nav__heading ヘルプ＆ガイド
               %ul.footer__nav-list
@@ -450,8 +447,9 @@
                 %li
                   %a.infomation{href: "/jp/box/"} メルカリボックス
             .footer__nav__infomation-middle
-              %h2.footer__nav__heading プライバシーと利用規約
+                
               .footer__nav__infomation-middle-left
+                %h2.footer__nav__heading.privacy プライバシーと利用規約
                 %ul.footer__nav-list
                   %li
                     %a.infomation{href: "/jp/privacy/"} プライバシーポリシー
