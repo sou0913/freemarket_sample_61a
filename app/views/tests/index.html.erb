@@ -1,1 +1,10 @@
 <h1>hello production!</h1>
+<%=form_with model: @test do |f|%>
+  <%=f.file_field :image %>
+  <%=f.submit%>
+<%end%>
+<div class="image__field__test">
+  <% @tests.each do |test|%>
+    <%=image_tag test.image.url%>
+  <%end%>
+</div>
