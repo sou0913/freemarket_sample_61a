@@ -94,7 +94,7 @@ header {
     }
     &-bottom {
       display: flex;
-      -webkit-box-pack: justify;
+      // -webkit-box-pack: justify;
       justify-content: space-between;
       margin-top: 8px;
       &-left {
@@ -620,10 +620,9 @@ header {
         font-size: 22px;
         color: rgb(255, 255, 255);
       }
-      // svg {
-      //   path {
-      //   }
-      // }
+      .fa-camera {
+        color: rgb(255, 255, 255);
+      }
     }
   }
 }
