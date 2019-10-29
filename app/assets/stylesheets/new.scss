@@ -1,0 +1,165 @@
+.exhibit-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__main {
+    width: 700px;
+    height: 2016px;
+    background: white;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    &__header {
+      width: 100%;
+      height: 100px;
+      display: inherit;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid gray;
+      & h3 {
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+    &__image {
+      width: 100%;
+      height: 200px;
+      padding: 30px;
+      border-bottom: 1px solid gray;
+      & h3 {
+        font-weight: bold;
+        font-size: 14px;
+        padding: 5px;
+      }
+      & p {
+        padding: 5px;
+      }
+    }
+    &__item {
+      width: 100%;
+      height: 200px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid gray;
+      & label {
+        padding: 5px;
+      }
+    }
+    &__details {
+      width: 100%;
+      height: 200px;
+      display: inherit;
+      flex-direction: row;
+      &-left {
+        width: 40%;
+        height: 100%;
+        & p {
+          padding: 30px 0 0 20px;
+        }
+      }
+      &-right {
+        height: 100%;
+        display: inherit;
+        flex-direction: column;
+        & label {
+          padding-top: 30px;
+        }
+      }
+    }
+    &__delivery {
+      width: 100%;
+      height: 200px;
+      display: inherit;
+      flex-direction: row;
+      &-left {
+        width: 40%;
+        height: 100%;
+        & p {
+          padding: 30px 0 0 20px;
+        }
+      }
+      &-right {
+        height: 100%;
+        display: inherit;
+        flex-direction: column;
+        & label {
+          padding-top: 30px;
+        }
+      }
+    }
+    &__price {
+      width: 100%;
+      height: 200px;
+      display: inherit;
+      flex-direction: row;
+      &-left {
+        width: 40%;
+        height: 100%;
+        & p {
+          padding: 30px 0 0 20px;
+        }
+      }
+      &-right {
+        height: 100%;
+        display: inherit;
+        flex-direction: column;
+        & label {
+          padding-top: 30px;
+        }
+      }
+    }
+    &__footer {
+      display: inherit;
+    }
+  }
+}
+span {
+  color: white;
+  background: red;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.exhibit-wrapper__header-logo {
+  width: 120px;
+  height: 80px;
+}
+.exhibit-wrapper__footer-logo {
+  width: 120px;
+  height: 80px;
+}
+.exhibit-wrapper__select {
+  outline:none;
+  text-indent: 0.01px;
+  text-overflow: "";
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
+.exhibit-wrapper__select option {
+  background-color: #fff;
+  color: #333;
+}
+.exhibit-wrapper__select::-ms-expand {
+  color: transparent;
+  text-shadow: 0 0 0;
+}
+  // .exhibit-wrapper__header
+  // .exhibit-wrapper__main
+  //   .exhibit-wrapper__main__header
+  //   .exhibit-wrapper__main__image
+  //   .exhibit-wrapper__main__item
+  //   .exhibit-wrapper__main__details
+  //   .exhibit-wrapper__main__delivery
+  //   .exhibit-wrapper__main__price
+  //   .exhibit-wrapper__main__footer
+  // .exhibit-wrapper__footer
+  //   %a.logo{href: "#"}
+  //     %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/

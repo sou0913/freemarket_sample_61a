@@ -1,0 +1,90 @@
+=form_with url: "#" do |f|
+  .exhibit-wrapper
+    .exhibit-wrapper__header
+      .exhibit-wrapper__header-logo
+        %a.logo{href: "#"}
+          %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
+    .exhibit-wrapper__main
+      .exhibit-wrapper__main__header
+        %h3 商品の情報を入力
+      .exhibit-wrapper__main__image
+        %h3 
+          出品画像
+          %span 必須
+        %p 最大10枚までアップロードできます
+        %p ドラッグアンドドロップ、またはクリックしてファイルをアップロード
+      .exhibit-wrapper__main__item
+        %label 
+          商品名
+          %span 必須
+        =f.text_field "#", class: "exhibit-wrapper__main__item__form"
+        %label 
+          商品の説明
+          %span 必須
+        =f.text_area "#", class: "exhibit-wrapper__main__item__area" 
+      .exhibit-wrapper__main__details
+        .exhibit-wrapper__main__details-left
+          %p 商品の詳細
+        .exhibit-wrapper__main__details-right
+          %label 
+            カテゴリー
+            %span 必須
+          .exhibit-wrapper__main__details-right__select-wrapper
+            =f.select :name, ["rails", "rails"],{}, class: "exhibit-wrapper__select"
+          %label 
+            商品の状態
+            %span 必須
+          .exhibit-wrapper__main__details-right__select-wrapper
+            =f.select :name, ["rails", "rails"],{}, class: "exhibit-wrapper__select"
+      .exhibit-wrapper__main__delivery
+        .exhibit-wrapper__main__delivery-left
+          %p 配送について
+        .exhibit-wrapper__main__delivery-right
+          %label 
+            配送料の負担
+            %span 必須
+          .exhibit-wrapper__main__delivery-right__select-wrapper
+            =f.select :name, ["rails", "rails"],{}, class: "exhibit-wrapper__select"
+          %label 
+            発送元の地域
+            %span 必須
+          .exhibit-wrapper__main__delivery-right__select-wrapper
+            =f.select :name, ["rails", "rails"],{}, class: "exhibit-wrapper__select"
+          %label 
+            発送までの日数
+            %span 必須
+          .exhibit-wrapper__main__delivery-right__select-wrapper
+            =f.select :name, ["rails", "rails"],{}, class: "exhibit-wrapper__select"
+      .exhibit-wrapper__main__price
+        .exhibit-wrapper__main__price-left
+          %p 販売価格(300~9,999,999)
+        .exhibit-wrapper__main__price-right
+          %label
+            価格
+            %span 必須
+          .exhibit-wrapper__main__price-right__select-wrapper
+            =f.select :name, ["rails", "rails"],{}, class: "exhibit-wrapper__select"
+          %p 販売手数料(10%)
+          %p 販売利益
+      .exhibit-wrapper__main__footer
+        .exhibit-wrapper__main__footer__content
+          %p
+            %a{href: "#"} 禁止されている出品、行為
+            を必ずご確認ください。
+          %p 
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            %a{href: "#"} 偽ブランドの販売
+            は犯罪であり処罰される可能性があります。
+          %p
+            また、出品をもちまして
+            %a{href: "#"} 加盟店規約
+            に同意したことになります。
+          =f.submit "出品する"
+          =button_to "もどる", "#"
+    .exhibit-wrapper__footer
+      =link_to "プライバシーポリシー", "#"
+      =link_to "メルカリ利用規約", "#"
+      =link_to "特定商取引に関する表記", "#"
+      .exhibit-wrapper__footer-logo
+        %a.logo{href: "#"}
+          %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
