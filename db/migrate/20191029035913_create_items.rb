@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price,           null: false
       t.string  :description,     null: false
       t.string  :title
-      t.references :category,     null: false, foreign_key: true
+      # t.references :category,     null: false, foreign_key: true
       t.integer :status,          null: false
       t.integer :region,          null: false
       t.integer :shipping_charge, null: false
@@ -13,7 +13,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :shipping_method, null: false
       t.integer :dealing,         null: false, default: 0
       t.references :user,         null: false, foreign_key: true
-      t.references :brand,        null: false, foreign_key: true
+      # t.references :brand,        null: false, foreign_key: true
       t.timestamps
     end
   end
