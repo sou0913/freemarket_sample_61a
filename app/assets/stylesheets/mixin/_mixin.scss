@@ -62,3 +62,17 @@
     font-size: 19px;
   }
 }
+@mixin focus-field {
+  &:focus {
+    outline: 0;
+    border: 1px solid $light-blue;
+    border-radius: 4px;
+  }
+}
+
+@mixin hover {
+  &:hover {
+    text-decoration-line: underline;
+    opacity: 0.7;
+  }
+}
