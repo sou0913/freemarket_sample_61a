@@ -2,13 +2,15 @@ $border: rgba(204,204,204,0.5);
 $border-form: rgba(204,204,204,0.9);
 @mixin select {
   position: relative;
+  padding: 15px 0;
   &::before {
     z-index: 1;
     position: absolute;
     right: 15px;
-    top: 0;
+    top: 18px;
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
+    font-size: 20px;
     content: "\f107";
     line-height: 43px;
     color: #7F878C;
@@ -19,7 +21,7 @@ $border-form: rgba(204,204,204,0.9);
     -moz-appearance: none;
     appearance: none;
     width: 400px;
-    padding: 10px 15px;
+    padding: 15px 15px;
     background: white;
     &::-ms-expand {
       display: none;
@@ -30,12 +32,33 @@ $border-form: rgba(204,204,204,0.9);
     }
   }
 }
+@mixin must-span {
+  color: white;
+  background: red;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  vertical-align: 0.2em; 
+}
+@mixin exhibit-label {
+  padding: 5px;
+  font-weight: bold;
+  padding: 10px 5px;
+}
 .exhibit-wrapper {
   width: 100%;
   height: 100%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  &__header {
+    padding-bottom: 30px;
+    &__logo {
+      width: 190px;
+      height: 60px;
+    }
+  }
   &__main {
     width: 700px;
     background: white;
@@ -56,27 +79,66 @@ $border-form: rgba(204,204,204,0.9);
     }
     &__image {
       width: 100%;
-      height: 300px;
       padding: 30px;
       border-bottom: 1px solid $border;
       & h3 {
-        font-weight: bold;
-        font-size: 14px;
-        padding: 5px;
+          @include exhibit-label;
+        & span {
+          @include must-span;
+        }
       }
       & p {
         padding: 5px;
       }
-      &__drag {
-        border: 2px dotted $border-form;
+      &__cards {
         width: 620px;
         height: 160px;
         background: #f5f5f5;
         display: flex;
+        flex-wrap: wrap;
+        &__card {
+          box-sizing: border-box;
+          width: 20%;
+          height: 100%;
+          border: 1px solid black;
+          position: relative;
+          display: none;
+        &-b {
+          background: green;
+        }
+        &__image {
+          width: 100%;
+          height: 50%;
+          margin-top: 20px;
+          background: gray;
+        }
+        &__button {
+          width: 100%;
+          display: flex;
+          justify-content:space-between;
+          position: absolute;
+          bottom: 0;
+          padding: 15px;
+        }
+        }
+      }
+      &__drag-wrapper {
+        flex: 1;
+      }
+      &__drag {
+        border: 2px dotted $border-form;
+        background: #f5f5f5;
+        width: 100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         &__form {
-          // display: none;
+          display: none;
+        }
+        & p {
+          font-weight: bold;
         }
       }
     }
@@ -86,19 +148,38 @@ $border-form: rgba(204,204,204,0.9);
       padding: 30px;
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid $border;
-      & label {
-        padding: 5px;
+      justify-content: space-around;
+      &__name {
+        display: inherit;
+        flex-direction: column;
+        border-bottom: 1px solid $border;
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+        &__field {
+         line-height: 2.5; 
+         border: 1px solid $border-form;
+         border-radius: 5px; 
+        }
       }
-      &__field {
-       line-height: 2.5; 
-       border: 1px solid $border-form;
-       border-radius: 5px; 
-      }
-      &__area {
-        line-height: 1.5;
-        border: 1px solid $border-form;
-        border-radius: 5px; 
+      &__content {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid $border;
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+        &__area {
+          line-height: 1.5;
+          border: 1px solid $border-form;
+          border-radius: 5px; 
+        }
       }
     }
     &__details {
@@ -106,6 +187,7 @@ $border-form: rgba(204,204,204,0.9);
       height: 250px;
       display: inherit;
       flex-direction: row;
+      border-bottom: 1px solid $border;
       &-left {
         width: 40%;
         height: 100%;
@@ -118,7 +200,10 @@ $border-form: rgba(204,204,204,0.9);
         display: inherit;
         flex-direction: column;
         & label {
-          padding-top: 30px;
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
         }
         &__select-wrapper {
           @include select;
@@ -130,6 +215,7 @@ $border-form: rgba(204,204,204,0.9);
       height: 370px;
       display: inherit;
       flex-direction: row;
+      border-bottom: 1px solid $border;
       &-left {
         width: 40%;
         height: 100%;
@@ -142,7 +228,10 @@ $border-form: rgba(204,204,204,0.9);
         display: inherit;
         flex-direction: column;
         & label {
-          padding-top: 30px;
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
         }
         &__select-wrapper {
           @include select;
@@ -154,6 +243,7 @@ $border-form: rgba(204,204,204,0.9);
       height: 300px;
       display: inherit;
       flex-direction: row;
+      border-bottom: 1px solid $border;
       &-left {
         width: 40%;
         height: 100%;
@@ -166,17 +256,30 @@ $border-form: rgba(204,204,204,0.9);
         width: 60%;
         display: inherit;
         flex-direction: column;
+        padding-right: 20px;
         &__top {
           width: 100%;
           display: inherit;
           justify-content: space-between;
-          padding: 25px 0px;
+          padding: 40px 0px;
+          align-items: center;
           & label {
-            padding-top: 30px;
+            @include exhibit-label;
+            & span {
+              @include must-span;
+            }
           }
-          &__select {
+          &__form {
             &::before {
-              content: "￥"
+              content: "￥";
+            }
+            &__field {
+              line-height: 50px;
+              border: 1px solid $border-form;
+              border-radius: 3px;
+              &::before {
+                content: "￥";
+              }
             }
           }
         }
@@ -191,59 +294,79 @@ $border-form: rgba(204,204,204,0.9);
           justify-content: space-between;
           padding: 25px 0px;
           border-top: 1px solid $border-form;
+          & p {
+            font-weight: bold;
+          }
         }
       }
     }
     &__footer {
       height: 320px;
       display: inherit;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      &__content {
+        padding: 35px;
+        line-height: 20px;
+        & p {
+          & a{
+            color: #78C1F0
+          }
+        }
+      }
+      &__submit {
+        width: 90%;
+        &-button {
+          width: 100%;
+          height: 50px;
+          background: red;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          font-size: 16px;
+        }
+        & input {
+          display: none;
+        }
+      }
+      &__back {
+        width: 45%;
+        padding-bottom: 30px;
+        &-button {
+          width: 100%;
+          height: 50px;
+          background: #AAAAAA;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          font-size: 16px;
+        }
+        & input {
+          display: none;
+        }
+      }
+    }
+  }
+  &__footer {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    &__top {
+      padding: 30px;
+      & a {
+        color: rgba(0,0,0,0.8);
+        text-decoration: none;
+        padding: 10px;
+        font-size: 12px;
+      }
+    }
+    &__logo {
+      width: 80px;
+      height: 80px;
     }
   }
 }
-span {
-  color: white;
-  background: red;
-  padding: 2px;
-  font-weight: bold;
-  font-size: 12px;
-}
-.exhibit-wrapper__header-logo {
-  width: 120px;
-  height: 80px;
-}
-.exhibit-wrapper__footer-logo {
-  width: 120px;
-  height: 80px;
-}
-.exhibit-wrapper__select {
-  outline:none;
-  text-indent: 0.01px;
-  text-overflow: "";
-  background: none transparent;
-  vertical-align: middle;
-  font-size: inherit;
-  color: inherit;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
-}
-.exhibit-wrapper__select option {
-  background-color: #fff;
-  color: #333;
-}
-.exhibit-wrapper__select::-ms-expand {
-  color: transparent;
-  text-shadow: 0 0 0;
-}
-  // .exhibit-wrapper__header
-  // .exhibit-wrapper__main
-  //   .exhibit-wrapper__main__header
-  //   .exhibit-wrapper__main__image
-  //   .exhibit-wrapper__main__item
-  //   .exhibit-wrapper__main__details
-  //   .exhibit-wrapper__main__delivery
-  //   .exhibit-wrapper__main__price
-  //   .exhibit-wrapper__main__footer
-  // .exhibit-wrapper__footer
-  //   %a.logo{href: "#"}
-  //     %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
+
+
+

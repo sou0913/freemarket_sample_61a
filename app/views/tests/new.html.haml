@@ -1,8 +1,8 @@
 =form_with url: "#" do |f|
   .exhibit-wrapper
     .exhibit-wrapper__header
-      .exhibit-wrapper__header-logo
-        %a.logo{href: "#"}
+      .exhibit-wrapper__header__logo
+        = link_to "#" do
           %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
     .exhibit-wrapper__main
       .exhibit-wrapper__main__header
@@ -12,18 +12,75 @@
           出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-        %label.exhibit-wrapper__main__image__drag-wrapper
-          .exhibit-wrapper__main__image__drag ドラッグアンドドロップ、またはクリックしてファイルをアップロード
-          =f.file_field "#", class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
+        .exhibit-wrapper__main__image__cards
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-0
+            .exhibit-wrapper__main__image__cards__card__image
+              = image_tag '', class: 'exhibit-image exhibit-image-0'
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-1
+            .exhibit-wrapper__main__image__cards__card__image
+              = image_tag '', class: 'exhibit-image exhibit-image-1'
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-2
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-3
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-4
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-5
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-6
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-7
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-8
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-9
+            .exhibit-wrapper__main__image__cards__card__image
+            .exhibit-wrapper__main__image__cards__card__button
+              =link_to "編集", "#"
+              =link_to "削除", "#"
+          %label.exhibit-wrapper__main__image__drag-wrapper
+            .exhibit-wrapper__main__image__drag{data:{exhibitid:0}} 
+              %p ドラッグアンドドロップ
+              %p またはクリックしてファイルをアップロード
+            =f.file_field "#", class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form", multiple: true
       .exhibit-wrapper__main__item
-        %label 
-          商品名
-          %span 必須
-        =f.text_field "#", class: "exhibit-wrapper__main__item__field", placeholder: "商品名（必須40文字まで）"
-        %label 
-          商品の説明
-          %span 必須
-        =f.text_area "#", rows:"6", class: "exhibit-wrapper__main__item__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .exhibit-wrapper__main__item__name
+          %label 
+            商品名
+            %span 必須
+          =f.text_field "#", class: "exhibit-wrapper__main__item__name__field", placeholder: "商品名（必須40文字まで）"
+        .exhibit-wrapper__main__item__content
+          %label 
+            商品の説明
+            %span 必須
+          =f.text_area "#", rows:"6", class: "exhibit-wrapper__main__item__content__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
       .exhibit-wrapper__main__details
         .exhibit-wrapper__main__details-left
           %p 商品の詳細
@@ -65,7 +122,8 @@
             %label
               価格
               %span 必須
-            =f.text_field "#", class: "exhibit-wrapper__main__price-right__field", placeholder: "例）300"
+            .exhibit-wrapper__main__price-right__top__form
+              =f.text_field "#", class: "exhibit-wrapper__main__price-right__top__form__field", placeholder: "例）300"
           .exhibit-wrapper__main__price-right__center
             %p 販売手数料(10%)
             %p -
@@ -85,12 +143,19 @@
             また、出品をもちまして
             %a{href: "#"} 加盟店規約
             に同意したことになります。
+        %label.exhibit-wrapper__main__footer__submit  
+          .exhibit-wrapper__main__footer__submit-button 出品する
           =f.submit "出品する"
-          =button_to "もどる", "#"
+        %label.exhibit-wrapper__main__footer__back
+          .exhibit-wrapper__main__footer__back-button もどる
+          =button_to "もどる", class:"exhibit-wrapper__main__footer__button", type: "hidden"
     .exhibit-wrapper__footer
-      =link_to "プライバシーポリシー", "#"
-      =link_to "メルカリ利用規約", "#"
-      =link_to "特定商取引に関する表記", "#"
-      .exhibit-wrapper__footer-logo
-        %a.logo{href: "#"}
-          %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
+      .exhibit-wrapper__footer__top
+        =link_to "プライバシーポリシー", "#"
+        =link_to "メルカリ利用規約", "#"
+        =link_to "特定商取引に関する表記", "#"
+      .exhibit-wrapper__footer__logo
+        =link_to "#" do
+          %img{alt: "Mercari", src: "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195", class: "mercari-logo-bottom"}/
+      .exhibit-wrapper__footer__bottom
+        %p © 2019 Mercari
