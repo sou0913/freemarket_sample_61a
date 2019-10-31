@@ -15,13 +15,13 @@
       %h2.devise-main__registration__head 新規会員登録
       .devise-main__registration__link
         = link_to new_user_registration_path, class: 'devise-main__registration__link__email' do
-          = fa_icon 'envelope'
+          = icon 'fa','envelope'
           メールアドレスで登録
         = link_to new_user_registration_path, method: :post, class: 'devise-main__registration__link__facebook'  do
-          = fa_icon 'facebook-square'
+          = icon 'fa', 'facebook-square'
           Facebookで登録
         = link_to new_user_registration_path, method: :post, class: 'devise-main__registration__link__google' do
-          = fa_icon 'google'
+          = icon 'fa', 'google'
           Googleで登録
 
 %footer.single-footer

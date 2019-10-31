@@ -44,15 +44,15 @@
                   = link_to "#" do
                     -# %i
                 %li.header__list-item
-                  = link_to "#", class: "list" do
+                  = link_to "/users/sign_up", class: "list" do
                     %i.far.fa-bell.icon
                     お知らせ
                 %li.header__list-item
-                  = link_to "#", class: "list" do
+                  = link_to new_user_session_path, class: "list" do
                     %i.fas.fa-check.icon
                     やることリスト
                 %li.header__list-item
-                  = link_to "#", class: "list" do
+                  = link_to "/users/1", class: "list" do
                     = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
                     マイページ
         / ヘッダーここまで
@@ -396,7 +396,7 @@
 
         / 出品ボタン
         .exhibit
-          = link_to "#", class: "exhibit-button" do
+          = link_to new_item_path, class: "exhibit-button" do
             .exhibit-item
               .style 出品
               %i.fas.fa-camera
