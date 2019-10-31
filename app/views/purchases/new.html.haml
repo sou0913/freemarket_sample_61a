@@ -1,0 +1,46 @@
+=form_with url: "#" do |f|
+  .perchace-new
+    .perchace-new__header
+      .perchace-new__header__logo
+        = link_to "#" do
+          =image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo")
+    .perchace-new__main
+      .perchace-new__main__header 
+        %h3 購入内容の確認
+      .perchace-new__main__content
+        .perchace-new__main__content__item
+          .perchace-new__main__content__item__image
+          .perchace-new__main__content__item__name 靴下
+        .perchace-new__main__content__price
+          %h4 ￥300
+          %p 送料込
+        .perchace-new__main__content__points ポイントはありません
+        .perchace-new__main__content__costs 
+          %p 支払い金額
+          %p ￥300
+        .perchace-new__main__content__submit 購入する
+      .perchace-new__main__address
+        .perchace-new__main__address-wrap
+          %h4 配送先
+          %p 〒000-0000
+          %P 東京都渋谷区道玄坂1-1-1
+          %p 山田 太郎
+          =link_to "変更する >", "#"
+      .perchace-new__main__card
+        .perchace-new__main__card-wrap
+          %h4 支払い方法
+          %p ************1111
+          %p 01/22
+          .perchace-new__main__card__image
+            =image_tag("/assets/logo_visa.gif")
+          =link_to "変更する >", "#"
+    .perchace-new__footer
+      .perchace-new__footer__top
+        =link_to "プライバシーポリシー", "#"
+        =link_to "メルカリ利用規約", "#"
+        =link_to "特定商取引に関する表記", "#"
+    .perchace-new__footer__logo
+      =link_to "#" do
+        =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195", class: "mercari-logo-bottom")
+    .perchace-new__footer__bottom
+      %p © 2019 Mercari
