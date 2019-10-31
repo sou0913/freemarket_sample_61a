@@ -1,5 +1,5 @@
 .wrapper {
-  min-height: 90vh;
+  min-height: 80vh;
   background-color: $gray;
 }
 
@@ -271,7 +271,7 @@ header {
 // --------------------- devise フッター --------------------- //
 .single-footer {
   background-color: $gray;
-
+  padding-top: 50px;
   @include flex-center;
 }
 
@@ -281,14 +281,17 @@ header {
   align-items: center;
   a{
   text-decoration: none;
+  color: inherit;
+  position: relative;
+  left: 20px;
   }
 } 
 
 .single-footer-logo {
   position: relative;
-  left: 200px;
+  left: 220px;
 }
 p {
   position: relative;
-  left: 190px;
+  left: 200px;
 }
