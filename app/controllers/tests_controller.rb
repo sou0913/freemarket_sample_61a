@@ -4,6 +4,9 @@ class TestsController < ApplicationController
     @test = Test.new
     @tests = Test.all
   end
+
+  def new
+  end
   
   def create
     @test = Test.create(createparams)
@@ -13,5 +16,5 @@ class TestsController < ApplicationController
   def createparams
     params.require(:test).permit(:image)
   end
-
+  
 end
