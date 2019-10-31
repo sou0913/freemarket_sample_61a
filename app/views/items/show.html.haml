@@ -329,6 +329,7 @@
               %span item-name
         -# コンテンツここまで
 
+<<<<<<< Updated upstream
         / aside
         %aside
           .aside__menu
@@ -346,6 +347,65 @@
               %figure.aside__menu__list-item-right
                 = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: 'aside__menu__list-item-right-img'
               / asideここまで
+=======
+        .mypage-purchase
+          %h2.mypage-purchase__head 購入した商品
+          %ul.mypage-purchase__tabs
+            %li.mypage-purchase__tabs__list.active
+              = link_to "" do
+                取引中
+            %li.mypage-purchase__tabs__list
+              = link_to "" do
+                過去の取引
+          
+          .mypage-purchase-contents
+            %ul.mypage-purchase-content.show
+              -# %li.mypage-purchase-content--none
+              -#   取引中の商品がありません 
+              
+              %li.list
+                = link_to "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.all-list
+                = link_to "一覧を見る", ""
+>>>>>>> Stashed changes
 
         / フッター
         %footer
