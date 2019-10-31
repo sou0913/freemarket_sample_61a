@@ -1,11 +1,16 @@
+.wrapper {
+  min-height: 90vh;
+  background-color: $gray;
+}
+
 // --------------------- devise ヘッダー --------------------- //
 // ヘッダー
 header {
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  background-color: $gray;
   position: relative;
   z-index: 3;
   display: block;
+  height: 100px;
   .header__contents {
     width: 700px;
     margin: 0px auto;
@@ -24,52 +29,16 @@ header {
           color: inherit;
           text-decoration: none;
           .mercari-logo {
-            height: 36px;
-            width: 134px;
+            height: 100px;
+            width: 200px;
             vertical-align: middle;
             position: relative;
-            left: 280px;
+            left: 235px;
+            top: 30px;
           }
         }
       }
-      .search {
-        position: relative;
-        width: 100%;
-        &__form {
-          background-color: rgb(245, 245, 245);
-          font-size: 16px;
-          height: 40px;
-          line-height: 1.4em;
-          position: relative;
-          width: 100%;
-          -webkit-appearance: none;
-          border-width: 1px;
-          border-style: solid;
-          border-color: rgb(204, 204, 204);
-          border-image: initial;
-          border-radius: 4px;
-          outline: none;
-          padding: 0px 50px 0px 10px;
-          transition: all 0.3s ease-out 0s;
-        }
-        &__button {
-          background-color: transparent;
-          cursor: pointer;
-          height: 40px;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          width: 40px;
-          -webkit-appearance: none;
-          border-width: initial;
-          border-style: none;
-          border-color: initial;
-          border-image: initial;
-          border-radius: 0px 4px 4px 0px;
-          padding: 0px;
-          // svg
-        }
-      }  
+
     }
     &-bottom {
       display: flex;
@@ -124,20 +93,23 @@ header {
 
   // --------------------- ログインページ --------------------- //
   &__session {
-    width: 456px;
+    width: 400px;
     margin: auto;
+    position: relative;
+    right: 20px;
 
     &__registration {
-      width: 100%;
+      width: 90%;
       padding: 40px 64px;
       background-color: $white;
+
 
       &__head {
         height: 14px;
         color: $black;
         font-size: 14px;
         line-height: 1;
-        text-align: center;
+
       }
 
       &__link {
@@ -148,27 +120,35 @@ header {
         color: $white;
         font-size: 14px;
         @include flex-center;
+        border-radius: 5px;
       }
     }
 
     &__omniauth {
-      width: 100%;
+      width: 90%;
       padding: 32px 64px;
       background-color: $white;
       border-top: 1px solid $gray;
 
       &__facebook {
         @include facebook;
+        border-radius: 5px;
       }
 
       &__google {
         @include google;
         margin-top: 16px;
+        text-decoration: none;
+        border-style: solid;
+        border-width:1px;
+        border-radius: 5px;
+        width: 99%
       }
     }
 
     &__form {
-      width: 100%;
+      width: 90%;
+      margin: auto;
       padding: 24px 64px 32px;
       background-color: $white;
 
@@ -180,7 +160,7 @@ header {
         }
 
         input {
-          width: 100%;
+          width: 90%;
           height: 50px;
           padding: 10px 16px 8px;
           border-radius: 4px;
@@ -223,10 +203,10 @@ header {
 
   // --------------------- 登録トップページ --------------------- //
   &__registration {
-    width: 700px;
+    width: 760px;
     margin: auto;
     &__head {
-      padding: 32px 16px;
+      padding: 32px;
       background-color: $white;
       color: $black;
       font-size: 22px;
@@ -237,7 +217,7 @@ header {
     &__link {
       width: 50%;
       margin-bottom: calc(100vh - 128px - 220px - 311px - 97px);
-      padding: 35px 190px;
+      padding: 40px 190px 40px 190px;
       background-color: $white;
       border-top: 1px solid $gray;
 
@@ -249,6 +229,8 @@ header {
         color: white;
         font-size: 14px;
         @include flex-center;
+        text-decoration: none;
+        border-radius: 5px;
 
         &:hover {
           opacity: 0.7;
@@ -267,11 +249,17 @@ header {
       &__facebook {
         @include facebook;
         margin-top: 16px;
+        text-decoration: none;
+        border-radius: 5px;
       }
 
       &__google {
         @include google;
         margin-top: 16px;
+        text-decoration: none;
+        border-style: solid;
+        border-width:1px;
+        border-radius: 5px;
       }
     }
 
@@ -281,4 +269,26 @@ header {
 }
 
 // --------------------- devise フッター --------------------- //
-// 未作成
+.single-footer {
+  background-color: $gray;
+
+  @include flex-center;
+}
+
+.single-footer ul li { 
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  a{
+  text-decoration: none;
+  }
+} 
+
+.single-footer-logo {
+  position: relative;
+  left: 200px;
+}
+p {
+  position: relative;
+  left: 190px;
+}
