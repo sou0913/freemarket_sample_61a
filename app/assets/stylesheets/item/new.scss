@@ -1,5 +1,6 @@
 $border: rgba(204,204,204,0.5);
 $border-form: rgba(204,204,204,0.9);
+$link-color: #78C1F0;
 @mixin select {
   position: relative;
   padding: 15px 0;
@@ -111,6 +112,10 @@ $border-form: rgba(204,204,204,0.9);
           height: 50%;
           margin-top: 20px;
           background: gray;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
         }
         &__button {
           width: 100%;
@@ -135,7 +140,7 @@ $border-form: rgba(204,204,204,0.9);
         justify-content: center;
         align-items: center;
         &__form {
-          display: none;
+          // display: none;
         }
         & p {
           font-weight: bold;
@@ -277,6 +282,7 @@ $border-form: rgba(204,204,204,0.9);
               line-height: 50px;
               border: 1px solid $border-form;
               border-radius: 3px;
+              text-align: right;
               &::before {
                 content: "￥";
               }
@@ -311,7 +317,7 @@ $border-form: rgba(204,204,204,0.9);
         line-height: 20px;
         & p {
           & a{
-            color: #78C1F0
+            color: $link-color;
           }
         }
       }
@@ -366,6 +372,9 @@ $border-form: rgba(204,204,204,0.9);
       height: 80px;
     }
   }
+}
+.exhibit-active {
+  display: block;
 }
 
 
