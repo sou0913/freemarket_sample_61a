@@ -1,1 +1,523 @@
-%h1 hello production!
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "ie=edge, http-equiv, X-UA-Compatible"}/
+    %title メルカリ
+  %body
+    %noscript
+      %iframe{height: "0", src: "https://www.googletagmanager.com/ns.html?id=GTM-KLPT5L5", style: "display:none;visibility:hidden", title: "googletagmanager", width: "0"}
+    .wrapper
+      .container
+
+        / ヘッダー
+        %header
+          .header__contents
+            .header__contents-top
+              .header__contents-top-logo
+                = link_to "#" do
+                  = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
+              %form.search
+                %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
+                %button.search__button
+                  %i.fas.fa-search
+            .header__contents-bottom
+              .header__contents-bottom-left
+                .header__contents-bottom-left-type
+                  = link_to "#", class: "type" do
+                    %i.fas.fa-list-ul.icon
+                    カテゴリーから探す
+                  -# %div 
+                    -# %ul
+                      -# li
+                .header__contents-bottom-left-type
+                  = link_to "#", class: "type" do
+                    %i.fas.fa-tags.icon
+                    ブランドから探す
+                  -# %div 
+                    -# %ul
+                      -# li 
+              %ul.header__list
+                %li.header__list-item
+                  = link_to "#" do
+                    -# %i
+                %li.header__list-item
+                  = link_to "#", class: "list" do
+                    %i.far.fa-bell.icon
+                    お知らせ
+                %li.header__list-item
+                  = link_to "#", class: "list" do
+                    %i.fas.fa-check.icon
+                    やることリスト
+                %li.header__list-item
+                  = link_to "#", class: "list" do
+                    = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
+                    マイページ
+        / ヘッダーここまで
+
+        / コンテンツ
+        .main__wrapper
+          .main__contents
+            .main__contents__header
+              = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?465897195', class: 'header-img'
+            .main__contents__header-page
+              .prev
+                %i.fas.fa-chevron-left
+              .next
+                %i.fas.fa-chevron-right
+
+            .main__contents__categories
+              %h2.main__contents__categories-heading 人気のカテゴリー
+              .categories__list
+                %ul.categories__list-item
+                  %li
+                    = link_to "レディース", "#", class: "type" 
+                  %li
+                    = link_to "メンズ", "#", class: "type"
+                  %li
+                    = link_to "家電・スマホ・カメラ", "#", class: "type"
+                  %li
+                    = link_to "おもちゃ・ホビー・グッズ", "#", class: "type"
+            .main__contents__categories-wrapper
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title レディース新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name
+                                  = "OMEGA/オメガ/コンステレーションCHRONOMETER/1040"
+                              .item-img
+                                %span.price ¥ 58,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img", alt: '"Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"'
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "OMEGA/オメガ/コンステレーションCHRONOMETER/1040"
+                              .item-img
+                                %span.price ¥ 58,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img", alt: '"Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"'
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "OMEGA/オメガ/コンステレーションCHRONOMETER/1040"
+                              .item-img
+                                %span.price ¥ 58,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img", alt: '"Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"'
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title メンズ新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "VIDENG  POLO ショルダーバッグ  ポロ レザー"
+                              .item-img
+                                %span.price ¥ 1,500
+                                = image_tag "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", alt: '"Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "VIDENG  POLO ショルダーバッグ  ポロ レザー"
+                              .item-img
+                                %span.price ¥ 1,500
+                                = image_tag "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", alt: '"Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "VIDENG  POLO ショルダーバッグ  ポロ レザー"
+                              .item-img
+                                %span.price ¥ 1,500
+                                = image_tag "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", alt: '"Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\""', class: "img"
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection 
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C"
+                              .item-img
+                                %span.price ¥ 3,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", alt: '"Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C"
+                              .item-img
+                                %span.price ¥ 3,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", alt: '"Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C"
+                              .item-img
+                                %span.price ¥ 3,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", alt: '"Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\""', class: "img"
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "乃木坂46 生写真"
+                              .item-img
+                                %span.price ¥ 500
+                                = image_tag "https://static.mercdn.net/thumb/photos/m35070125053_1.jpg?1572080204", alt: '"Thumbnail of \"乃木坂46 生写真\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "乃木坂46 生写真"
+                              .item-img
+                                %span.price ¥ 500
+                                = image_tag "https://static.mercdn.net/thumb/photos/m35070125053_1.jpg?1572080204", alt: '"Thumbnail of \"乃木坂46 生写真\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "乃木坂46 生写真"
+                              .item-img
+                                %span.price ¥ 500
+                                = image_tag "https://static.mercdn.net/thumb/photos/m35070125053_1.jpg?1572080204", alt: '"Thumbnail of \"乃木坂46 生写真\""', class: "img"
+
+            .main__contents__brands
+              %h2.main__contents__brands-heading 人気のブランド
+              .brands__list
+                %ul.brands__list-item
+                  %li
+                    = link_to "シャネル", "#", class: "brands"
+                  %li
+                    = link_to "ルイヴィトン", "#", class: "brands" 
+                  %li
+                    = link_to "シュプリーム", "#", class:  "brands" 
+                  %li
+                    = link_to "ナイキ", "#", class: "brands" 
+            .main__contents__brands-wrapper
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title シャネル新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "CHANEL ピンク系アイシャドウ 値下げ"
+                              .item-img
+                                %span.price ¥ 800
+                                = image_tag "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", alt: '"Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "CHANEL ピンク系アイシャドウ 値下げ"
+                              .item-img
+                                %span.price ¥ 800
+                                = image_tag "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", alt: '"Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "CHANEL ピンク系アイシャドウ 値下げ"
+                              .item-img
+                                %span.price ¥ 800
+                                = image_tag "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", alt: '"Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\""', class: "img"
+
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title ルイヴィトン新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "ルイヴィトン アマゾン ショルダーバッグ"
+                              .item-img
+                                %span.price ¥ 26,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", alt: '"Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "ルイヴィトン アマゾン ショルダーバッグ"
+                              .item-img
+                                %span.price ¥ 26,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", alt: '"Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "ルイヴィトン アマゾン ショルダーバッグ"
+                              .item-img
+                                %span.price ¥ 26,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", alt: '"Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\""', class: "img"
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title シュプリーム新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "Supreme シュプリーム sasquatchfabrix tシャツ"
+                              .item-img
+                                %span.price ¥ 8,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", alt: '"Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "Supreme シュプリーム sasquatchfabrix tシャツ"
+                              .item-img
+                                %span.price ¥ 8,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", alt: '"Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "Supreme シュプリーム sasquatchfabrix tシャツ"
+                              .item-img
+                                %span.price ¥ 8,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", alt: '"Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\""', class: "img"
+              .new__item
+                .new__item-header{name: "#"}
+                  %h3.new__item-header-title ナイキ新着アイテム
+                  = link_to "もっと見る", "#", class: "look"
+                .new__item-collection
+                  %div
+                    %ul.new__item-collection-list
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "NIKE AIR MAX97"
+                              .item-img
+                                %span.price ¥ 12,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m22844117255_1.jpg?1571998323", alt: '"Thumbnail of \"NIKE AIR MAX97\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "NIKE AIR MAX97"
+                              .item-img
+                                %span.price ¥ 12,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m22844117255_1.jpg?1571998323", alt: '"Thumbnail of \"NIKE AIR MAX97\""', class: "img"
+                      %li
+                        %div
+                          = link_to "#", class: "item" do
+                            %figure
+                              %figcaption
+                                %span.item-name 
+                                  = "NIKE AIR MAX97"
+                              .item-img
+                                %span.price ¥ 12,000
+                                = image_tag "https://static.mercdn.net/thumb/photos/m22844117255_1.jpg?1571998323", alt: '"Thumbnail of \"NIKE AIR MAX97\""', class: "img"
+        / コンテンツここまで
+
+        / 出品ボタン
+        .exhibit
+          = link_to "#", class: "exhibit-button" do
+            .exhibit-item
+              .style 出品
+              %i.fas.fa-camera
+              / 出品ボタンここまで
+
+        / aside
+        %aside
+          .aside__menu
+          .aside__menu__list
+            .aside__menu__list-item
+              .aside__menu__list-item-left
+                .aside__menu__list-item-left-text1 スマホでかんたんフリマアプリ
+                .aside__menu__list-item-left-text2 今すぐ無料ダウンロード！
+                .aside__menu__list-item-left-logos
+                  = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png", class: 'mercari-icon'
+                  = link_to "#", target: "blank", class: "store" do
+                    = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", class: 'itunes'
+                  = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "blank", class: "store" do
+                    = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", class: 'google'
+              %figure.aside__menu__list-item-right
+                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: 'aside__menu__list-item-right-img'
+              / asideここまで
+
+        / フッター
+        %footer
+          %nav.footer__nav__infomation
+            .footer__nav__infomation-top-left
+              %h2.footer__nav__heading メルカリについて
+              %ul.footer__nav-list
+                %li
+                  = link_to "会社概要（運営会社）", "https://about.mercari.com/", class: "infomation"
+                %li
+                  = link_to "採用情報", "/jp/jobs/", class: "infomation"
+                %li
+                  = link_to "プレスリリース", "https://about.mercari.com/press/news/", class: "infomation"
+                %li
+                  = link_to "公式ブログ", "https://jp-news.mercari.com/", class: "infomation", target: "blank"
+                %li
+                  = link_to "メルカリロゴ利用ガイドライン", "/jp/logo-guidelines/", class: "infomation"
+                = link_to "https://twitter.com/mercari_jp", class: "icons", target: "blank" do
+                  %i.fab.fa-twitter.icon
+                = link_to "https://www.facebook.com/mercarijp", class: "icons", target: "blank" do
+                  %i.fab.fa-facebook-square.icon
+            .footer__nav__infomation-top-right
+              %h2.footer__nav__heading ヘルプ＆ガイド
+              %ul.footer__nav-list
+                %li
+                  = link_to "メルカリガイド", "/jp/help_center/", class: "infomation"
+                %li
+                  = link_to "らくらくメルカリ便", "/jp/rakuraku-mercari/", class: "infomation"
+                %li
+                  = link_to "ゆうゆうメルカリ便", "/jp/yuyu-mercari/", class: "infomation"
+                %li
+                  = link_to "大型メルカリ便", "/jp/rakuraku-ogata/", class: "infomation"
+                %li
+                  = link_to "車体取引ガイド", "/jp/guide/car/", class: "infomation"
+                %li
+                  = link_to "メルカリあんしん・あんぜん宣言！", "/jp/safe/description/", class: "infomation", target: "blank"
+                %li
+                  = link_to "偽ブランド品撲滅への取り組み",  "/jp/authenticity/", class: "infomation"
+                %li
+                  = link_to "メルカリボックス", "/jp/box/", class: "infomation"
+            .footer__nav__infomation-middle
+              .footer__nav__infomation-middle-left
+                %h2.footer__nav__heading.privacy プライバシーと利用規約
+                %ul.footer__nav-list
+                  %li
+                    = link_to "プライバシーポリシー", "/jp/privacy/", class: "infomation"
+                  %li
+                    = link_to "メルカリ利用規約", "/jp/tos/", class: "infomation"
+                  %li
+                    = link_to "あんしんスマホサポート制度に関する利用特約", "/jp/tos_smartphone_support/", class: "infomation"
+                  %li
+                    = link_to "コンプライアンスポリシー", "/jp/compliance/", class: "infomation"
+              .footer__nav__infomation-middle-right
+                %ul.footer__nav-list
+                  %li
+                    = link_to "個人データの安全管理に係る基本方針", "/jp/data_security/", class: "infomation"
+                  %li
+                    = link_to "特定商取引に関する表記", "/jp/tokutei/", class: "infomation"
+                  %li
+                    = link_to "資金決済法に基づく表示", "/jp/shikin_kessai/", class: "infomation"
+                  %li
+                    = link_to "法令順守と犯罪抑止のために", "https://about.mercari.com/csr/safety/", class: "infomation"
+            .footer__nav__infomation-bottom
+              %h2.footer__nav__heading 国
+              %ul.footer__nav-list
+                %li
+                  %a.cuntory{href: "/jp/"} 日本
+                  %a.cuntory{href: "#"} United States
+          .footer__bottom
+            = link_to "#", class: "bottom" do
+              = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", alt: 'Mercari', class: 'mercari-img'
+            %span.copy-right © 2019 Mercari
+        / フッターここまで
+
+%script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
+  :cdata
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KLPT5L5');
+%script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
+  :cdata
+    window.dataLayer = window.dataLayer || [];
+%script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
+  :cdata
+    if ('serviceWorker' in navigator && true) {
+    window.addEventListener('load', function () {navigator.serviceWorker.register('/jp/service-worker.js').catch(function () {});
+    });
+    }
+%div{style: "display: none; visibility: hidden;"}
+  :javascript
+    !function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1964320460558899");fbq("track","PageView");
+  %noscript
+%div{style: "display: none; visibility: hidden;"}
+  :javascript
+    var yahoo_ss_retargeting_id=1000300638,yahoo_sstag_custom_params=window.yahoo_sstag_params,yahoo_ss_retargeting=!0;
+  %script{src: "https://s.yimg.jp/images/listing/tool/cv/conversion.js", type: "text/javascript"}
+  %noscript
+%script{id: "", type: "text/javascript"}
+  :cdata
+    window.yjDataLayer=window.yjDataLayer||[];function ytag(){yjDataLayer.push(arguments)}ytag({type:"ycl_cookie"});

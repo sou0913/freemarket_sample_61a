@@ -1,5 +1,9 @@
-@import "reset";
+@import "font-awesome-sprockets";
 @import "font-awesome";
+@import "config/reset";
+@import "index.scss";
+@import "mypage";
+@import "new.scss";
 @import 'config/variable';
-@import 'mixin/mixin-devises';
+@import 'mixin/mixin-devise';
 @import 'modules/devise';
