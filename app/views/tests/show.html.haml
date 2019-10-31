@@ -164,6 +164,169 @@
               = link_to "#" do
                 %i.lock
                 %span あんしん・あんぜんへの取り組み
+        .item-detail-message
+          .message-container
+            .message-content 
+              %ul.messages
+                %li
+                  = link_to "#", class: "message-user" do
+                    %figure
+                      .user-icon
+                        = image_tag '#', class: 'user-img'
+                      %figcaption
+                        = user-name
+                  .message-body
+                    .message-body-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum perspiciatis ipsam est quo commodi reprehenderit aut, blanditiis dolores maxime quasi modi, iure ad eveniet alias error voluptatum eos autem dolorum?
+                    .message-icons 
+                      %time.message-icon-left
+                        %i.time 
+                        %span 3日前
+                      .message-icon-right
+                        %form{action: "#", method: "POST"}
+                          %button{type: "submit"}
+                            %i.flag
+                          %input{type: "hidden", value: "item_detail"}
+                    %i.balloon
+                %li
+                  = link_to "#", class: "message-user" do
+                    %figure
+                      .user-icon
+                        = image_tag '#', class: 'user-img'
+                      %figcaption user-name
+                    .message-is-seller 出品者　
+                  .message-body
+                    .message-body-text 出品者メッセージ
+                    .message-icons 
+                      %time.message-icon-left
+                        %i.time 
+                        %span 3日前
+                      .message-icon-right
+                        %form{action: "#", method: "POST"}
+                          %button{type: "submit"}
+                            %i.flag
+                          %input{type: "hidden", value: "item_detail"}
+                    %i.balloon
+            .message-content
+              %form{action: "#", method: "POST"}
+                %input{type: "#"}
+                %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+                %input{type: "#"}
+                %textare{type: "text", class: "textarea-default"}
+                %button{type: "submit", class: "send-btn"}
+            %aside
+        %ul.nav__item__link
+          %li.nav__item__link--prev
+            = link_to "#" do
+              %i.arrow-left
+              = prev item
+          %li.nav__item__link--next
+            = link_to "#" do
+              = next item
+              %i.arrow-right
+        .social-media-box
+          .center
+          %ul.social-media-list
+            %li
+              = link_to "https://www.facebook.com/F", target: "blank", class: "share-btn" do
+                %i.facebook
+            %li
+              = link_to "https://twitter.com/", target: "blank", class: "share-btn" do
+                %i.twitter
+            %li
+              = link_to "https://linecorp.com/ja/", target: "blank", class: "share-btn" do
+                %i.line
+            %li
+              = link_to "https://www.pinterest.jp/", target: "blank", class: "share-btn" do
+                %i.pinterest
+        .exhibitor-other-items
+          %section.items-container
+            %h2.items__box__head
+              = link_to "出品者さんのその他の出品", "#"
+            .items__box__content
+              %section.items__box
+                = link_to "#" do
+                  %figure.items__box__img
+                    = image_tag '#', alt: '#', class: 'item-img'
+                  .items__box__body
+                    %h3.items__box__body--name
+                      商品説明です
+                    .items__box__body--price
+                      .price ¥3,980
+                      .like
+                        %i.like-icon
+                        %span 12345
+              %section.items__box
+                = link_to "#" do
+                  %figure.items__box__img
+                    = image_tag '#', alt: '#', class: 'item-img'
+                  .items__box__body
+                    %h3.items__box__body--name
+                      商品説明です
+                    .items__box__body--price
+                      .price ¥3,980
+                      .like
+                        %i.like-icon
+                        %span 12345
+              %section.items__box
+                = link_to "#" do
+                  %figure.items__box__img
+                    = image_tag '#', alt: '#', class: 'item-img'
+                  .items__box__body
+                    %h3.items__box__body--name
+                      商品説明です
+                    .items__box__body--price
+                      .price ¥3,980
+                      .like
+                        %i.like-icon
+                        %span 12345
+
+          %section.items-container
+            %h2.items__box__head
+              = link_to "このカテゴリーのその他の出品", "#"
+            .items__box__content
+              %section.items__box
+                = link_to "#" do
+                  %figure.items__box__img
+                    = image_tag '#', alt: '#', class: 'item-img'
+                  .items__box__body
+                    %h3.items__box__body--name
+                      商品説明です
+                    .items__box__body--price
+                      .price ¥3,980
+                      .like
+                        %i.like-icon
+                        %span 12345
+              %section.items__box
+                = link_to "#" do
+                  %figure.items__box__img
+                    = image_tag '#', alt: '#', class: 'item-img'
+                  .items__box__body
+                    %h3.items__box__body--name
+                      商品説明です
+                    .items__box__body--price
+                      .price ¥3,980
+                      .like
+                        %i.like-icon
+                        %span 12345
+              %section.items__box
+                = link_to "#" do
+                  %figure.items__box__img
+                    = image_tag '#', alt: '#', class: 'item-img'
+                  .items__box__body
+                    %h3.items__box__body--name
+                      商品説明です
+                    .items__box__body--price
+                      .price ¥3,980
+                      .like
+                        %i.like-icon
+                        %span 12345
+        %nav.contents__bottom__nav
+          %ul
+            %li
+              = link_to "メルカリ", "#"
+              %i.arrow-right
+            %li
+              %span item-name
         -# コンテンツここまで
 
         / aside
