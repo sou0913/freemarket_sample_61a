@@ -25,21 +25,17 @@ header {
         display: flex;
         height: 40px;
         margin-right: 45px;
-        a.logo {
-          color: inherit;
-          text-decoration: none;
-          .mercari-logo {
-            height: 100px;
-            width: 200px;
-            vertical-align: middle;
-            position: relative;
-            left: 235px;
-            top: 30px;
-          }
         }
       }
+      .mercari-logo {
+        height: 100px;
+        width: 200px;
+        vertical-align: middle;
+        position: relative;
+        left: 235px;
+        top: 30px;
+      }
 
-    }
     &-bottom {
       display: flex;
       // -webkit-box-pack: justify;

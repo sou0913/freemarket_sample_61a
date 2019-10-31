@@ -19,8 +19,8 @@
           .header__contents
             .header__contents-top
               .header__contents-top-logo
-                %a.logo{href: "#"}
-                  %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
+                = link_to "#" do
+                  = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
 
       -# コンテンツ
       .devise-main__session
