@@ -1,0 +1,152 @@
+.wrapper
+  .container 
+    .bread-crumds
+      %ul.bread-crumds__list
+        %li
+          = link_to "" do
+            %span<> 
+              メルカリ
+          = icon "fas", "chevron-right"
+        %li マイページ
+
+    .mypage-container
+      .main-mypage
+        .mypage-user
+          = link_to "#" do
+            .mypage-user__image
+              = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png"
+            .mypage-user__name
+              田中太郎
+            .mypage-user__number
+              .mypage-user__number--left
+                評価
+                %span<>
+                  0
+              .mypage-user__number--right
+                出品数
+                %span<>
+                  0
+        .mypage-notification
+          %ui.mypage-notification__tabs
+            %li.mypage-notification__tabs__list.active
+              = link_to "#" do
+                お知らせ
+            %li.mypage-notification__tabs__list
+              = link_to "#" do
+                やることリスト
+          .mypage-notification__tab-contents
+            %ul.content.show
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 事務所から個別メッセージ
+                    .list__link__body__time 
+                      = icon "far", "clock"
+                      %span 2日前
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 事務所から個別メッセージ
+                    .list__link__body__time 
+                      = icon "far", "clock"
+                      %span 2日前
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 事務所から個別メッセージ
+                    .list__link__body__time 
+                      = icon "far", "clock"
+                      %span 2日前
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 事務所から個別メッセージ
+                    .list__link__body__time 
+                      = icon "far", "clock"
+                      %span 2日前
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 事務所から個別メッセージ
+                    .list__link__body__time 
+                      = icon "far", "clock"
+                      %span 2日前
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.all-list
+                = link_to "一覧を見る", ""
+            %ul.content
+              %li.content__not-found 現在やることはありません
+
+        .mypage-purchase
+          %h2.mypage-purchase__head 購入した商品
+          %ul.mypage-purchase__tabs
+            %li.mypage-purchase__tabs__list.active
+              = link_to "" do
+                取引中
+            %li.mypage-purchase__tabs__list
+              = link_to "" do
+                過去の取引
+          
+          .mypage-purchase-contents
+            %ul.mypage-purchase-content.show
+              -# %li.mypage-purchase-content--none
+              -#   取引中の商品がありません 
+              
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.list
+                = link_to  "" , class: "list__link" do
+                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
+                  .list__link__body
+                    .list__link__body__text 商品名
+                    .list__link__body__time 
+                      発送待ち
+                  = icon "fas", "chevron-right", class: "list__link__right-icon"
+              %li.all-list
+                = link_to "一覧を見る", ""
+
+            %ul.mypage-purchase-content
+              %li.mypage-purchase-content--none
+                過去に取引した商品がありません 
+
+      .side-mypage
+        = render 'side_bar'

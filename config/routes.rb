@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :tests, only: [:index, :new]
+  resources :tests, only: [:index, :new, :show]
   resources :purchases
   root to: "purchases#new"
+
 end
