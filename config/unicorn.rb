@@ -1,6 +1,7 @@
 app_path = File.expand_path('../../../', __FILE__)
 worker_processes 1
-# working_directory "#{app_path}/current"
+#以下一行は特になくても良い。いらなかったら消す。
+working_directory "#{app_path}/current"
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 #以下１行はnginx導入カリキュラムでパスを変更している
 listen "#{app_path}/shared/tmp/sockets/unicorn.sock"

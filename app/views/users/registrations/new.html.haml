@@ -1,43 +1,43 @@
 -# ページタイトル
 - content_for(:title) { '会員情報入力 - メルカリ サンプル' }
-.wrapper
-  .container
+.new-devise__wrapper
+  .new-devise__container
     / ヘッダー
-    %header
-      .header__contents
-        .header__contents-top
-          .header__contents-top-logo
+    .new-devise__header
+      .new-devise__header__contents
+        .new-devise__header__contents-top
+          .new-devise__header__contents-top-logo
             = link_to "#" do
-              = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
+              = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo new-devise__header__contents-top-logo__mercari-logo', alt: 'Mercari')
               
-    -# コンテンツ
-    .devise-main__registration
-      %h2.devise-main__registration__head 新規会員登録
-      .devise-main__registration__link
-        = link_to new_user_registration_path, class: 'devise-main__registration__link__email' do
-          = icon 'fa','envelope'
-          メールアドレスで登録
-        = link_to new_user_registration_path, method: :post, class: 'devise-main__registration__link__facebook'  do
-          = icon 'fa', 'facebook-square'
-          Facebookで登録
-        = link_to new_user_registration_path, method: :post, class: 'devise-main__registration__link__google' do
-          = icon 'fa', 'google'
-          Googleで登録
+  -# コンテンツ
+  .devise-main__registration
+    %h2.devise-main__registration__head 新規会員登録
+    .devise-main__registration__link
+      = link_to new_user_registration_path, class: 'devise-main__registration__link__email' do
+        %i.fa.fa-envelope
+        メールアドレスで登録
+      = link_to new_user_registration_path, method: :post, class: 'devise-main__registration__link__facebook'  do
+        %i.fab.fa-facebook-square
+        Facebookで登録
+      = link_to new_user_registration_path, method: :post, class: 'devise-main__registration__link__google' do
+        %i.fab.fa-google
+        Googleで登録
 
-%footer.single-footer
+.new-devise__single-footer
   %nav
     %ul.clearfix
       %li
         = link_to "https://www.mercari.com/jp/privacy/" do
-          プライバシーポリシー　
+          プライバシーポリシー
       %li
         = link_to "https://www.mercari.com/jp/tos/" do
-          メルカリ利用規約　
+          メルカリ利用規約
       %li
         = link_to "https://www.mercari.com/jp/tokutei/" do
-          特定商取引に関する表記　
+          特定商取引に関する表記
 
     = link_to "https://www.mercari.com/jp/" do
-      = image_tag('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195', class: 'single-footer-logo', alt: 'mercari', height: "65", width: "80")
+      = image_tag('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195', class: 'new-devise__single-footer-logo', alt: 'mercari', height: "65", width: "80")
     %p
       %small © 2019 Mercari
