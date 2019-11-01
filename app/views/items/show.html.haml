@@ -63,24 +63,25 @@
             .item__photo
               .item__photo__wrapper
                 .item__content
-                  .item__content-left
-                    .item__content-left--inner
-                      = image_tag '', alt: '', class: 'item-img'
-                  .item__content-right
-                    .item__content-right--inner
-                      = image_tag ''
-                .item__diplay
-                  .prev
-                  .next
-                .item__other__img
-                  .item__other__img--first
-                    %span
-                    .inner
-                      = image_tag '', class: ''
-                  .item__pther__img--after
-                    %span
-                    .inner
-                      = image_tag '', class: ''
+                  .item__content__box
+                    .item__content__box-left
+                      .item__content__box-left-inner
+                        = image_tag '', alt: '', class: 'item-img'
+                    .item__content__box-right
+                      .item__content__box-right-inner
+                        = image_tag ''
+                  .item__diplay
+                    .prev
+                    .next
+                  .item__other__img
+                    .item__other__img--first
+                      %span
+                      .inner
+                        = image_tag '', class: ''
+                    .item__pther__img--after
+                      %span
+                      .inner
+                        = image_tag '', class: ''
             -# .item__contents__price
             -#   %span.price ¥10,000
             -#   %span.tax  "(税込)"
@@ -94,7 +95,7 @@
                 %tr
                   %th 出品者
                   %td
-                    = link_to "#", 出品者の名前です
+                    = link_to "出品者の名前です", "#"
                     .ratings
                       .user-ratings
                         %i.good 
@@ -109,19 +110,19 @@
                   %th カテゴリー
                   %td
                     = link_to "#" do
-                      = カテゴリー
+                      = "カテゴリー"
                     = link_to "#" do
                       .sub-category
                         %i.arrow-right
-                          = sub-category
+                          = "sub-category"
                     = link_to "#" do
                       .sub-sub-category
                         %i.arrow-right
-                          = sub-sub-category
+                          = "sub-sub-category"
                 %tr
                   %th ブランド
                   %td
-                    = link_to "#", do
+                    -# = link_to "#", do
                       %div ブランド名
                 %tr
                   %th 商品のサイズ
@@ -144,20 +145,20 @@
                   %td 4~7日で発送
 
           .item__contents__price
-              %span.price ¥10,000
-              %span.tax  "(税込)"
-              %span.shipping-free 送料込み
+            %span.price 
+            %span.tax  "(税込)"
+            %span.shipping-free 送料込み
             %section.item__contents--buy
               .item__contents--buy-button
                 = link_to "#", class: "item-buy-btn" do
-                  = 購入画面に進む
+                  = "購入画面に進む"
           .item--description
             %p.item--description-inner
-              = ここは商品の説明です
+              = "ここは商品の説明です"
           .item__conents__bottom
             .item__contents__bottom--left
-              %button.like{type: button}
-              = link_to "#", class: "report"
+              %button.like{type: "button"}
+              = link_to "#", class: "report" do
                 %i.flag
                 %span 不適切な商品の報告
             .item__contents__bottom--right
@@ -172,9 +173,9 @@
                   = link_to "#", class: "message-user" do
                     %figure
                       .user-icon
-                        = image_tag '#', class: 'user-img'
+                        = image_tag "", class: "user-img"
                       %figcaption
-                        = user-name
+                        = "user-name"
                   .message-body
                     .message-body-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum perspiciatis ipsam est quo commodi reprehenderit aut, blanditiis dolores maxime quasi modi, iure ad eveniet alias error voluptatum eos autem dolorum?
                     .message-icons 
@@ -191,7 +192,7 @@
                   = link_to "#", class: "message-user" do
                     %figure
                       .user-icon
-                        = image_tag '#', class: 'user-img'
+                        = image_tag '', class: 'user-img'
                       %figcaption user-name
                     .message-is-seller 出品者　
                   .message-body
@@ -218,10 +219,10 @@
           %li.nav__item__link--prev
             = link_to "#" do
               %i.arrow-left
-              = prev item
+              = "prev item"
           %li.nav__item__link--next
             = link_to "#" do
-              = next item
+              = "next item"
               %i.arrow-right
         .social-media-box
           .center
@@ -246,7 +247,7 @@
               %section.items__box
                 = link_to "#" do
                   %figure.items__box__img
-                    = image_tag '#', alt: '#', class: 'item-img'
+                    = image_tag '', alt: '#', class: 'item-img'
                   .items__box__body
                     %h3.items__box__body--name
                       商品説明です
@@ -258,7 +259,7 @@
               %section.items__box
                 = link_to "#" do
                   %figure.items__box__img
-                    = image_tag '#', alt: '#', class: 'item-img'
+                    = image_tag '', alt: '#', class: 'item-img'
                   .items__box__body
                     %h3.items__box__body--name
                       商品説明です
@@ -270,7 +271,7 @@
               %section.items__box
                 = link_to "#" do
                   %figure.items__box__img
-                    = image_tag '#', alt: '#', class: 'item-img'
+                    = image_tag '', alt: '#', class: 'item-img'
                   .items__box__body
                     %h3.items__box__body--name
                       商品説明です
@@ -287,7 +288,7 @@
               %section.items__box
                 = link_to "#" do
                   %figure.items__box__img
-                    = image_tag '#', alt: '#', class: 'item-img'
+                    = image_tag '', alt: '#', class: 'item-img'
                   .items__box__body
                     %h3.items__box__body--name
                       商品説明です
@@ -299,7 +300,7 @@
               %section.items__box
                 = link_to "#" do
                   %figure.items__box__img
-                    = image_tag '#', alt: '#', class: 'item-img'
+                    = image_tag '', alt: '#', class: 'item-img'
                   .items__box__body
                     %h3.items__box__body--name
                       商品説明です
@@ -311,7 +312,7 @@
               %section.items__box
                 = link_to "#" do
                   %figure.items__box__img
-                    = image_tag '#', alt: '#', class: 'item-img'
+                    = image_tag '', alt: '#', class: 'item-img'
                   .items__box__body
                     %h3.items__box__body--name
                       商品説明です
@@ -329,7 +330,6 @@
               %span item-name
         -# コンテンツここまで
 
-<<<<<<< Updated upstream
         / aside
         %aside
           .aside__menu
@@ -347,65 +347,6 @@
               %figure.aside__menu__list-item-right
                 = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: 'aside__menu__list-item-right-img'
               / asideここまで
-=======
-        .mypage-purchase
-          %h2.mypage-purchase__head 購入した商品
-          %ul.mypage-purchase__tabs
-            %li.mypage-purchase__tabs__list.active
-              = link_to "" do
-                取引中
-            %li.mypage-purchase__tabs__list
-              = link_to "" do
-                過去の取引
-          
-          .mypage-purchase-contents
-            %ul.mypage-purchase-content.show
-              -# %li.mypage-purchase-content--none
-              -#   取引中の商品がありません 
-              
-              %li.list
-                = link_to "" , class: "list__link" do
-                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
-                  .list__link__body
-                    .list__link__body__text 商品名
-                    .list__link__body__time 
-                      発送待ち
-                  = icon "fas", "chevron-right", class: "list__link__right-icon"
-              %li.list
-                = link_to "" , class: "list__link" do
-                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
-                  .list__link__body
-                    .list__link__body__text 商品名
-                    .list__link__body__time 
-                      発送待ち
-                  = icon "fas", "chevron-right", class: "list__link__right-icon"
-              %li.list
-                = link_to  "" , class: "list__link" do
-                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
-                  .list__link__body
-                    .list__link__body__text 商品名
-                    .list__link__body__time 
-                      発送待ち
-                  = icon "fas", "chevron-right", class: "list__link__right-icon"
-              %li.list
-                = link_to  "" , class: "list__link" do
-                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
-                  .list__link__body
-                    .list__link__body__text 商品名
-                    .list__link__body__time 
-                      発送待ち
-                  = icon "fas", "chevron-right", class: "list__link__right-icon"
-              %li.list
-                = link_to  "" , class: "list__link" do
-                  = image_tag "//static.mercdn.net/images/mercari_profile.png", class: "list__link__image"
-                  .list__link__body
-                    .list__link__body__text 商品名
-                    .list__link__body__time 
-                      発送待ち
-                  = icon "fas", "chevron-right", class: "list__link__right-icon"
-              %li.all-list
-                = link_to "一覧を見る", ""
->>>>>>> Stashed changes
 
         / フッター
         %footer
@@ -478,5 +419,6 @@
             = link_to "#", class: "bottom" do
               = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", alt: 'Mercari', class: 'mercari-img'
             %span.copy-right © 2019 Mercari
-        / フッターここまで
+
+
 
