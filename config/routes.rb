@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   root to: "items#index"
 
+  get "logout" => "users#logout"
+
 end
