@@ -13,32 +13,31 @@
           %span 必須
         %p 最大10枚までアップロードできます
         .exhibit-wrapper__main__image__cards
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-0
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-0'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        =f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        =f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
-        = f.fields_for :images do |i|
-          =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
+          .exhibit-wrapper__main__image__cards-appended
+          %label.exhibit-wrapper__main__image__drag-wrapper
+            .exhibit-wrapper__main__image__drag{data:{exhibitid:0}} 
+              %p ドラッグアンドドロップ
+              %p またはクリックしてファイルをアップロード
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: false, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            =f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            =f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
       .exhibit-wrapper__main__item
         .exhibit-wrapper__main__item__name
           %label 

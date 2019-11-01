@@ -4,9 +4,10 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images
 
   validates :status,:shipping_charge,:delivery_source,:shipping_day, presence: true
-  validates :title, presence: true, numericality: {less_than: 40}
+  validates :title, presence: true, length: { maximum: 40}
   validates :price, presence: true, numericality: {greater_than: 299}
-  validates :description, presence: true, numericality: {less_than: 1000}
+  validates :description, presence: true, length: { maximum: 1000}
+  
   enum delivery_source: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,

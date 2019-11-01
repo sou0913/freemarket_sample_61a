@@ -99,35 +99,31 @@ $link-color: #78C1F0;
         height: 160px;
         background: #f5f5f5;
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         &__card {
+          display: inline-block;
           box-sizing: border-box;
-          width: 20%;
+          width: 128px;
           height: 100%;
           border: 1px solid black;
           position: relative;
-          display: none;
-        &-b {
-          background: green;
-        }
-        &__image {
+           &__image {
           width: 100%;
           height: 50%;
           margin-top: 20px;
           background: gray;
-          & img {
-            width: 100%;
-            height: 100%;
+             & img {
+              width: 100%;
+              height: 100%;
+             }
           }
-        }
-        &__button {
-          width: 100%;
-          display: flex;
-          justify-content:space-between;
-          position: absolute;
-          bottom: 0;
-          padding: 15px;
-        }
+          &__button {
+            width: 100%;
+            display: flex;
+            justify-content:space-between;
+            position: absolute;
+            bottom: 0;
+          }
         }
       }
       &__drag-wrapper {
@@ -143,7 +139,7 @@ $link-color: #78C1F0;
         justify-content: center;
         align-items: center;
         &__form {
-          // display: none;
+          display: none;
         }
         & p {
           font-weight: bold;
