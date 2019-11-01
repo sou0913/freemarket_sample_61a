@@ -723,18 +723,21 @@ aside {
   font-size: 12px;
   padding: 0px 20px 10px;
   display: block;
+  box-sizing: border-box;
   &__nav__infomation {
     width: 700px;
     min-width: 768px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
     &-top-left {
       display: inline-block;
       margin-top: 18px;
       vertical-align: top;
       width: 50%;
       padding: 0px 10px;
+      box-sizing: border-box;
       & h2 {
         font-size: 16px;
         font-weight: 600;
@@ -773,6 +776,7 @@ aside {
       vertical-align: top;
       width: 50%;
       padding: 0px 10px;
+      box-sizing: border-box;
       & h2 {
         font-size: 16px;
         font-weight: 600;
@@ -797,6 +801,7 @@ aside {
       margin-top: 35px;
       width: 100%;
       display: flex;
+      box-sizing: border-box;
       & h2 {
         font-size: 16px;
         font-weight: 600;
@@ -809,6 +814,7 @@ aside {
         padding-right: 10px;
         vertical-align: top;
         width: 50%;
+        box-sizing: border-box;
         & ul {
           & li {
             line-height: 1.4em;
@@ -828,6 +834,7 @@ aside {
         vertical-align: top;
         width: 50%;
         padding-top: 21px;
+        box-sizing: border-box;
         & ul {
           & li {
             line-height: 1.4em;
@@ -848,6 +855,7 @@ aside {
       margin-top: 35px;
       width: 100%;
       padding: 0px;
+      box-sizing: border-box;
       & h2 {
         font-size: 16px;
         font-weight: 600;
@@ -880,6 +888,7 @@ aside {
     min-width: 768px;
     align-items: center;
     display: flex;
+    box-sizing: border-box;
     & a {
       text-align: center;
       & img {
@@ -892,6 +901,7 @@ aside {
       text-align: center;
       padding-left: 15px;
       width: 75%;
+      box-sizing: border-box;
     }
   }
 }
