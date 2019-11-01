@@ -1,0 +1,71 @@
+-# -# ページタイトル
+-# - content_for(:title) { 'ログイン - メルカリ サンプル' }
+
+-# !!!
+-# %html{lang: "ja"}
+-#   %head
+-#     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+-#     %meta{charset: "UTF-8"}/
+-#     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+-#     %meta{content: "ie=edge, http-equiv, X-UA-Compatible"}/
+-#     %title メルカリ
+-#   %body
+-#     %noscript
+-#       %iframe{height: "0", src: "https://www.googletagmanager.com/ns.html?id=GTM-KLPT5L5", style: "display:none;visibility:hidden", title: "googletagmanager", width: "0"}
+.new-devise__wrapper
+  .new-devise__container
+    / ヘッダー
+    .new-devise__header
+      .new-devise__header__contents
+        .new-devise__header__contents-top
+          .new-devise__header__contents-top-logo
+            = link_to "#" do
+              = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo new-devise__header__contents-top-logo__mercari-logo', alt: 'Mercari')
+
+  -# コンテンツ
+  .devise-main__session
+    .devise-main__session__registration
+      %p.devise-main__session__registration__head
+        アカウントをお持ちでない方はこちら
+      =link_to '新規会員登録', "#", class: 'devise-main__session__registration__link'
+
+    .devise-main__session__omniauth
+      = link_to "#", class: 'devise-main__session__omniauth__facebook' do
+        %i.fab.fa-facebook-square
+        Facebookでログイン
+      = link_to "#", class: 'devise-main__session__omniauth__google' do
+        %i.fab.fa-google
+        Googleでログイン
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise-main__session__form' }) do |f|
+      .devise-main__session__form__field
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス'
+        - if resource.errors.messages[:email].present?
+          - resource.errors.messages[:email].each do |message|
+            %p.devise-main__session__form__field__error= message
+      .devise-main__session__form__field
+        = f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード'
+        - if resource.errors.messages[:password].present?
+          - resource.errors.messages[:password].each do |message|
+            %p.devise-main__session__form__field__error= message
+      .devise-main__session__form__actions
+        = f.submit "ログイン"
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to 'パスワードをお忘れの方', '#', class: 'devise-main__session__form__actions__forgetting'
+.new-devise__single-footer
+  %nav
+    %ul.clearfix
+      %li
+        = link_to "https://www.mercari.com/jp/privacy/" do
+          プライバシーポリシー
+      %li
+        = link_to "https://www.mercari.com/jp/tos/" do
+          メルカリ利用規約
+      %li
+        = link_to "https://www.mercari.com/jp/tokutei/" do
+          特定商取引に関する表記
+
+    = link_to "https://www.mercari.com/jp/" do
+      = image_tag('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195', class: 'single-footer-logo', alt: 'mercari', height: "65", width: "80")
+    %p
+      %small © 2019 Mercari
