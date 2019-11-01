@@ -1,0 +1,372 @@
+$border: rgba(204,204,204,0.5);
+$border-form: rgba(204,204,204,0.9);
+@mixin select {
+  position: relative;
+  padding: 15px 0;
+  &::before {
+    z-index: 1;
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+    content: "\f107";
+    line-height: 43px;
+    color: #7F878C;
+    pointer-events: none;
+  }
+  &__select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 400px;
+    padding: 15px 15px;
+    background: white;
+    &::-ms-expand {
+      display: none;
+    }
+    & option {
+      background: #fff;
+      color: #333;
+    }
+  }
+}
+@mixin must-span {
+  color: white;
+  background: red;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  vertical-align: 0.2em; 
+}
+@mixin exhibit-label {
+  padding: 5px;
+  font-weight: bold;
+  padding: 10px 5px;
+}
+.exhibit-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__header {
+    padding-bottom: 30px;
+    &__logo {
+      width: 190px;
+      height: 60px;
+    }
+  }
+  &__main {
+    width: 700px;
+    background: white;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    &__header {
+      width: 100%;
+      height: 100px;
+      display: inherit;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid $border;
+      & h3 {
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+    &__image {
+      width: 100%;
+      padding: 30px;
+      border-bottom: 1px solid $border;
+      & h3 {
+          @include exhibit-label;
+        & span {
+          @include must-span;
+        }
+      }
+      & p {
+        padding: 5px;
+      }
+      &__cards {
+        width: 620px;
+        height: 160px;
+        background: #f5f5f5;
+        display: flex;
+        flex-wrap: wrap;
+        &__card {
+          box-sizing: border-box;
+          width: 20%;
+          height: 100%;
+          border: 1px solid black;
+          position: relative;
+          display: none;
+        &-b {
+          background: green;
+        }
+        &__image {
+          width: 100%;
+          height: 50%;
+          margin-top: 20px;
+          background: gray;
+        }
+        &__button {
+          width: 100%;
+          display: flex;
+          justify-content:space-between;
+          position: absolute;
+          bottom: 0;
+          padding: 15px;
+        }
+        }
+      }
+      &__drag-wrapper {
+        flex: 1;
+      }
+      &__drag {
+        border: 2px dotted $border-form;
+        background: #f5f5f5;
+        width: 100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &__form {
+          display: none;
+        }
+        & p {
+          font-weight: bold;
+        }
+      }
+    }
+    &__item {
+      width: 100%;
+      height: 350px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      &__name {
+        display: inherit;
+        flex-direction: column;
+        border-bottom: 1px solid $border;
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+        &__field {
+         line-height: 2.5; 
+         border: 1px solid $border-form;
+         border-radius: 5px; 
+        }
+      }
+      &__content {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid $border;
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+        &__area {
+          line-height: 1.5;
+          border: 1px solid $border-form;
+          border-radius: 5px; 
+        }
+      }
+    }
+    &__details {
+      width: 100%;
+      height: 250px;
+      display: inherit;
+      flex-direction: row;
+      border-bottom: 1px solid $border;
+      &-left {
+        width: 40%;
+        height: 100%;
+        & p {
+          padding: 30px 0 0 20px;
+        }
+      }
+      &-right {
+        height: 100%;
+        display: inherit;
+        flex-direction: column;
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+        &__select-wrapper {
+          @include select;
+        }
+      }
+    }
+    &__delivery {
+      width: 100%;
+      height: 370px;
+      display: inherit;
+      flex-direction: row;
+      border-bottom: 1px solid $border;
+      &-left {
+        width: 40%;
+        height: 100%;
+        & p {
+          padding: 30px 0 0 20px;
+        }
+      }
+      &-right {
+        height: 100%;
+        display: inherit;
+        flex-direction: column;
+        & label {
+          @include exhibit-label;
+          & span {
+            @include must-span;
+          }
+        }
+        &__select-wrapper {
+          @include select;
+        }
+      }
+    }
+    &__price {
+      width: 100%;
+      height: 300px;
+      display: inherit;
+      flex-direction: row;
+      border-bottom: 1px solid $border;
+      &-left {
+        width: 40%;
+        height: 100%;
+        & p {
+          padding: 30px 0 0 20px;
+        }
+      }
+      &-right {
+        height: 100%;
+        width: 60%;
+        display: inherit;
+        flex-direction: column;
+        padding-right: 20px;
+        &__top {
+          width: 100%;
+          display: inherit;
+          justify-content: space-between;
+          padding: 40px 0px;
+          align-items: center;
+          & label {
+            @include exhibit-label;
+            & span {
+              @include must-span;
+            }
+          }
+          &__form {
+            &::before {
+              content: "￥";
+            }
+            &__field {
+              line-height: 50px;
+              border: 1px solid $border-form;
+              border-radius: 3px;
+              &::before {
+                content: "￥";
+              }
+            }
+          }
+        }
+        &__center {
+          display: inherit;
+          justify-content: space-between;
+          padding: 25px 0px;
+          border-top: 1px solid $border-form;
+        }
+        &__bottom {
+          display: inherit;
+          justify-content: space-between;
+          padding: 25px 0px;
+          border-top: 1px solid $border-form;
+          & p {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    &__footer {
+      height: 320px;
+      display: inherit;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      &__content {
+        padding: 35px;
+        line-height: 20px;
+        & p {
+          & a{
+            color: #78C1F0
+          }
+        }
+      }
+      &__submit {
+        width: 90%;
+        &-button {
+          width: 100%;
+          height: 50px;
+          background: red;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          font-size: 16px;
+        }
+        & input {
+          display: none;
+        }
+      }
+      &__back {
+        width: 45%;
+        padding-bottom: 30px;
+        &-button {
+          width: 100%;
+          height: 50px;
+          background: #AAAAAA;
+          color: white;
+          text-align: center;
+          line-height: 50px;
+          font-size: 16px;
+        }
+        & input {
+          display: none;
+        }
+      }
+    }
+  }
+  &__footer {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    &__top {
+      padding: 30px;
+      & a {
+        color: rgba(0,0,0,0.8);
+        text-decoration: none;
+        padding: 10px;
+        font-size: 12px;
+      }
+    }
+    &__logo {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+
+
