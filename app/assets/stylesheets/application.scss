@@ -3,7 +3,8 @@
 @import "index.scss";
 @import "item/new.scss";
 @import "purchase/new.scss";
-@import "mypage";
 @import "mixin/mixin-devises";
 @import "modules/devise";
-@import "private-informations.scss";
+@import "user/mypage";
+@import "user/private-informations.scss";
+@import "user/profile.scss";
