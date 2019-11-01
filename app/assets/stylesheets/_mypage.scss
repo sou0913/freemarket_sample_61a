@@ -233,7 +233,6 @@
     float: left;
     .side-nav {
       &__list {
-        margin-top: 8px;
         li {
           border-top: 1px solid #eee;
           background-color:rgba(255,255,255,1);
@@ -262,7 +261,7 @@
         }
       }
       &__head {
-        margin-top: 40px;
+        margin: 40px 0 8px;
         font-size: 16px;
         font-weight: bold;
       }
