@@ -40,6 +40,10 @@
         line-height: 1.5;
         font-size: 16px;
         vertical-align: middle;
+        &:focus {
+          border-color: #0099e8;
+          outline: none;
+        }
       }
     }
     &__bottom-content {
@@ -51,6 +55,10 @@
         display: block;
         border: 1px solid #ccc;
         font-size: 16px;
+        &:focus {
+          border-color: #0099e8;
+          outline: none;
+        }
       }
       &__btn {
         margin-top: 16px;
