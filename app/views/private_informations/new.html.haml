@@ -1,18 +1,18 @@
-.wrapper
-  .container 
+.item-index__wrapper
+  .item-index__container
     .bread-crumds
       %ul.bread-crumds__list
         %li
           = link_to "" do
             %span<> 
               メルカリ
-          = icon "fas", "chevron-right"
+          %i.fa.fa-chevron-right
         %li マイページ
 
     .mypage-container
       .main-mypage
         .private-informations
-          %h2.private-informations__head 本人情報の確認
+          %h2.private-informations__head 本人情報の登録
           = form_with url: "#", local: true, class: "information" do |f|
             .private-info
               %p 
@@ -22,7 +22,7 @@
             %p.information__link
               = link_to "#" do
                 本人確認書類のアップロードについて
-                = icon "fas", "chevron-right"
+                %i.fa.fa-chevron-right
             .information__group
               = f.label "お名前"
               %p 田中太郎
@@ -40,7 +40,9 @@
             .information__group
               = f.label "都道府県"
               %span.arbitrary  任意
-              = f.select :prefectures, ["--", "--"],{}, class: "information__group__select"
+              .information__group__box
+                %i.fa.fa-chevron-down.information__group__box__icon
+                = f.select :prefectures, Item.delivery_sources.keys,{prompt: "--"}, class: "information__group__box__select"
 
             .information__group
               = f.label "市区町村"
@@ -60,7 +62,7 @@
             %p.information__under-link
               = link_to "" do
                 本人情報の登録について
-                = icon "fas", "chevron-right"
+                %i.fa.fa-chevron-right
 
       .side-mypage
-        = render 'side_bar'
+        = render 'users/side_bar'
