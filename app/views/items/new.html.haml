@@ -1,9 +1,9 @@
-=form_with model: @item, multipart: true do |f|
+=form_with model: @item do |f|
   .exhibit-wrapper
     .exhibit-wrapper__header
       .exhibit-wrapper__header__logo
         = link_to "#" do
-          %img{alt: "Mercari", src: "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo"}/
+          =image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari-logo")
     .exhibit-wrapper__main
       .exhibit-wrapper__main__header
         %h3 商品の情報を入力
@@ -78,7 +78,7 @@
               %p ドラッグアンドドロップ
               %p またはクリックしてファイルをアップロード
             = f.fields_for :images do |i|
-              =i.file_field :image, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
+              =i.file_field :image, multiple: true, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
       .exhibit-wrapper__main__item
         .exhibit-wrapper__main__item__name
           %label 
@@ -98,12 +98,12 @@
             カテゴリー
             %span 必須
           .exhibit-wrapper__main__details-right__select-wrapper
-            -# =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
+            =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
           %label 
             商品の状態
             %span 必須
           .exhibit-wrapper__main__details-right__select-wrapper
-            =f.select :status, Item.statuses, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
+            =f.select :status, Item.statuses.keys, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
       .exhibit-wrapper__main__delivery
         .exhibit-wrapper__main__delivery-left
           %p 配送について
@@ -112,17 +112,17 @@
             配送料の負担
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
-            =f.select :shipping_charge, Item.shipping_charges.keys,{prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            =f.select :shipping_charge, Item.shipping_charges.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
           %label 
             発送元の地域
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
-            =f.select :delivery_source, Item.delivery_sources.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            =f.select :delivery_source, Item.delivery_sources.keys, {prompt: '---'}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
           %label 
             発送までの日数
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
-            =f.select :shipping_day, Item.shipping_days.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            =f.select :shipping_day, Item.shipping_days.keys, {prompt: '---'}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
       .exhibit-wrapper__main__price
         .exhibit-wrapper__main__price-left
           %p 販売価格(300~9,999,999)
@@ -142,15 +142,15 @@
       .exhibit-wrapper__main__footer
         .exhibit-wrapper__main__footer__content
           %p
-            %a{href: "#"} 禁止されている出品、行為
+            =link_to "禁止されている出品、行為", "#"
             を必ずご確認ください。
           %p 
             またブランド品でシリアルナンバー等がある場合はご記載ください。
-            %a{href: "#"} 偽ブランドの販売
+            =link_to "偽ブランドの販売", "#"
             は犯罪であり処罰される可能性があります。
           %p
             また、出品をもちまして
-            %a{href: "#"} 加盟店規約
+            =link_to "加盟店規約", "#"
             に同意したことになります。
         %label.exhibit-wrapper__main__footer__submit  
           .exhibit-wrapper__main__footer__submit-button 出品する
@@ -165,6 +165,6 @@
         =link_to "特定商取引に関する表記", "#"
       .exhibit-wrapper__footer__logo
         =link_to "#" do
-          %img{alt: "Mercari", src: "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195", class: "mercari-logo-bottom"}/
+          =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?465897195", class: "mercari-logo-bottom")
       .exhibit-wrapper__footer__bottom
         %p © 2019 Mercari

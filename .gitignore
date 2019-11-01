@@ -22,7 +22,9 @@
 
 /public/assets
 .byebug_history
-
+# carrierwaveによるアップロード画像が上らないようにします。
+public/uploads/test/image
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/config/secrets.yml
+config/secrets.yml
+.DS_Store
