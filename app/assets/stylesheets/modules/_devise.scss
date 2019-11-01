@@ -262,10 +262,15 @@
   padding-top: 50px;
   @include flex-center;
   & nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     & ul { 
     display: inline;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
       & li {
         display: inline;
         justify-content: center;
@@ -277,14 +282,6 @@
         left: 20px;
         }
       }
-    }
-    &-logo {
-      position: relative;
-      left: 220px;
-    }
-    & p {
-      position: relative;
-      left: 200px;
     }
   }
 } 
