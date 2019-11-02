@@ -17,3 +17,4 @@ t.integer "dealing", default: 0, null: false
 t.bigint "user_id", null: false
 t.datetime "created_at", null: false
 t.datetime "updated_at", null: false
+User.create(nickname: 'adminsasaki', email: 'admin@example.com', password: 'password')
