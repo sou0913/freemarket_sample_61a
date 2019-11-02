@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.limit(10).order('id')
-  end
+  end 
   def new
     @item = Item.new
     @item.images.build
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
   def create_items_params
     # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :price, images_attributes: [:image]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :price, :shipping_method, images_attributes: [:image]).merge(user_id: 1)
   end
 
 end

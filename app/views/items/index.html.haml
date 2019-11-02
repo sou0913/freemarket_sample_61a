@@ -80,8 +80,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      =render @items
+                    =render @items
             .new__item
               .new__item-header{name: "#"}
                 %h3.new__item-header-title メンズ新着アイテム
@@ -89,36 +88,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "VIDENG  POLO ショルダーバッグ  ポロ レザー"
-                            .item-img
-                              %span.price ¥ 1,500
-                              = image_tag "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", alt: '"Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "VIDENG  POLO ショルダーバッグ  ポロ レザー"
-                            .item-img
-                              %span.price ¥ 1,500
-                              = image_tag "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", alt: '"Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "VIDENG  POLO ショルダーバッグ  ポロ レザー"
-                            .item-img
-                              %span.price ¥ 1,500
-                              = image_tag "https://static.mercdn.net/thumb/photos/m56002727914_1.jpg?1571467982", alt: '"Thumbnail of \"VIDENG  POLO ショルダーバッグ  ポロ レザー\""', class: "img"
+                    =render @items
             .new__item
               .new__item-header{name: "#"}
                 %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
@@ -126,36 +96,7 @@
               .new__item-collection 
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C"
-                            .item-img
-                              %span.price ¥ 3,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", alt: '"Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C"
-                            .item-img
-                              %span.price ¥ 3,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", alt: '"Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C"
-                            .item-img
-                              %span.price ¥ 3,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m95009599952_1.jpg?1572158851", alt: '"Thumbnail of \"最新型外付け DVD ドライブ 外付け ポータブル CDドライブ Type C\""', class: "img"
+                    =render @items
             .new__item
               .new__item-header{name: "#"}
                 %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
@@ -163,37 +104,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "乃木坂46 生写真"
-                            .item-img
-                              %span.price ¥ 500
-                              = image_tag "https://static.mercdn.net/thumb/photos/m35070125053_1.jpg?1572080204", alt: '"Thumbnail of \"乃木坂46 生写真\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "乃木坂46 生写真"
-                            .item-img
-                              %span.price ¥ 500
-                              = image_tag "https://static.mercdn.net/thumb/photos/m35070125053_1.jpg?1572080204", alt: '"Thumbnail of \"乃木坂46 生写真\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "乃木坂46 生写真"
-                            .item-img
-                              %span.price ¥ 500
-                              = image_tag "https://static.mercdn.net/thumb/photos/m35070125053_1.jpg?1572080204", alt: '"Thumbnail of \"乃木坂46 生写真\""', class: "img"
-
+                    =render @items
           .item-index__main__contents__brands
             %h2.item-index__main__contents__brands-heading 人気のブランド
             .brands__list
@@ -214,36 +125,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "CHANEL ピンク系アイシャドウ 値下げ"
-                            .item-img
-                              %span.price ¥ 800
-                              = image_tag "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", alt: '"Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "CHANEL ピンク系アイシャドウ 値下げ"
-                            .item-img
-                              %span.price ¥ 800
-                              = image_tag "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", alt: '"Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "CHANEL ピンク系アイシャドウ 値下げ"
-                            .item-img
-                              %span.price ¥ 800
-                              = image_tag "https://static.mercdn.net/thumb/photos/m91207568645_1.jpg?1496580112", alt: '"Thumbnail of \"CHANEL ピンク系アイシャドウ 値下げ\""', class: "img"
+                    =render @items
 
             .new__item
               .new__item-header{name: "#"}
@@ -252,36 +134,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "ルイヴィトン アマゾン ショルダーバッグ"
-                            .item-img
-                              %span.price ¥ 26,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", alt: '"Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "ルイヴィトン アマゾン ショルダーバッグ"
-                            .item-img
-                              %span.price ¥ 26,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", alt: '"Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "ルイヴィトン アマゾン ショルダーバッグ"
-                            .item-img
-                              %span.price ¥ 26,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m22989888144_1.jpg?1570259418", alt: '"Thumbnail of \"ルイヴィトン アマゾン ショルダーバッグ\""', class: "img"
+                    =render @items
             .new__item
               .new__item-header{name: "#"}
                 %h3.new__item-header-title シュプリーム新着アイテム
@@ -289,36 +142,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "Supreme シュプリーム sasquatchfabrix tシャツ"
-                            .item-img
-                              %span.price ¥ 8,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", alt: '"Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "Supreme シュプリーム sasquatchfabrix tシャツ"
-                            .item-img
-                              %span.price ¥ 8,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", alt: '"Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "Supreme シュプリーム sasquatchfabrix tシャツ"
-                            .item-img
-                              %span.price ¥ 8,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m74825593989_1.jpg?1572151676", alt: '"Thumbnail of \"Supreme シュプリーム sasquatchfabrix tシャツ\""', class: "img"
+                    =render @items
             .new__item
               .new__item-header{name: "#"}
                 %h3.new__item-header-title ナイキ新着アイテム
@@ -326,36 +150,7 @@
               .new__item-collection
                 %div
                   %ul.new__item-collection-list
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "NIKE AIR MAX97"
-                            .item-img
-                              %span.price ¥ 12,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m22844117255_1.jpg?1571998323", alt: '"Thumbnail of \"NIKE AIR MAX97\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "NIKE AIR MAX97"
-                            .item-img
-                              %span.price ¥ 12,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m22844117255_1.jpg?1571998323", alt: '"Thumbnail of \"NIKE AIR MAX97\""', class: "img"
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "NIKE AIR MAX97"
-                            .item-img
-                              %span.price ¥ 12,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m22844117255_1.jpg?1571998323", alt: '"Thumbnail of \"NIKE AIR MAX97\""', class: "img"
+                    =render @items
       / コンテンツここまで
 
       / 出品ボタン

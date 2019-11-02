@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    id                {1}
     price             {3000}
     description       {"佐々木が3年前に購入したパソコンです"}
     title             {"佐々木のパソコン"}
