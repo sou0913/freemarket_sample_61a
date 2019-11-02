@@ -3,9 +3,18 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: "users/sessions",
   } 
+
+  # get "logout" => "users#logout"
+  resources :users do
+    collection do
+      get:logout
+    end
+  end
+
   resources :users, only: [:show, :edit] do
     resources :private_informations, only: [:new]
   end
+
   resources :items do
     resources :purchases
   end
