@@ -77,5 +77,5 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'pry-rails'
 gem 'carrierwave'
-gem 'mechanize'
+gem 'rspec-rails'
 

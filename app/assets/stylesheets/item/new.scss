@@ -99,15 +99,15 @@ $link-color: #78C1F0;
         height: 160px;
         background: #f5f5f5;
         display: flex;
-        // flex-wrap: wrap;
+        flex-flow: row wrap;
         &__card {
           display: inline-block;
           box-sizing: border-box;
-          width: 128px;
-          height: 100%;
+          width: 124px;
+          height: 160px;
           border: 1px solid black;
           position: relative;
-           &__image {
+          &__image {
           width: 100%;
           height: 50%;
           margin-top: 20px;
@@ -123,13 +123,18 @@ $link-color: #78C1F0;
             justify-content:space-between;
             position: absolute;
             bottom: 0;
+            & a {
+              padding: 5px;
+            }
           }
         }
       }
       &__drag-wrapper {
+        box-sizing: border-box;
         flex: 1;
       }
       &__drag {
+        box-sizing: border-box;
         border: 2px dotted $border-form;
         background: #f5f5f5;
         width: 100%;

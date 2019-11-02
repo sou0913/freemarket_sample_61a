@@ -12,10 +12,9 @@
           出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-        .exhibit-wrapper__main__image__cards
-          .exhibit-wrapper__main__image__cards-appended
+        .exhibit-wrapper__main__image__cards{data:{exhibitid:0}}
           %label.exhibit-wrapper__main__image__drag-wrapper
-            .exhibit-wrapper__main__image__drag{data:{exhibitid:0}} 
+            .exhibit-wrapper__main__image__drag 
               %p ドラッグアンドドロップ
               %p またはクリックしてファイルをアップロード
             = f.fields_for :images do |i|
@@ -53,11 +52,12 @@
         .exhibit-wrapper__main__details-left
           %p 商品の詳細
         .exhibit-wrapper__main__details-right
-          %label 
-            カテゴリー
-            %span 必須
-          .exhibit-wrapper__main__details-right__select-wrapper
-            -# =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
+          / （注）カテゴリーは必須実装でないのでひとまず外しています。
+          -# %label 
+          -#   カテゴリー
+          -#   %span 必須
+          -# .exhibit-wrapper__main__details-right__select-wrapper
+            -# =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
           %label 
             商品の状態
             %span 必須
