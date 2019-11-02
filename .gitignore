@@ -28,3 +28,4 @@ public/uploads/test/image
 /config/master.key
 config/secrets.yml
 .DS_Store
+public/uploads/*

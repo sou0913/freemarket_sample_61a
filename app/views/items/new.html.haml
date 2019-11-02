@@ -1,4 +1,4 @@
-=form_with model: @item do |f|
+=form_with model: @item, local: true do |f|
   .exhibit-wrapper
     .exhibit-wrapper__header
       .exhibit-wrapper__header__logo
@@ -12,98 +12,61 @@
           出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-        .exhibit-wrapper__main__image__cards
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-0
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-0'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-1
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-1'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-2
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-2'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-3
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-3'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-4
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-4'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-5
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-5'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-6
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-6'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-7
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-7'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-8
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-8'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
-          .exhibit-wrapper__main__image__cards__card.exhibit-wrapper__main__image__cards__card-9
-            .exhibit-wrapper__main__image__cards__card__image
-              = image_tag '', class: 'exhibit-image exhibit-image-9'
-            .exhibit-wrapper__main__image__cards__card__button
-              =link_to "編集", "#"
-              =link_to "削除", "#", class: "exhibit-wrapper__main__image__cards__card__button__delete"
+        .exhibit-wrapper__main__image__cards{data:{exhibitid:0}}
           %label.exhibit-wrapper__main__image__drag-wrapper
-            .exhibit-wrapper__main__image__drag{data:{exhibitid:0}} 
+            .exhibit-wrapper__main__image__drag 
               %p ドラッグアンドドロップ
               %p またはクリックしてファイルをアップロード
             = f.fields_for :images do |i|
-              =i.file_field :image, multiple: true, class: "exhibit-wrapper__main__image__drag__form", id:"exhibit__file-form"
+              =i.file_field :image, readonly: false, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            =f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            =f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+            = f.fields_for :images do |i|
+              =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
+        = render partial: "errors", locals: {model: @item, column: :image}              
       .exhibit-wrapper__main__item
         .exhibit-wrapper__main__item__name
           %label 
             商品名
             %span 必須
           =f.text_field :title, class: "exhibit-wrapper__main__item__name__field", placeholder: "商品名（必須40文字まで）"
+          = render partial: "errors", locals: {model: @item, column: :title}
         .exhibit-wrapper__main__item__content
           %label 
             商品の説明
             %span 必須
           =f.text_area :description, rows:"6", class: "exhibit-wrapper__main__item__content__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = render partial: "errors", locals: {model: @item, column: :description}
       .exhibit-wrapper__main__details
         .exhibit-wrapper__main__details-left
           %p 商品の詳細
         .exhibit-wrapper__main__details-right
-          %label 
-            カテゴリー
-            %span 必須
-          .exhibit-wrapper__main__details-right__select-wrapper
-            =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
+          / （注）カテゴリーは必須実装でないのでひとまず外しています。
+          -# %label 
+          -#   カテゴリー
+          -#   %span 必須
+          -# .exhibit-wrapper__main__details-right__select-wrapper
+            -# =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
           %label 
             商品の状態
             %span 必須
           .exhibit-wrapper__main__details-right__select-wrapper
-            =f.select :status, Item.statuses, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
+            =f.select :status, Item.statuses.keys, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
+            = render partial: "errors", locals: {model: @item, column: :status}
       .exhibit-wrapper__main__delivery
         .exhibit-wrapper__main__delivery-left
           %p 配送について
@@ -112,17 +75,26 @@
             配送料の負担
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
-            =f.select :shipping_charge, Item.shipping_charges.keys,{prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            =f.select :shipping_charge, Item.shipping_charges.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select exhibit__shipping-charges"
+            = render partial: "errors", locals: {model: @item, column: :shipping_charge}
+          %label.exhibit__delivery-method
+            配送の方法
+            %span 必須
+          .exhibit-wrapper__main__delivery-right__select-wrapper.exhibit__delivery-method
+            =f.select :shipping_method, Item.shipping_methods.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            = render partial: "errors", locals: {model: @item, column: :shipping_method}
           %label 
             発送元の地域
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
-            =f.select :delivery_source, Item.delivery_sources.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            =f.select :delivery_source, Item.delivery_sources.keys, {prompt: '---'}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            = render partial: "errors", locals: {model: @item, column: :delivery_source}
           %label 
             発送までの日数
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
-            =f.select :shipping_day, Item.shipping_days.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            =f.select :shipping_day, Item.shipping_days.keys, {prompt: '---'}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
+            = render partial: "errors", locals: {model: @item, column: :shipping_day}
       .exhibit-wrapper__main__price
         .exhibit-wrapper__main__price-left
           %p 販売価格(300~9,999,999)
@@ -133,6 +105,7 @@
               %span 必須
             .exhibit-wrapper__main__price-right__top__form
               =f.text_field :price, class: "exhibit-wrapper__main__price-right__top__form__field", placeholder: "例）300"
+              = render partial: "errors", locals: {model: @item, column: :price}
           .exhibit-wrapper__main__price-right__center
             %p 販売手数料(10%)
             %p -

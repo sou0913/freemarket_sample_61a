@@ -1,5 +1,20 @@
 class Item < ApplicationRecord
 
+  has_many :images
+  accepts_nested_attributes_for :images
+
+  validate :check_images
+
+  validates :status,:shipping_charge,:shipping_method,:delivery_source,:shipping_day, presence: true
+  validates :title, presence: true, length: { maximum: 40}
+  validates :price, presence: true, numericality: {greater_than: 299}
+  validates :description, presence: true, length: { maximum: 1000}
+  
+  def check_images
+    errors.add(:image, "を1枚以上指定してください") if images.size < 1
+  end
+
+
   enum delivery_source: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -19,6 +34,9 @@ class Item < ApplicationRecord
   }
   enum shipping_day: {
     "1~2日で発送":1,"2~3日で発送":2,"4~7日で発送":3
+  }
+  enum shipping_method: {
+    "未定":0,"らくらくメルカリ便":1,"ゆうメール":2,"レターパック":3,"普通郵便(定形,定形外)":4,"クロネコヤマト":5,"ゆうパック":6,"クリックポスト":7,"ゆうパケット":8
   }
 
 end
