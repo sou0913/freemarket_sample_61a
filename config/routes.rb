@@ -3,6 +3,14 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: "users/sessions",
   } 
+
+  # get "logout" => "users#logout"
+  resources :users do
+    collection do
+      get:logout
+    end
+  end
+
   resources :users, only: [:show]
   resources :items do
     resources :purchases
@@ -10,7 +18,5 @@ Rails.application.routes.draw do
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"
-
-  get "logout" => "users#logout"
 
 end
