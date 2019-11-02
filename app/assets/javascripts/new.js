@@ -27,7 +27,6 @@ $(document).on('turbolinks:load', function(){
   });
   drag_space_form.on("change", function(e){
     counter += 1;
-    console.log(counter);
     $(this).prop('readonly', true);
     $(this).next().prop('readonly', false);
     $("#item_images_attributes_9_image").after(this)
@@ -50,4 +49,7 @@ $(document).on('turbolinks:load', function(){
   //   card = $(this).parent().parent()
   //   card.removeClass('exhibit-active')
   // })
+  $(".exhibit__shipping-charges").on("change", function(e){
+    $(".exhibit__delivery-method").css("display", "block")
+  })
 })
