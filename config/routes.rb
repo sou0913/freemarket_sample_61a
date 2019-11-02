@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit] do
-    resources :private_informations, only: [:new] do
+    resources :private_informations, only: [:new]
     resources :cards, only: [:index]
-    end
   end
 
   resources :items do
