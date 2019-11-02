@@ -1,0 +1,26 @@
+.item-index__wrapper
+  .item-index__container
+    .bread-crumds
+      %ul.bread-crumds__list
+        %li
+          = link_to "" do
+            %span<> 
+              メルカリ
+          %i.fa.fa-chevron-right
+        %li マイページ
+
+    .mypage-container
+      .profile-content
+        %h2.profile-content__head
+          プロフィール
+        = form_with url: "#", local: true, class: "setting-profile" do |f|
+          .setting-profile__top-content
+            .setting-profile__top-content__icon
+              = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: "setting-profile__top-content__icon__image"
+            = f.text_field :nickname, class: "setting-profile__top-content__nickname"
+          .setting-profile__bottom-content
+            = f.text_area :profile, placeholder: "例) こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問ありましたらお気軽にどうぞ♪", class: "setting-profile__bottom-content__text"
+            = f.submit "変更する", class: "setting-profile__bottom-content__btn"
+
+      .side-mypage
+        = render 'side_bar'
