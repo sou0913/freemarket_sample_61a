@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
     @item = Item.new(create_items_params)
     # エラーメッセージ用
     @image = Image.new
-    # binding.pry
     if @item.save
       redirect_to :root
     else
