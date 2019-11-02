@@ -81,35 +81,7 @@
                 %div
                   %ul.new__item-collection-list
                     %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name
-                                = "OMEGA/オメガ/コンステレーションCHRONOMETER/1040"
-                            .item-img
-                              %span.price ¥ 58,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img", alt: '"Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"'
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "OMEGA/オメガ/コンステレーションCHRONOMETER/1040"
-                            .item-img
-                              %span.price ¥ 58,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img", alt: '"Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"'
-                    %li
-                      %div
-                        = link_to "#", class: "item" do
-                          %figure
-                            %figcaption
-                              %span.item-name 
-                                = "OMEGA/オメガ/コンステレーションCHRONOMETER/1040"
-                            .item-img
-                              %span.price ¥ 58,000
-                              = image_tag "https://static.mercdn.net/thumb/photos/m94868651928_1.jpg?1568952040", class: "img", alt: '"Thumbnail of \"OMEGA/オメガ/コンステレーションCHRONOMETER/1040\"'
+                      =render @items
             .new__item
               .new__item-header{name: "#"}
                 %h3.new__item-header-title メンズ新着アイテム
