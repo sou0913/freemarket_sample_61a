@@ -31,7 +31,6 @@ $(document).on('turbolinks:load', function(){
     $(this).next().prop('readonly', false);
     $("#item_images_attributes_9_image").after(this)
     // 二段目に移行する処理
-    console.log($(this).get(0));
     if ($(this).get(0) == $("#item_images_attributes_4_image").get(0)) {
       $(".exhibit-wrapper__main__image__cards").css("height", "320px");
     }
@@ -45,10 +44,6 @@ $(document).on('turbolinks:load', function(){
     }
     reader.readAsDataURL(e.target.files[0]);
   })
-  // $(document).on("click", "exhibit-wrapper__main__image__cards__card__button__delete", function() {
-  //   card = $(this).parent().parent()
-  //   card.removeClass('exhibit-active')
-  // })
   $(".exhibit__shipping-charges").on("change", function(e){
     $(".exhibit__delivery-method").css("display", "block")
   })
