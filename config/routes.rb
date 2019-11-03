@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"
-
 end
