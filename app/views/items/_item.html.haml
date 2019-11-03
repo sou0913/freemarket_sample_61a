@@ -1,0 +1,13 @@
+%li
+  %div
+    -# 詳細ページへのリンク貼る
+    = link_to "#", class: "item" do
+      %figure
+        %figcaption
+          %span.item-name
+            = item.title
+        .item-img
+          %span.price 
+            ￥
+            =item.price
+          = image_tag item.images.limit(1)[0].image.url, class: "img"

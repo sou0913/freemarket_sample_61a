@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :images
   accepts_nested_attributes_for :images
 
-  validate :check_images
+  # validate :check_images
 
   validates :status,:shipping_charge,:shipping_method,:delivery_source,:shipping_day, presence: true
   validates :title, presence: true, length: { maximum: 40}
