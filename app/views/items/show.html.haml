@@ -44,27 +44,24 @@
                 = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
                 マイページ
 
-
     -# コンテンツ
     %section.item__contents
-      %h1.item__contents__name item-name
+      %h1.item__contents__name item-name(仮置き) 
       .item__contents__main
         .item__photo
           .item__photo__wrapper
+            -# .item__content
             .item__content
-              .item__content__box
-                .item__content__box-inner
-                  .item__content__box-inner-img
-                    = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', class: 'item-img'
+              .item__content__inner
+                .item__content__inner-img
+                  = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', class: 'item-img'
 
-              .item__other__img
-                .item__other__img--first
-                  %span
-                  .inner
-
-                .item__pther__img--after
-                  %span
-                  .inner
+              .item__other__content
+                - 10.times do
+                  .item__other__content__img
+                    %span
+                    .inner
+                      = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', height: '60px', width: '60px', class: 'inner-img'
 
         %table.item__contents--detail
           %tbody
@@ -193,11 +190,11 @@
         %aside
     %ul.nav__item__link
       %li.nav__item__link--prev
-        = link_to "#", class: "icon" do
+        = link_to "/items/1", class: "icon" do
           %i.arrow-left.fas.fa-chevron-left
           = "prev item"
       %li.nav__item__link--next
-        = link_to "#", class: "icon" do
+        = link_to "/items/1", class: "icon" do
           %i.arrow-right.fas.fa-chevron-right
           = "next item"
     .social-media__box
@@ -219,13 +216,14 @@
     .exhibitor-other-items
       %section.items__container
         %h2.items__box__head
+          -# 出品者のマイページ？へ飛ぶ
           = link_to "出品者さんのその他の出品", "#"
         .items__box__content
           - 6.times do
             %ul.new__item-collection-list
               %li
                 %div
-                  = link_to "#", class: "item" do
+                  = link_to "/items/1/purchases/new", class: "item" do
                     %figure
                       .item__box__body
                         %h3.item-name
@@ -242,7 +240,7 @@
             %ul.new__item-collection-list
               %li
                 %div
-                  = link_to "#", class: "item" do
+                  = link_to "/items/1/purchases/new", class: "item" do
                     %figure
                       .item__box__body
                         %h3.item-name
