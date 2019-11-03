@@ -232,6 +232,9 @@ $link-color: #0099e8;
             position: relative;
             display: inline-block;
             color: #333;
+            &:hover {
+              @include hover;
+            }
             figure {
               margin: 0;
               .user-icon {
@@ -409,6 +412,9 @@ $link-color: #0099e8;
         left: 0;
         top: 50%;
       }
+      &:hover {
+        @include hover;
+      }
     }
   }
   &--next {
@@ -424,6 +430,9 @@ $link-color: #0099e8;
       .arrow-right {
         right: 0;
         position: absolute;
+      }
+      &:hover {
+        @include hover;
       }
     }
   }
@@ -450,6 +459,9 @@ $link-color: #0099e8;
         display: block;
         color: $link-color;
         text-decoration: none;
+        &:hover {
+          opacity: 0.6;
+        }
         i {
           width: 44px;
           height: 44px;
@@ -499,6 +511,9 @@ $link-color: #0099e8;
       a {
         color: $link-color;
         text-decoration: none;
+        &:hover {
+          @include hover;
+        }
       }
     }
     .items__box__content {
@@ -598,6 +613,9 @@ $link-color: #0099e8;
       a {
         color: #333;
         text-decoration: none;
+        &:hover {
+          @include hover;
+        }
       }
       .arrow-right {
         margin: 0 8px;
