@@ -55,30 +55,17 @@
               .item__content__box
                 .item__content__box-inner
                   .item__content__box-inner-img
-                    = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m35665793144_1.jpg?1572587724', alt: '', class: 'item-img'
-                -# .item__content__box-right
-                -#   .item__content__box-right-inner
-                -#     = image_tag ''
-              -# .item__diplay
-              -#   .prev
-              -#   .next
+                    = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', class: 'item-img'
+
               .item__other__img
                 .item__other__img--first
                   %span
                   .inner
-                    -# = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m25735959223_1.jpg?1572587829', class: 'other-img'
+
                 .item__pther__img--after
                   %span
                   .inner
-                    -# = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m25735959223_4.jpg?1572587829', class: 'other-img'
-        -# .item__contents__price
-        -#   %span.price ¥10,000
-        -#   %span.tax  "(税込)"
-        -#   %span.shipping-free 送料込み
-        -# %section.item__contents--buy
-        -#   .item__contents--buy-button
-        -#     = link_to "#", class: "item-buy-btn" do
-        -#       = 購入画面に進む
+
         %table.item__contents--detail
           %tbody
             %tr
@@ -137,7 +124,7 @@
         %span.tax  (税込)
         %span.shipping-free 送料込み
         .item-buy
-          = link_to "#", class: "item-buy-btn" do
+          = link_to "/items/1/purchases/new", class: "item-buy-btn" do
             = "購入画面に進む"
       .item--description
         %p.item--description-text
