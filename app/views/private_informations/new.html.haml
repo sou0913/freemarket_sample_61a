@@ -1,0 +1,68 @@
+.item-index__wrapper
+  .item-index__container
+    .bread-crumds
+      %ul.bread-crumds__list
+        %li
+          = link_to "" do
+            %span<> 
+              メルカリ
+          %i.fa.fa-chevron-right
+        %li マイページ
+
+    .mypage-container
+      .main-mypage
+        .private-informations
+          %h2.private-informations__head 本人情報の登録
+          = form_with url: "#", local: true, class: "information" do |f|
+            .private-info
+              %p 
+                お客様の本人情報をご登録ください。
+                %br 
+                  ご登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            %p.information__link
+              = link_to "#" do
+                本人確認書類のアップロードについて
+                %i.fa.fa-chevron-right
+            .information__group
+              = f.label "お名前"
+              %p 田中太郎
+            .information__group
+              = f.label "お名前カナ"
+              %p タナカタロウ
+            .information__group
+              = f.label "生年月日"
+              %p 2000/01/01
+            .information__group
+              = f.label "郵便番号"
+              %span.arbitrary  任意
+              = f.text_field :postal_code, placeholder: "例) 1234567", class: "information__group__text"
+
+            .information__group
+              = f.label "都道府県"
+              %span.arbitrary  任意
+              .information__group__box
+                %i.fa.fa-chevron-down.information__group__box__icon
+                = f.select :prefectures, Item.delivery_sources.keys,{prompt: "--"}, class: "information__group__box__select"
+
+            .information__group
+              = f.label "市区町村"
+              %span.arbitrary  任意
+              = f.text_field :city, placeholder: "例) 横浜市緑区", class: "information__group__text"
+
+            .information__group
+              = f.label "番地"
+              %span.arbitrary  任意
+              = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "information__group__text"
+
+            .information__group
+              = f.label "建物名"
+              %span.arbitrary  任意
+              = f.text_field :building_name, placeholder: "例) 柳ビル103", class: "information__group__text"
+            = f.submit "登録する", class: "information__submit"
+            %p.information__under-link
+              = link_to "" do
+                本人情報の登録について
+                %i.fa.fa-chevron-right
+
+      .side-mypage
+        = render 'users/side_bar'
