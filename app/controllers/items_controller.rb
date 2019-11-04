@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
   
-  def index
+  def show
   end
   
+  def index
+    @items = Item.limit(10).order('id')
+  end 
   def new
     @item = Item.new
     @item.images.build
