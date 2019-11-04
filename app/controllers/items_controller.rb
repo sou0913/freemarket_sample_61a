@@ -41,17 +41,8 @@ class ItemsController < ApplicationController
     end
   end
 
-
-  def listing
-    # 後々current_userに変更
-    user = User.find(parmas[:id])
-    @items = user.items
-  end
-  def in_progress
-  
-  end
-  def completed
-  
+  def my_item
+    
   end
 
   private

@@ -1,0 +1,17 @@
+.my-item__edit-delete__buttons {
+  width: 700px;
+  height: 100px;
+  margin: 10px auto;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  &__edit {
+    width: 95%;
+    height: 50px;
+  }
+  &__stop {
+    width: 95%;
+    height: 50px;
+  }
+}

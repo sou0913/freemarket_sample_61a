@@ -1,0 +1,9 @@
+%li.list
+  = link_to  my_item_item_path(item) ,class: "list__link" do
+    = image_tag item.images.limit(1)[0].image.url, height: "48", width: "48", class: "list__link__image"
+    .list__link__body
+      .list__link__body__text 
+        = item.title
+      .list__link__body__time.list__link__body__item-status
+        %p 出品中
+    %i.fas.chevron-right.list__link__right-icon

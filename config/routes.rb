@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :purchases
+    member do
+      # 自分の商品個別ページ
+      get :my_item
+    end
   end
   resources :tests, only: [:index, :new, :show]
 

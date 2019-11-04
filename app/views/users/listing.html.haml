@@ -1,0 +1,32 @@
+.item-index__wrapper
+  .item-index__container 
+    .bread-crumds
+      %ul.bread-crumds__list
+        %li
+          = link_to "" do
+            %span<> 
+              メルカリ
+          %i.fas.chevron-right
+        %li マイページ
+
+    .mypage-container
+      .main-mypage
+        .mypage-notification
+          %ui.mypage-notification__tabs
+            %li.mypage-notification__tabs__list.active
+              = link_to "#" do
+                出品中
+            %li.mypage-notification__tabs__list
+              = link_to "#" do
+                取引中
+            %li.mypage-notification__tabs__list
+              = link_to "#" do
+                売却済み
+          .mypage-notification__tab-contents
+            %ul.content.show
+              - @items.each do |item|
+                = render partial: "listing_item", locals:{item: item}
+            %ul.content
+              %li.content__not-found 現在やることはありません
+      .side-mypage
+        = render 'side_bar'
