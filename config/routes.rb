@@ -9,6 +9,15 @@ Rails.application.routes.draw do
     collection do
       get:logout
     end
+    
+    member do
+      # 出品中商品
+      get :listing
+      # 取引中商品
+      get :in_progress
+      # 売却済み商品
+      get :completed
+    end
   end
 
   resources :users, only: [:show, :edit] do
