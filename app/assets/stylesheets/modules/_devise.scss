@@ -80,6 +80,8 @@
       //   }
       // }
 
+
+
 // --------------------- devise コンテンツ --------------------- //
 .devise-main {
   width: 100%;
@@ -365,6 +367,19 @@
     }
   }
 }
+
+// 電話番号の確認
+.describe {
+  position: relative;
+  top: 5px;
+}
+
+.reason {
+  float: right;
+  position: relative;
+  top: 25px;
+}
+
 
 // --------------------- devise フッター --------------------- //
 .new-devise__single-footer {
