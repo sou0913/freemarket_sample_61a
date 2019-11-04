@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get:logout
-      get "step3"
-      get "step4"
-      get "step5"
+      get "new_address"
+      get "new_card"
+      get "complete"
     end
   end
 
