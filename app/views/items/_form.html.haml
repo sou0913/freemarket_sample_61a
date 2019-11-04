@@ -17,28 +17,10 @@
             .exhibit-wrapper__main__image__drag
               %p ドラッグアンドドロップ
               %p またはクリックしてファイルをアップロード
-            - item.images.each do |image|
-              = image.image.url
+            - item.images.each_with_index do |image, i|
+              =image_tag image.image.to_s, class: "item-edit__image item-edit__image-#{i}"
             = f.fields_for :images do |i|
               =i.file_field :image, readonly: false, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# =f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# =f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
-            -# = f.fields_for :images do |i|
-            -#   =i.file_field :image, readonly: true, class: "exhibit-wrapper__main__image__drag__form"
         = render partial: "errors", locals: {model: @item, column: :image}              
       .exhibit-wrapper__main__item
         .exhibit-wrapper__main__item__name
@@ -128,8 +110,9 @@
             =link_to "加盟店規約", "#"
             に同意したことになります。
         %label.exhibit-wrapper__main__footer__submit  
-          .exhibit-wrapper__main__footer__submit-button 出品する
-          =f.submit "出品する"
+          .exhibit-wrapper__main__footer__submit-button
+            = controller.action_name == "new" ? "出品する" : "編集する"
+          =f.submit 
         %label.exhibit-wrapper__main__footer__back
           .exhibit-wrapper__main__footer__back-button もどる
           =button_to "もどる", class:"exhibit-wrapper__main__footer__button", type: "hidden"
