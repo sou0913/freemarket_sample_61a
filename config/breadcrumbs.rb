@@ -6,9 +6,10 @@ crumb :user do |user|
   link 'マイページ', user_path(user)
 end
 
-crumb :user do |user|
-  link '出品した商品-出品中', listing_path(user)
-
+crumb :listing_user do |user|
+  link '出品した商品-出品中', listing_user_path(user)
+  parent :user, user
+end
 
 
 # 凡例
