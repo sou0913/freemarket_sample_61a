@@ -1,3 +1,12 @@
 .item-edit__image {
   display: none;
 }
+.exhibit-wrapper__main__image__drag__check-box {
+  display: none;
+}
+.item-image__delete-button__append {
+  color: red;
+  &:hover {
+    cursor: pointer;
+  }
+}
