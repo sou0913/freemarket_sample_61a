@@ -28,7 +28,5 @@ public/uploads/test/image
 /config/master.key
 config/secrets.yml
 .DS_Store
-
-/.env
 db/seeds.rb
 public/uploads/*
