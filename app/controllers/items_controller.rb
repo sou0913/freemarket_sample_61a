@@ -5,15 +5,18 @@ class ItemsController < ApplicationController
   end 
 
   def show
-    @items = Item.new
+    @item = Item.find(params[:id])
+    @items = Item.limit(6).order('id')
+    @user = User.find(@item.user_id)
   end
 
   def new
-    @item = Item.new
+    @item = Item.new 
     @item.images.build
     # エラーメッセージ用
     @image = Image.new
   end
+
   def create
     @item = Item.new(create_items_params)
     # エラーメッセージ用
@@ -24,6 +27,7 @@ class ItemsController < ApplicationController
       render 'new'
     end
   end
+
   def create_items_params
     # 認証機能できたらcurrent_userに変更する
     params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, images_attributes: [:image]).merge(user_id: 1)
