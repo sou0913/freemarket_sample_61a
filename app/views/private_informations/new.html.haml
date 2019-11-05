@@ -34,29 +34,29 @@
               %p 2000/01/01
             .information__group
               = f.label "郵便番号"
-              %span.arbitrary  任意
+              %span.information__group__arbitrary  任意
               = f.text_field :postal_code, placeholder: "例) 1234567", class: "information__group__text"
 
             .information__group
               = f.label "都道府県"
-              %span.arbitrary  任意
+              %span.information__group__arbitrary  任意
               .information__group__box
                 %i.fa.fa-chevron-down.information__group__box__icon
                 = f.select :prefectures, Item.delivery_sources.keys,{prompt: "--"}, class: "information__group__box__select"
 
             .information__group
               = f.label "市区町村"
-              %span.arbitrary  任意
+              %span.information__group__arbitrary  任意
               = f.text_field :city, placeholder: "例) 横浜市緑区", class: "information__group__text"
 
             .information__group
               = f.label "番地"
-              %span.arbitrary  任意
+              %span.information__group__arbitrary  任意
               = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "information__group__text"
 
             .information__group
               = f.label "建物名"
-              %span.arbitrary  任意
+              %span.information__group__arbitrary  任意
               = f.text_field :building_name, placeholder: "例) 柳ビル103", class: "information__group__text"
             = f.submit "登録する", class: "information__submit"
             %p.information__under-link

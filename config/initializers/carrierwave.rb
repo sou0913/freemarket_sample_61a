@@ -13,5 +13,9 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'mercari61a'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mercari61a'
+  if Rails.env.production?
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mercari61a'
+  else 
+    config.asset_host = "http://localhost:3000"
+  end
 end

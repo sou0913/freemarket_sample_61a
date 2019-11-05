@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get:logout
+      get "new_address"
+      get "new_card"
+      get "complete"
     end
   end
 
@@ -24,3 +27,4 @@ Rails.application.routes.draw do
   root to: "items#index"
 
 end
+

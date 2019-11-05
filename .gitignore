@@ -30,4 +30,5 @@ config/secrets.yml
 .DS_Store
 
 /.env
+db/seeds.rb
 public/uploads/*
