@@ -1,15 +1,14 @@
-
 -# コンテンツ
 %section.item__contents
-  %h1.item__contents__name item-name
+  %h1.item__contents__name
+    = @item.title
   .item__contents__main
     .item__photo
       .item__photo__wrapper
         .item__content
           .item__content__box
             .item__content__box-inner
-              .item__content__box-inner-img
-                = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', class: 'item-img'
+              = image_tag @item.images.limit(1)[0].image.url, class: "item__content__box-inner-img__my-item-image"
 
           .item__other__img
             .item__other__img--first
@@ -25,7 +24,7 @@
         %tr
           %th 出品者
           %td
-            = link_to "出品者の名前です", "#", class: "infomation"
+            = link_to @item.user.nickname, "#", class: "infomation"
             .ratings
               .user-ratings
                 %i.icon.good.fas.fa-laugh
@@ -58,28 +57,34 @@
           %td M
         %tr
           %th 商品の状態
-          %td 目立った傷や汚れなし
+          %td 
+            = @item.status
         %tr
           %th 配送料の負担
-          %td 送料込み（出品者負担）
+          %td 
+            = @item.shipping_charge
         %tr
           %th 配送の方法
-          %td ゆうゆうメルカリ便
+          %td
+            = @item.shipping_method
         %tr
           %th 配送元地域
           %td
-            = link_to "東京都", "#", class: "infomation"
+            = link_to @item.delivery_source, "#", class: "infomation"
         %tr
           %th 発送日の目安
-          %td 4~7日で発送
+          %td 
+            = @item.shipping_day
+
 
   .item__contents__price
     %span.price ¥10,000
     %span.tax  (税込)
-    %span.shipping-free 送料込み
+    %span.shipping-free 
+      = @item.shipping_charge_before_type_cast == 1 ? "送料込み" : "着払い"
   .item--description
     %p.item--description-text
-      = "ここは商品の説明です"
+      = @item.description
   .item__contents__bottom
     .item__contents__bottom--left
       %button.icon-btn{type: "button"}
@@ -94,12 +99,10 @@
         %i.icon.fas.fa-lock
         %span.lock-icon あんしん・あんぜんへの取り組み
 .my-item__edit-delete__buttons
-  =link_to "" do
-    .my-item__edit-delete__buttons__edit
-  =link_to "" do
-    .my-item__edit-delete__buttons__stop
-  =link_to "" do
-    .my-item__edit-delete__buttons__delete
+  =link_to "商品の編集", edit_item_path(@item),class: "my-item__edit-delete__buttons__edit" 
+  %p.my-item__edit-delete__buttons__or or
+  =link_to "出品を一旦停止する" , "#", class: "my-item__edit-delete__buttons__stop" 
+  =link_to "この商品を削除する" , "#", class: "my-item__edit-delete__buttons__delete" 
 .item-detail-message
   .message-container
     .message-content 
