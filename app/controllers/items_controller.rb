@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
   def show
+    
   end
   
   def index
@@ -8,7 +9,7 @@ class ItemsController < ApplicationController
   end 
   def new
     @item = Item.new
-    @item.images.build
+    10.times { @item.images.build }
     # 写真0枚のエラーメッセージ用
     @image = Image.new
   end
@@ -25,9 +26,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    count = @item.images.count
-    (10 - count).times { @item.images.build }
+    @item = Item.find(params[:id]) 
+    10.times { @item.images.build }
   end
 
   def update
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 
   def update_items_params
     # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, images_attributes: [:image, :id]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
   end
 
 end
