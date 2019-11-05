@@ -27,6 +27,14 @@ describe ItemsController do
       get :edit, params: {id: item.id}
       expect(assigns(:item)).to match(item)
     end
+  end
+  describe "DELETE #destroy" do
+    it "redirect to listing_user_path" do
+      user = create(:user)
+      item = create(:item)
+      delete :destroy, params: {id: item.id}
+      expect(response).to redirect_to(listing_user_path(user))
+    end
   end 
 end
 

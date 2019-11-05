@@ -41,6 +41,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    # 管理者
+    user = User.find(1)
+    if @item.destroy
+      redirect_to listing_user_path(user)
+    else
+      redirect_to listing_user_path(user)
+    end
+  end
+
   def my_item
     @item = Item.find(params[:id])
   end

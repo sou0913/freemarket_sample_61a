@@ -78,7 +78,9 @@
 
 
   .item__contents__price
-    %span.price ¥10,000
+    %span.price
+      ￥
+      = @item.price
     %span.tax  (税込)
     %span.shipping-free 
       = @item.shipping_charge_before_type_cast == 1 ? "送料込み" : "着払い"
@@ -161,3 +163,14 @@
     = link_to "#", class: "icon" do
       %i.arrow-right.fas.fa-chevron-right
       = "next item"
+.my-item__pop-up
+  .my-item__pop-up__content
+    .my-item__pop-up__content__main
+      %h4 確認
+      %p 削除すると二度と復活できません。
+      %p 削除する代わりに停止することもできます。
+      %p 本当に削除しますか？
+    .my-item__pop-up__content__left
+      %p キャンセル
+    =link_to "削除する", item_path(@item), method: :DELETE, class: "my-item__pop-up__content__right"
+
