@@ -1,6 +1,6 @@
 @mixin tabs {
   list-style: none;
-  display: block;
+  display: flex;
   background-color: #eee;
   font-size: 0;
   li {

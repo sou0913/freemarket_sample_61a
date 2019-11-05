@@ -1,0 +1,91 @@
+@mixin edit-delete_buttons {
+  display: block;
+  width: 95%;
+  height: 50px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+}
+.my-item__edit-delete__buttons {
+  width: 700px;
+  height: 250px;
+  margin: 10px auto;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  &__edit {
+    @include edit-delete_buttons;
+    background: red;
+  }
+  &__or {
+    display: block;
+  }
+  &__stop {
+    @include edit-delete_buttons;
+    background: gray;
+  }
+  &__delete {
+    @include edit-delete_buttons;
+    background: gray;
+  }
+}
+.item__content__box-inner-img__my-item-image {
+  width: 100%;
+  height: 100%;
+}
+.my-item__pop-up {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:4;
+  &__content {
+    background: white;
+    opacity: 1;
+    height: 250px;
+    width: 70%;
+    display: flex;
+    flex-flow: row wrap;
+    &__main {
+      flex-basis: 100%;
+      display: inherit;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      box-sizing: border-box;
+      border-bottom: solid 1px;
+      & h4 {
+        font-weight: bold;
+      }
+    }
+    &__left {
+      flex-basis: 50%;
+      display: inherit;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border-right: solid 1px;
+      cursor: pointer;
+    }
+    &__right {
+      flex-basis: 50%;
+      display: inherit;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      text-decoration: none;
+      color: #0099e8;
+    }
+  }
+  &__show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

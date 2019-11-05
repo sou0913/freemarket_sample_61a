@@ -1,0 +1,8 @@
+.list__link__body__item-status {
+  background: rgb(53,154,232);
+  padding: 3px;
+  & p {
+    color: white;
+    font-weight: bold;
+  }
+}
