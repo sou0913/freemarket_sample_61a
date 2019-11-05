@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  
+  before_action :set_item, only: [:edit,:update,:destroy,:my_item]
+
   def show
     
   end
@@ -26,15 +27,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id]) 
     10.times { @item.images.build }
   end
 
   def update
-    item = Item.find(params[:id])
     # 写真0枚のエラーメッセージ用
     @image = Image.new
-    if item.update(update_items_params)
+    if @item.update(update_items_params)
       redirect_to :root
     else
       render 'edit'
@@ -42,18 +41,18 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     # 管理者
-    user = User.find(1)
+    user = User.find(1) 
     if @item.destroy
       redirect_to listing_user_path(user)
     else
-      redirect_to listing_user_path(user)
+      flash.now[:alert] = "削除が失敗しました"
+      render action: :index
     end
   end
 
   def my_item
-    @item = Item.find(params[:id])
+
   end
 
   private
@@ -61,6 +60,10 @@ class ItemsController < ApplicationController
   def create_items_params
     # 認証機能できたらcurrent_userに変更する
     params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, images_attributes: [:image]).merge(user_id: 1)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def update_items_params
