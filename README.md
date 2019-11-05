@@ -5,7 +5,10 @@
 |nickname|string|null: false|
 |profile|text||
 |image|string|default: ""|
-|password|string|null: false|
+|email|string|default: "", index: true, unique: true|
+|encrypted_password|string|null: false|
+|reset_password_token|string|index: true|
+
  
 ### Association
 - has_many :items
@@ -48,7 +51,6 @@
 |title|string||null: false|null: false|
 |category|references|null: false, foreign_key: true|
 |status|integer|null: false|
-|region|integer|null: false|
 |shipping_charge|integer|null: false|
 |delivery_source|integer|null: false|
 |shipping_day|integer|null: false|

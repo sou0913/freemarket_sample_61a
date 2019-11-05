@@ -1,0 +1,5 @@
+.item-new_error_explanation
+- if model.errors.any?
+  - model.errors.full_messages_for(column).each do |message|
+    %p
+      = message

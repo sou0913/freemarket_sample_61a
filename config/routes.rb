@@ -24,6 +24,18 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get:logout
+      get "new_address"
+      get "new_card"
+      get "complete"
+    end
+    
+    member do
+      # 出品中商品
+      get :listing
+      # 取引中商品
+      get :in_progress
+      # 売却済み商品
+      get :completed
     end
   end
 
@@ -34,9 +46,14 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :purchases
+    member do
+      # 自分の商品個別ページ
+      get :my_item
+    end
   end
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"
 
 end
+
