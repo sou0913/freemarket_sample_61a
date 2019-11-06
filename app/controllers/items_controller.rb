@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
     10.times { @item.images.build }
     # 写真0枚のエラーメッセージ用
     @image = Image.new
+    render :new, layout: "noheader"
   end
   
   def create
@@ -31,6 +32,7 @@ class ItemsController < ApplicationController
 
   def edit
     10.times { @item.images.build }
+    render :edit, layout: "noheader"
   end
 
   def update
