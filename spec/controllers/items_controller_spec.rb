@@ -14,5 +14,27 @@ describe ItemsController do
       expect(assigns(:items)).to match(items)
     end
   end
+  describe "GET #edit" do
+    it "renders the :edit template" do
+      user = create(:user)
+      item = create(:item)
+      get :edit, params: {id: item.id}
+      expect(response).to render_template :edit
+    end
+    it "assigns the requested item to @item" do
+      user = create(:user)
+      item = create(:item)
+      get :edit, params: {id: item.id}
+      expect(assigns(:item)).to match(item)
+    end
+  end
+  describe "DELETE #destroy" do
+    it "redirect to listing_user_path" do
+      user = create(:user)
+      item = create(:item)
+      delete :destroy, params: {id: item.id}
+      expect(response).to redirect_to(listing_user_path(user))
+    end
+  end 
 end
 

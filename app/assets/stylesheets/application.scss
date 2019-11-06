@@ -3,12 +3,16 @@
 @import "item/new.scss";
 @import "item/show.scss";
 @import "mixin/mixin-devises";
+@import "mixin/mixin-information";
 @import "modules/devise";
 @import "purchase/new.scss";
 @import "user/mypage";
 @import "user/private-informations.scss";
 @import "user/profile.scss";
+@import "item/errors.scss";
 @import "card.scss";
-@import "index.scss";
-@import "logout.scss";
-@import "item/errors.scss"
+@import "user/signup.scss";
+@import "item/edit.scss";
+@import "user/listing.scss";
+@import "item/my_item.scss"
+

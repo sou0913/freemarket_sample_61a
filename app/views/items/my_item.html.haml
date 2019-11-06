@@ -1,0 +1,176 @@
+-# コンテンツ
+%section.item__contents
+  %h1.item__contents__name
+    = @item.title
+  .item__contents__main
+    .item__photo
+      .item__photo__wrapper
+        .item__content
+          .item__content__box
+            .item__content__box-inner
+              = image_tag @item.images.limit(1)[0].image.url, class: "item__content__box-inner-img__my-item-image"
+
+          .item__other__img
+            .item__other__img--first
+              %span
+              .inner
+
+            .item__pther__img--after
+              %span
+              .inner
+
+    %table.item__contents--detail
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to @item.user.nickname, "#", class: "infomation"
+            .ratings
+              .user-ratings
+                %i.icon.good.fas.fa-laugh
+                %span 10
+              .user-ratings
+                %i.icon.normal.fas.fa-meh
+                %span 20
+              .user-ratings
+                %i.icon.bad.fas.fa-frown
+                %span 30
+        %tr
+          %th カテゴリー
+          %td
+            = link_to "#", class: "infomation" do
+              = "本・音楽・ゲーム"
+            = link_to "#", class: "infomation" do
+              .sub-category
+                %i.arrow-right.fas.fa-chevron-right
+                  = "本"
+            = link_to "#", class: "infomation" do
+              .sub-category
+                %i.arrow-right.fas.fa-chevron-right
+                  = "その他"
+        %tr
+          %th ブランド
+          %td
+            = link_to "ブランド名", "#", class: "infomation"
+        %tr
+          %th 商品のサイズ
+          %td M
+        %tr
+          %th 商品の状態
+          %td 
+            = @item.status
+        %tr
+          %th 配送料の負担
+          %td 
+            = @item.shipping_charge
+        %tr
+          %th 配送の方法
+          %td
+            = @item.shipping_method
+        %tr
+          %th 配送元地域
+          %td
+            = link_to @item.delivery_source, "#", class: "infomation"
+        %tr
+          %th 発送日の目安
+          %td 
+            = @item.shipping_day
+
+
+  .item__contents__price
+    %span.price
+      ￥
+      = @item.price
+    %span.tax  (税込)
+    %span.shipping-free 
+      = @item.shipping_charge_before_type_cast == 1 ? "送料込み" : "着払い"
+  .item--description
+    %p.item--description-text
+      = @item.description
+  .item__contents__bottom
+    .item__contents__bottom--left
+      %button.icon-btn{type: "button"}
+        %i.icon.far.fa-heart
+        %span.like いいね!
+        %span.like 100
+      = link_to "#", class: "report" do
+        %i.icon.far.fa-flag
+        %span.flag-text 不適切な商品の報告
+    .item__contents__bottom--right
+      = link_to "#", class: "safty" do
+        %i.icon.fas.fa-lock
+        %span.lock-icon あんしん・あんぜんへの取り組み
+.my-item__edit-delete__buttons
+  =link_to "商品の編集", edit_item_path(@item),class: "my-item__edit-delete__buttons__edit" 
+  %p.my-item__edit-delete__buttons__or or
+  =link_to "出品を一旦停止する" , "#", class: "my-item__edit-delete__buttons__stop" 
+  =link_to "この商品を削除する" , "#", class: "my-item__edit-delete__buttons__delete" 
+.item-detail-message
+  .message-container
+    .message-content 
+      %ul.messages
+        %li
+          = link_to "#", class: "message-user" do
+            %figure
+              .user-icon
+                = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "user-img"
+              %figcaption
+                = "購入者"
+          .message-body
+            .message-body-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum perspiciatis ipsam est quo commodi reprehenderit aut, blanditiis dolores maxime quasi modi, iure ad eveniet alias error voluptatum eos autem dolorum?
+            .message__icons 
+              %time.message__icons-left
+                %i.time.far.fa-clock
+                %span.days-ago 3日前
+              .message__icons-right
+                %form{action: "#", method: "POST"}
+                  %button.flag-btn{type: "submit"}
+                    %i.flag.far.fa-flag
+                  %input{type: "hidden", value: "item_detail"}
+            %i.balloon.fas.fa-caret-down
+        %li.seller-li
+          = link_to "#", class: "message-user" do
+            %figure
+              .user-icon
+                = image_tag 'https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205', class: 'user-img'
+              %figcaption 出品者
+            .message-is-seller 出品者
+          .message-body
+            .message-body-text 出品者メッセージ出品者メッセージ出品者メッセージ出品者メッセージ
+            .message__icons 
+              %time.message__icons-left
+                %i.time.far.fa-clock
+                %span 3日前
+              .message__icons-right
+                %form{action: "#", method: "POST"}
+                  %button.flag-btn{type: "submit"}
+                    %i.flag.far.fa-flag
+                  %input{type: "hidden", value: "item_detail"}
+            %i.balloon.fas.fa-caret-down
+    .message-content
+      %form{action: "#", method: "POST"}
+        %p.caution 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textare{type: "text", class: "textarea-default"}
+        %button{type: "submit", class: "send-btn"}
+          %span コメントする
+    %aside
+%ul.nav__item__link
+  %li.nav__item__link--prev
+    = link_to "#", class: "icon" do
+      %i.arrow-left.fas.fa-chevron-left
+      = "prev item"
+  %li.nav__item__link--next
+    = link_to "#", class: "icon" do
+      %i.arrow-right.fas.fa-chevron-right
+      = "next item"
+.my-item__pop-up
+  .my-item__pop-up__content
+    .my-item__pop-up__content__main
+      %h4 確認
+      %p 削除すると二度と復活できません。
+      %p 削除する代わりに停止することもできます。
+      %p 本当に削除しますか？
+    .my-item__pop-up__content__left
+      %p キャンセル
+    =link_to "削除する", item_path(@item), method: :DELETE, class: "my-item__pop-up__content__right"
+
