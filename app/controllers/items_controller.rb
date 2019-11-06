@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @items = Item.limit(6).order('id')
-    @user = User.find(@item.user_id)
+    # @user = User.find(@item.user_id)
   end
 
   def new
@@ -27,6 +27,8 @@ class ItemsController < ApplicationController
       render 'new'
     end
   end
+
+  private 
 
   def create_items_params
     # 認証機能できたらcurrent_userに変更する
