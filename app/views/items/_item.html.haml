@@ -1,7 +1,7 @@
 %li
   %div
     -# 詳細ページへのリンク貼る
-    = link_to "#", class: "item" do
+    = link_to item_path(item.id), class: "item" do
       %figure
         %figcaption
           %span.item-name
