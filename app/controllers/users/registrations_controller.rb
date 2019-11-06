@@ -5,8 +5,50 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def index
   end
 
+  def new
+    @user = User.new # 新規インスタンス作成
+  end
+
   def sms
-    @user = User.new
+    # newで入力された値をsessionに保存
+    session[:nickname] = user_params[:nickname]
+    session[:email] = user_params[:email]
+    session[:password] = user_params[:password]
+    session[:password_confirmation] = user_params[:password_confirmation]
+    session[:family_name] = private_information_params[:family_name]
+    session[:first_name] = private_information_params[:first_name]
+    session[:family_kana] = private_information_params[:family_kana]
+    session[:first_kana] = private_information_params[:first_kana]
+    session[:birthday] = private_information_params[:birthday]
+    @user = User.new # 新規インスタンス作成
+  end
+
+  private
+  # 許可するキーを設定します
+  def user_params
+    params.require(:user).permit(
+      :nickname, 
+      :profile,
+      :image,
+      :email, 
+      :password, 
+      :password_confirmation, 
+  )
+  end
+
+  def private_information_params
+    params.require(:private_information).permit(
+      :family_name, 
+      :first_name,
+      :family_kana,
+      :first_kana, 
+      :birthday,
+      :postal_code, 
+      :prefectures,
+      :city,
+      :house_number,
+      :building_name,
+  )
   end
   
   # before_action :configure_sign_up_params, only: [:create]
