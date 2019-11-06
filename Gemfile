@@ -83,5 +83,4 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'pry-rails'
 gem 'carrierwave'
-
-
+gem 'gretel'
