@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @items = Item.limit(6).order('id')
-    # @user = User.find(@item.user_id)
   end
 
   def new
