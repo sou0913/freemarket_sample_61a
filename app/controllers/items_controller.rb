@@ -1,13 +1,16 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
 
-  def show
-    
-  end
-  
   def index
     @items = Item.limit(10).order('id')
   end 
+
+  def show
+    @item = Item.find(params[:id])
+    @items = Item.limit(6).order('id')
+  end
+
   def new
     @item = Item.new
     10.times { @item.images.build }

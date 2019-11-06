@@ -5,7 +5,7 @@
       .item-index__header__contents
         .item-index__header__contents-top
           .item-index__header__contents-top-logo
-            = link_to "#" do
+            = link_to root_path do
               = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
           %form.search
             %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
@@ -21,7 +21,7 @@
                 -# %ul
                   -# li
             .item-index__header__contents-bottom-left-type
-              = link_to "/items/1/purchases/new" do
+              = link_to "#" do
                 %i.fas.fa-tags.icon
                 ブランドから探す
               -# %div 
@@ -32,7 +32,7 @@
               = link_to "#" do
                 -# %i
             %li.item-index__header__contents-bottom__list-item
-              = link_to "/users/sign_up" do
+              = link_to new_user_session_path do
                 %i.far.fa-bell
                 お知らせ
             %li.item-index__header__contents-bottom__list-item
@@ -40,38 +40,37 @@
                 %i.fas.fa-check
                 やることリスト
             %li.item-index__header__contents-bottom__list-item
+              -# user登録完成したら修正
               = link_to "/users/1" do
                 = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
                 マイページ
 
-
     -# コンテンツ
     %section.item__contents
-      %h1.item__contents__name item-name
+      %h1.item__contents__name 
+        = @item.title
       .item__contents__main
         .item__photo
           .item__photo__wrapper
             .item__content
-              .item__content__box
-                .item__content__box-inner
-                  .item__content__box-inner-img
-                    = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', class: 'item-img'
+              .item__content__inner
+                .item__content__inner-img
+                  = image_tag @item.images[0].image.url, class: 'item-img'
 
-              .item__other__img
-                .item__other__img--first
-                  %span
-                  .inner
-
-                .item__pther__img--after
-                  %span
-                  .inner
+              .item__other__content
+                - (@item.images).each do |item_img|
+                  .item__other__content__img
+                    %span
+                    .inner
+                      = image_tag item_img.image.url, alt: '', height: '60px', width: '60px', class: 'inner-img'
 
         %table.item__contents--detail
           %tbody
             %tr
               %th 出品者
               %td
-                = link_to "出品者の名前です", "#", class: "infomation"
+                -# user登録完成したらパス修正
+                = link_to @item.user.nickname, "/users/1", class: "infomation"
                 .ratings
                   .user-ratings
                     %i.icon.good.fas.fa-laugh
@@ -85,6 +84,7 @@
             %tr
               %th カテゴリー
               %td
+                -# カテゴリーへのリンク
                 = link_to "#", class: "infomation" do
                   = "本・音楽・ゲーム"
                 = link_to "#", class: "infomation" do
@@ -98,37 +98,52 @@
             %tr
               %th ブランド
               %td
+                -# ブランドへのリンク
                 = link_to "ブランド名", "#", class: "infomation"
+            
+            -# 実装時、下記の修正をする
             %tr
+              -# - if @item.size.present?
               %th 商品のサイズ
+              -# カラム追加
               %td M
+                
             %tr
               %th 商品の状態
-              %td 目立った傷や汚れなし
+              %td 
+                = @item.status
             %tr
               %th 配送料の負担
-              %td 送料込み（出品者負担）
+              
+              %td
+                = @item.shipping_charge
             %tr
               %th 配送の方法
-              %td ゆうゆうメルカリ便
+              
+              %td
+                = @item.shipping_method 
             %tr
               %th 配送元地域
               %td
-                = link_to "東京都", "#", class: "infomation"
+                = link_to "#", class: "infomation" do
+                  = @item.delivery_source
             %tr
-              %th 発送日の目安
-              %td 4~7日で発送
+              %th 発送日の目安 
+              %td 
+                = @item.shipping_day
 
       .item__contents__price
-        %span.price ¥10,000
-        %span.tax  (税込)
-        %span.shipping-free 送料込み
+        %span.price 
+          = "¥ #{@item.price}"
+        %span.tax (税込)
+        %span.shipping-free
+          = @item.shipping_charge === "送料込み(出品者負担)" ? "送料込み" : "着払い"
         .item-buy
-          = link_to "/items/1/purchases/new", class: "item-buy-btn" do
+          = link_to new_item_purchase_path(@item.id), class: "item-buy-btn" do
             = "購入画面に進む"
       .item--description
         %p.item--description-text
-          = "ここは商品の説明です"
+          = @item.description
       .item__contents__bottom
         .item__contents__bottom--left
           %button.icon-btn{type: "button"}
@@ -166,11 +181,13 @@
                       %input{type: "hidden", value: "item_detail"}
                 %i.balloon.fas.fa-caret-down
             %li.seller-li
-              = link_to "#", class: "message-user" do
+              -# user登録完成したら修正する
+              = link_to "/users/1", class: "message-user" do
                 %figure
                   .user-icon
                     = image_tag 'https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205', class: 'user-img'
-                  %figcaption 出品者
+                  %figcaption 
+                    = @item.user.nickname
                 .message-is-seller 出品者
               .message-body
                 .message-body-text 出品者メッセージ出品者メッセージ出品者メッセージ出品者メッセージ
@@ -195,11 +212,11 @@
       %li.nav__item__link--prev
         = link_to "#", class: "icon" do
           %i.arrow-left.fas.fa-chevron-left
-          = "prev item"
+          = @item.title
       %li.nav__item__link--next
         = link_to "#", class: "icon" do
           %i.arrow-right.fas.fa-chevron-right
-          = "next item"
+          = @item.title
     .social-media__box
       .center
       %ul.social-media__box__list
@@ -219,45 +236,49 @@
     .exhibitor-other-items
       %section.items__container
         %h2.items__box__head
-          = link_to "出品者さんのその他の出品", "#"
+          -# 出品者のマイページ？へ飛ぶ3
+          = link_to "#{@item.user.nickname}さんのその他の出品", "#"
         .items__box__content
-          - 6.times do
+          - @items.each do |item|
             %ul.new__item-collection-list
               %li
                 %div
-                  = link_to "#", class: "item" do
+                  = link_to item_path(item.id), class: "item" do
                     %figure
                       .item__box__body
                         %h3.item-name
-                          = "林檎"
-                        %span.price ¥ 3,980
+                          = item.title
+                        %span.price 
+                          = "¥ #{item.price}" 
                       .item-img
-                        = image_tag "https://msp.c.yimg.jp/yjimage?q=NK1A1VcXyLHUH80yKnwhFuNoarP5S9_qyZIGPMLz2TCyxcN0TLhcO2s0_LGyLY.BUsv.qyml8WtAM7ynzKrlldWB7aY4V88HFqEejCUfVJGiHR7of1u5ZadVOLe5K9njOXyGQK8QxjRSYDP_NzzL.mY-&sig=13c0tc6vi&x=229&y=220", class: "img", alt: ''
+                        = image_tag item.images[0].image.url, class: "img", alt: ''
           
       %section.items__container
         %h2.items__box__head
           = link_to "このカテゴリーのその他の出品", "#"
         .items__box__content
-          - 6.times do
+          - @items.each do |item|
             %ul.new__item-collection-list
               %li
                 %div
-                  = link_to "#", class: "item" do
+                  = link_to item_path(item.id), class: "item" do
                     %figure
                       .item__box__body
                         %h3.item-name
-                          = "林檎の木"
-                        %span.price ¥ 39,800
+                          = item.title
+                        %span.price 
+                          = "¥ #{item.price}"
                       .item-img
-                        = image_tag "https://msp.c.yimg.jp/yjimage?q=8SjjJMwXyLGVsui.dhT.n4vQVkozBGpOYAFhMk7tXt4jnixTy2BquK1cxp1J7ZQ8yqoeTT9GemF9SvJ8IVk0wXH_fjCDM5n7t4q3yjY_MGFZ1AdfHO.dsyvmZ17_LUCMTY_Qfo9Y476CC2etwz1.rnk-&sig=13cbmffj9&x=225&y=225", class: "img", alt: ''
+                        = image_tag item.images[0].image.url, class: "img", alt: ''
 
     %nav.contents__bottom__nav
       %ul
         %li
-          = link_to "メルカリ", "#"
+          = link_to "メルカリ", "/"
           %i.arrow-right.fas.fa-chevron-right
         %li.item-type
-          %span item-name
+          %span 
+            = @item.title
     -# コンテンツここまで
 
     / aside
