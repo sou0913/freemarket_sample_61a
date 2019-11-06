@@ -42,11 +42,11 @@
           %p 商品の詳細
         .exhibit-wrapper__main__details-right
           / （注）カテゴリーは必須実装でないのでひとまず外しています。
-          -# %label 
-          -#   カテゴリー
-          -#   %span 必須
-          -# .exhibit-wrapper__main__details-right__select-wrapper
-            -# =f.select :category, ["---", "---"],{}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
+          %label 
+            カテゴリー
+            %span 必須
+          .exhibit-wrapper__main__details-right__select-wrapper
+            =f.select :category, @categories.map {|category| category.name}, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
           %label 
             商品の状態
             %span 必須

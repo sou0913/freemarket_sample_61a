@@ -51,6 +51,9 @@ Rails.application.routes.draw do
       get :my_item
     end
   end
+
+  resources :categories, only: [:index, :show]
+
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"
