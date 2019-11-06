@@ -15,11 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
     session[:password_confirmation] = user_params[:password_confirmation]
-    session[:family_name] = private_information_params[:family_name]
-    session[:first_name] = private_information_params[:first_name]
-    session[:family_kana] = private_information_params[:family_kana]
-    session[:first_kana] = private_information_params[:first_kana]
-    session[:birthday] = private_information_params[:birthday]
+    session[:family_name] = user_params[:family_name]
+    session[:first_name] = user_params[:first_name]
+    session[:family_kana] = user_params[:family_kana]
+    session[:first_kana] = user_params[:first_kana]
+    session[:birthday] = user_params[:birthday]
     @user = User.new # 新規インスタンス作成
   end
 
@@ -33,11 +33,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :email, 
       :password, 
       :password_confirmation, 
-  )
-  end
-
-  def private_information_params
-    params.require(:private_information).permit(
       :family_name, 
       :first_name,
       :family_kana,
