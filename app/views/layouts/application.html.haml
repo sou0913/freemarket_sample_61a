@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{charset: "UTF-8"}/
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %meta{content: "ie=edge, http-equiv, X-UA-Compatible"}/
@@ -24,7 +24,7 @@
           .item-index__header__contents
             .item-index__header__contents-top
               .item-index__header__contents-top-logo
-                = link_to "#" do
+                = link_to root_path do
                   = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
               %form.search
                 %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
@@ -61,5 +61,6 @@
                 %li.item-index__header__contents-bottom__list-item
                   = link_to "/users/1" do
                     = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
-                    マイページ    
+                    マイページ
+        = breadcrumbs separator: "&rsaquo; "  
         = yield

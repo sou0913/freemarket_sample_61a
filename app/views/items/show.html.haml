@@ -1,351 +1,325 @@
-.item-index__wrapper
-  .item-index__container
-    
-    .item-index__header
-      .item-index__header__contents
-        .item-index__header__contents-top
-          .item-index__header__contents-top-logo
-            = link_to "#" do
-              = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
-          %form.search
-            %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
-            %button.search__button
-              %i.fas.fa-search
-        .item-index__header__contents-bottom
-          .item-index__header__contents-bottom-left
-            .item-index__header__contents-bottom-left-type
-              = link_to "#" do
-                %i.fas.fa-bars.icon
-                カテゴリーから探す
-              -# %div 
-                -# %ul
-                  -# li
-            .item-index__header__contents-bottom-left-type
-              = link_to "/items/1/purchases/new" do
-                %i.fas.fa-tags.icon
-                ブランドから探す
-              -# %div 
-                -# %ul
-                  -# li 
-          %ul.item-index__header__contents-bottom__list
-            %li.item-index__header__contents-bottom__list-item
-              = link_to "#" do
-                -# %i
-            %li.item-index__header__contents-bottom__list-item
-              = link_to "/users/sign_up" do
-                %i.far.fa-bell
-                お知らせ
-            %li.item-index__header__contents-bottom__list-item
-              = link_to new_user_session_path do
-                %i.fas.fa-check
-                やることリスト
-            %li.item-index__header__contents-bottom__list-item
-              = link_to "/users/1" do
-                = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
-                マイページ
+-# コンテンツ
+%section.item__contents
+  %h1.item__contents__name 
+    = @item.title
+  .item__contents__main
+    .item__photo
+      .item__photo__wrapper
+        .item__content
+          .item__content__inner
+            .item__content__inner-img
+              = image_tag @item.images[0].image.url, class: 'item-img'
 
+          .item__other__content
+            - (@item.images).each do |item_img|
+              .item__other__content__img
+                %span
+                .inner
+                  = image_tag item_img.image.url, alt: '', height: '60px', width: '60px', class: 'inner-img'
 
-    -# コンテンツ
-    %section.item__contents
-      %h1.item__contents__name item-name
-      .item__contents__main
-        .item__photo
-          .item__photo__wrapper
-            .item__content
-              .item__content__box
-                .item__content__box-inner
-                  .item__content__box-inner-img
-                    = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m52899313524_1.jpg?1572158543', alt: '', class: 'item-img'
-
-              .item__other__img
-                .item__other__img--first
-                  %span
-                  .inner
-
-                .item__pther__img--after
-                  %span
-                  .inner
-
-        %table.item__contents--detail
-          %tbody
-            %tr
-              %th 出品者
-              %td
-                = link_to "出品者の名前です", "#", class: "infomation"
-                .ratings
-                  .user-ratings
-                    %i.icon.good.fas.fa-laugh
-                    %span 10
-                  .user-ratings
-                    %i.icon.normal.fas.fa-meh
-                    %span 20
-                  .user-ratings
-                    %i.icon.bad.fas.fa-frown
-                    %span 30
-            %tr
-              %th カテゴリー
-              %td
-                = link_to "#", class: "infomation" do
-                  = "本・音楽・ゲーム"
-                = link_to "#", class: "infomation" do
-                  .sub-category
-                    %i.arrow-right.fas.fa-chevron-right
-                      = "本"
-                = link_to "#", class: "infomation" do
-                  .sub-category
-                    %i.arrow-right.fas.fa-chevron-right
-                      = "その他"
-            %tr
-              %th ブランド
-              %td
-                = link_to "ブランド名", "#", class: "infomation"
-            %tr
-              %th 商品のサイズ
-              %td M
-            %tr
-              %th 商品の状態
-              %td 目立った傷や汚れなし
-            %tr
-              %th 配送料の負担
-              %td 送料込み（出品者負担）
-            %tr
-              %th 配送の方法
-              %td ゆうゆうメルカリ便
-            %tr
-              %th 配送元地域
-              %td
-                = link_to "東京都", "#", class: "infomation"
-            %tr
-              %th 発送日の目安
-              %td 4~7日で発送
-
-      .item__contents__price
-        %span.price ¥10,000
-        %span.tax  (税込)
-        %span.shipping-free 送料込み
-        .item-buy
-          = link_to "/items/1/purchases/new", class: "item-buy-btn" do
-            = "購入画面に進む"
-      .item--description
-        %p.item--description-text
-          = "ここは商品の説明です"
-      .item__contents__bottom
-        .item__contents__bottom--left
-          %button.icon-btn{type: "button"}
-            %i.icon.far.fa-heart
-            %span.like いいね!
-            %span.like 100
-          = link_to "#", class: "report" do
-            %i.icon.far.fa-flag
-            %span.flag-text 不適切な商品の報告
-        .item__contents__bottom--right
-          = link_to "#", class: "safty" do
-            %i.icon.fas.fa-lock
-            %span.lock-icon あんしん・あんぜんへの取り組み
-    .item-detail-message
-      .message-container
-        .message-content 
-          %ul.messages
-            %li
-              = link_to "#", class: "message-user" do
-                %figure
-                  .user-icon
-                    = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "user-img"
-                  %figcaption
-                    = "購入者"
-              .message-body
-                .message-body-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum perspiciatis ipsam est quo commodi reprehenderit aut, blanditiis dolores maxime quasi modi, iure ad eveniet alias error voluptatum eos autem dolorum?
-                .message__icons 
-                  %time.message__icons-left
-                    %i.time.far.fa-clock
-                    %span.days-ago 3日前
-                  .message__icons-right
-                    %form{action: "#", method: "POST"}
-                      %button.flag-btn{type: "submit"}
-                        %i.flag.far.fa-flag
-                      %input{type: "hidden", value: "item_detail"}
-                %i.balloon.fas.fa-caret-down
-            %li.seller-li
-              = link_to "#", class: "message-user" do
-                %figure
-                  .user-icon
-                    = image_tag 'https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205', class: 'user-img'
-                  %figcaption 出品者
-                .message-is-seller 出品者
-              .message-body
-                .message-body-text 出品者メッセージ出品者メッセージ出品者メッセージ出品者メッセージ
-                .message__icons 
-                  %time.message__icons-left
-                    %i.time.far.fa-clock
-                    %span 3日前
-                  .message__icons-right
-                    %form{action: "#", method: "POST"}
-                      %button.flag-btn{type: "submit"}
-                        %i.flag.far.fa-flag
-                      %input{type: "hidden", value: "item_detail"}
-                %i.balloon.fas.fa-caret-down
-        .message-content
-          %form{action: "#", method: "POST"}
-            %p.caution 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %textare{type: "text", class: "textarea-default"}
-            %button{type: "submit", class: "send-btn"}
-              %span コメントする
-        %aside
-    %ul.nav__item__link
-      %li.nav__item__link--prev
-        = link_to "#", class: "icon" do
-          %i.arrow-left.fas.fa-chevron-left
-          = "prev item"
-      %li.nav__item__link--next
-        = link_to "#", class: "icon" do
-          %i.arrow-right.fas.fa-chevron-right
-          = "next item"
-    .social-media__box
-      .center
-      %ul.social-media__box__list
-        %li
-          = link_to "https://www.facebook.com/", target: "blank", class: "share-btn" do
-            %i.facebook.fab.fa-facebook-square
-        %li
-          = link_to "https://twitter.com/", target: "blank", class: "share-btn" do
-            %i.twitter.fab.fa-twitter
-        %li
-          = link_to "https://linecorp.com/ja/", target: "blank", class: "share-btn" do
-            %i.line.fab.fa-line
-        %li.last
-          = link_to "https://www.pinterest.jp/", target: "blank", class: "share-btn" do
-            %i.pinterest.fab.fa-pinterest-square
+    %table.item__contents--detail
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            -# user登録完成したらパス修正
+            = link_to @item.user.nickname, "/users/1", class: "infomation"
+            .ratings
+              .user-ratings
+                %i.icon.good.fas.fa-laugh
+                %span 10
+              .user-ratings
+                %i.icon.normal.fas.fa-meh
+                %span 20
+              .user-ratings
+                %i.icon.bad.fas.fa-frown
+                %span 30
+        %tr
+          %th カテゴリー
+          %td
+            -# カテゴリーへのリンク
+            = link_to "#", class: "infomation" do
+              = "本・音楽・ゲーム"
+            = link_to "#", class: "infomation" do
+              .sub-category
+                %i.arrow-right.fas.fa-chevron-right
+                  = "本"
+            = link_to "#", class: "infomation" do
+              .sub-category
+                %i.arrow-right.fas.fa-chevron-right
+                  = "その他"
+        %tr
+          %th ブランド
+          %td
+            -# ブランドへのリンク
+            = link_to "ブランド名", "#", class: "infomation"
+        
+        -# 実装時、下記の修正をする
+        %tr
+          -# - if @item.size.present?
+          %th 商品のサイズ
+          -# カラム追加
+          %td M
             
-    .exhibitor-other-items
-      %section.items__container
-        %h2.items__box__head
-          = link_to "出品者さんのその他の出品", "#"
-        .items__box__content
-          - 6.times do
-            %ul.new__item-collection-list
-              %li
-                %div
-                  = link_to "#", class: "item" do
-                    %figure
-                      .item__box__body
-                        %h3.item-name
-                          = "林檎"
-                        %span.price ¥ 3,980
-                      .item-img
-                        = image_tag "https://msp.c.yimg.jp/yjimage?q=NK1A1VcXyLHUH80yKnwhFuNoarP5S9_qyZIGPMLz2TCyxcN0TLhcO2s0_LGyLY.BUsv.qyml8WtAM7ynzKrlldWB7aY4V88HFqEejCUfVJGiHR7of1u5ZadVOLe5K9njOXyGQK8QxjRSYDP_NzzL.mY-&sig=13c0tc6vi&x=229&y=220", class: "img", alt: ''
+        %tr
+          %th 商品の状態
+          %td 
+            = @item.status
+        %tr
+          %th 配送料の負担
           
-      %section.items__container
-        %h2.items__box__head
-          = link_to "このカテゴリーのその他の出品", "#"
-        .items__box__content
-          - 6.times do
-            %ul.new__item-collection-list
-              %li
-                %div
-                  = link_to "#", class: "item" do
-                    %figure
-                      .item__box__body
-                        %h3.item-name
-                          = "林檎の木"
-                        %span.price ¥ 39,800
-                      .item-img
-                        = image_tag "https://msp.c.yimg.jp/yjimage?q=8SjjJMwXyLGVsui.dhT.n4vQVkozBGpOYAFhMk7tXt4jnixTy2BquK1cxp1J7ZQ8yqoeTT9GemF9SvJ8IVk0wXH_fjCDM5n7t4q3yjY_MGFZ1AdfHO.dsyvmZ17_LUCMTY_Qfo9Y476CC2etwz1.rnk-&sig=13cbmffj9&x=225&y=225", class: "img", alt: ''
+          %td
+            = @item.shipping_charge
+        %tr
+          %th 配送の方法
+          
+          %td
+            = @item.shipping_method 
+        %tr
+          %th 配送元地域
+          %td
+            = link_to "#", class: "infomation" do
+              = @item.delivery_source
+        %tr
+          %th 発送日の目安 
+          %td 
+            = @item.shipping_day
 
-    %nav.contents__bottom__nav
-      %ul
+  .item__contents__price
+    %span.price 
+      = "¥ #{@item.price}"
+    %span.tax (税込)
+    %span.shipping-free
+      = @item.shipping_charge === "送料込み(出品者負担)" ? "送料込み" : "着払い"
+    .item-buy
+      = link_to new_item_purchase_path(@item.id), class: "item-buy-btn" do
+        = "購入画面に進む"
+  .item--description
+    %p.item--description-text
+      = @item.description
+  .item__contents__bottom
+    .item__contents__bottom--left
+      %button.icon-btn{type: "button"}
+        %i.icon.far.fa-heart
+        %span.like いいね!
+        %span.like 100
+      = link_to "#", class: "report" do
+        %i.icon.far.fa-flag
+        %span.flag-text 不適切な商品の報告
+    .item__contents__bottom--right
+      = link_to "#", class: "safty" do
+        %i.icon.fas.fa-lock
+        %span.lock-icon あんしん・あんぜんへの取り組み
+.item-detail-message
+  .message-container
+    .message-content 
+      %ul.messages
         %li
-          = link_to "メルカリ", "#"
-          %i.arrow-right.fas.fa-chevron-right
-        %li.item-type
-          %span item-name
-    -# コンテンツここまで
-
-    / aside
+          = link_to "#", class: "message-user" do
+            %figure
+              .user-icon
+                = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "user-img"
+              %figcaption
+                = "購入者"
+          .message-body
+            .message-body-text Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum perspiciatis ipsam est quo commodi reprehenderit aut, blanditiis dolores maxime quasi modi, iure ad eveniet alias error voluptatum eos autem dolorum?
+            .message__icons 
+              %time.message__icons-left
+                %i.time.far.fa-clock
+                %span.days-ago 3日前
+              .message__icons-right
+                %form{action: "#", method: "POST"}
+                  %button.flag-btn{type: "submit"}
+                    %i.flag.far.fa-flag
+                  %input{type: "hidden", value: "item_detail"}
+            %i.balloon.fas.fa-caret-down
+        %li.seller-li
+          -# user登録完成したら修正する
+          = link_to "/users/1", class: "message-user" do
+            %figure
+              .user-icon
+                = image_tag 'https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205', class: 'user-img'
+              %figcaption 
+                = @item.user.nickname
+            .message-is-seller 出品者
+          .message-body
+            .message-body-text 出品者メッセージ出品者メッセージ出品者メッセージ出品者メッセージ
+            .message__icons 
+              %time.message__icons-left
+                %i.time.far.fa-clock
+                %span 3日前
+              .message__icons-right
+                %form{action: "#", method: "POST"}
+                  %button.flag-btn{type: "submit"}
+                    %i.flag.far.fa-flag
+                  %input{type: "hidden", value: "item_detail"}
+            %i.balloon.fas.fa-caret-down
+    .message-content
+      %form{action: "#", method: "POST"}
+        %p.caution 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textare{type: "text", class: "textarea-default"}
+        %button{type: "submit", class: "send-btn"}
+          %span コメントする
     %aside
-      .aside__menu
-      .aside__menu__list
-        .aside__menu__list-item
-          .aside__menu__list-item-left
-            .aside__menu__list-item-left-text1 スマホでかんたんフリマアプリ
-            .aside__menu__list-item-left-text2 今すぐ無料ダウンロード！
-            .aside__menu__list-item-left-logos
-              = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png", class: 'mercari-icon'
-              = link_to "#", target: "blank", class: "store" do
-                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", class: 'itunes'
-              = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "blank", class: "store" do
-                = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", class: 'google'
-          %figure.aside__menu__list-item-right
-            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: 'aside__menu__list-item-right-img'
-          / asideここまで
+%ul.nav__item__link
+  %li.nav__item__link--prev
+    = link_to "#", class: "icon" do
+      %i.arrow-left.fas.fa-chevron-left
+      = @item.title
+  %li.nav__item__link--next
+    = link_to "#", class: "icon" do
+      %i.arrow-right.fas.fa-chevron-right
+      = @item.title
+.social-media__box
+  .center
+  %ul.social-media__box__list
+    %li
+      = link_to "https://www.facebook.com/", target: "blank", class: "share-btn" do
+        %i.facebook.fab.fa-facebook-square
+    %li
+      = link_to "https://twitter.com/", target: "blank", class: "share-btn" do
+        %i.twitter.fab.fa-twitter
+    %li
+      = link_to "https://linecorp.com/ja/", target: "blank", class: "share-btn" do
+        %i.line.fab.fa-line
+    %li.last
+      = link_to "https://www.pinterest.jp/", target: "blank", class: "share-btn" do
+        %i.pinterest.fab.fa-pinterest-square
+        
+.exhibitor-other-items
+  %section.items__container
+    %h2.items__box__head
+      -# 出品者のマイページ？へ飛ぶ3
+      = link_to "#{@item.user.nickname}さんのその他の出品", "#"
+    .items__box__content
+      - @items.each do |item|
+        %ul.new__item-collection-list
+          %li
+            %div
+              = link_to item_path(item.id), class: "item" do
+                %figure
+                  .item__box__body
+                    %h3.item-name
+                      = item.title
+                    %span.price 
+                      = "¥ #{item.price}" 
+                  .item-img
+                    = image_tag item.images[0].image.url, class: "img", alt: ''
+      
+  %section.items__container
+    %h2.items__box__head
+      = link_to "このカテゴリーのその他の出品", "#"
+    .items__box__content
+      - @items.each do |item|
+        %ul.new__item-collection-list
+          %li
+            %div
+              = link_to item_path(item.id), class: "item" do
+                %figure
+                  .item__box__body
+                    %h3.item-name
+                      = item.title
+                    %span.price 
+                      = "¥ #{item.price}"
+                  .item-img
+                    = image_tag item.images[0].image.url, class: "img", alt: ''
 
-    / フッター
-    .item-index__footer
-      %nav.item-index__footer__nav__infomation
-        .item-index__footer__nav__infomation-top-left
-          %h2.item-index__footer__nav__heading メルカリについて
-          %ul.item-index__footer__nav-list
-            %li
-              = link_to "会社概要（運営会社）", "https://about.mercari.com/", class: "infomation"
-            %li
-              = link_to "採用情報", "/jp/jobs/", class: "infomation"
-            %li
-              = link_to "プレスリリース", "https://about.mercari.com/press/news/", class: "infomation"
-            %li
-              = link_to "公式ブログ", "https://jp-news.mercari.com/", class: "infomation", target: "blank"
-            %li
-              = link_to "メルカリロゴ利用ガイドライン", "/jp/logo-guidelines/", class: "infomation"
-            = link_to "https://twitter.com/mercari_jp", target: "blank" do
-              %i.fab.fa-twitter
-            = link_to "https://www.facebook.com/mercarijp", target: "blank" do
-              %i.fab.fa-facebook-square
-        .item-index__footer__nav__infomation-top-right
-          %h2.item-index__footer__nav__heading ヘルプ＆ガイド
-          %ul.item-index__footer__nav-list
-            %li
-              = link_to "メルカリガイド", "/jp/help_center/", class: "infomation"
-            %li
-              = link_to "らくらくメルカリ便", "/jp/rakuraku-mercari/", class: "infomation"
-            %li
-              = link_to "ゆうゆうメルカリ便", "/jp/yuyu-mercari/", class: "infomation"
-            %li
-              = link_to "大型メルカリ便", "/jp/rakuraku-ogata/", class: "infomation"
-            %li
-              = link_to "車体取引ガイド", "/jp/guide/car/", class: "infomation"
-            %li
-              = link_to "メルカリあんしん・あんぜん宣言！", "/jp/safe/description/", class: "infomation", target: "blank"
-            %li
-              = link_to "偽ブランド品撲滅への取り組み",  "/jp/authenticity/", class: "infomation"
-            %li
-              = link_to "メルカリボックス", "/jp/box/", class: "infomation"
-        .item-index__footer__nav__infomation-middle
-          .item-index__footer__nav__infomation-middle-left
-            %h2.item-index__footer__nav__heading.privacy プライバシーと利用規約
-            %ul.item-index__footer__nav-list
-              %li
-                = link_to "プライバシーポリシー", "/jp/privacy/", class: "infomation"
-              %li
-                = link_to "メルカリ利用規約", "/jp/tos/", class: "infomation"
-              %li
-                = link_to "あんしんスマホサポート制度に関する利用特約", "/jp/tos_smartphone_support/", class: "infomation"
-              %li
-                = link_to "コンプライアンスポリシー", "/jp/compliance/", class: "infomation"
-          .item-index__footer__nav__infomation-middle-right
-            %ul.footer__nav-list
-              %li
-                = link_to "個人データの安全管理に係る基本方針", "/jp/data_security/", class: "infomation"
-              %li
-                = link_to "特定商取引に関する表記", "/jp/tokutei/", class: "infomation"
-              %li
-                = link_to "資金決済法に基づく表示", "/jp/shikin_kessai/", class: "infomation"
-              %li
-                = link_to "法令順守と犯罪抑止のために", "https://about.mercari.com/csr/safety/", class: "infomation"
-        .item-index__footer__nav__infomation-bottom
-          %h2.footer__nav__heading 国
-          %ul.footer__nav-list
-            %li
-              =link_to "日本", "/jp/", class: "cuntory"
-              =link_to "United States", "#", class: "cuntory"
-      .item-index__footer__bottom
-        = link_to "#", class: "bottom" do
-          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", alt: 'Mercari', class: 'mercari-img'
-        %span.copy-right © 2019 Mercari
+%nav.contents__bottom__nav
+  %ul
+    %li
+      = link_to "メルカリ", "/"
+      %i.arrow-right.fas.fa-chevron-right
+    %li.item-type
+      %span 
+        = @item.title
+-# コンテンツここまで
+
+/ aside
+%aside
+  .aside__menu
+  .aside__menu__list
+    .aside__menu__list-item
+      .aside__menu__list-item-left
+        .aside__menu__list-item-left-text1 スマホでかんたんフリマアプリ
+        .aside__menu__list-item-left-text2 今すぐ無料ダウンロード！
+        .aside__menu__list-item-left-logos
+          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png", class: 'mercari-icon'
+          = link_to "#", target: "blank", class: "store" do
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", class: 'itunes'
+          = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "blank", class: "store" do
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", class: 'google'
+      %figure.aside__menu__list-item-right
+        = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: 'aside__menu__list-item-right-img'
+      / asideここまで
+
+/ フッター
+.item-index__footer
+  %nav.item-index__footer__nav__infomation
+    .item-index__footer__nav__infomation-top-left
+      %h2.item-index__footer__nav__heading メルカリについて
+      %ul.item-index__footer__nav-list
+        %li
+          = link_to "会社概要（運営会社）", "https://about.mercari.com/", class: "infomation"
+        %li
+          = link_to "採用情報", "/jp/jobs/", class: "infomation"
+        %li
+          = link_to "プレスリリース", "https://about.mercari.com/press/news/", class: "infomation"
+        %li
+          = link_to "公式ブログ", "https://jp-news.mercari.com/", class: "infomation", target: "blank"
+        %li
+          = link_to "メルカリロゴ利用ガイドライン", "/jp/logo-guidelines/", class: "infomation"
+        = link_to "https://twitter.com/mercari_jp", target: "blank" do
+          %i.fab.fa-twitter
+        = link_to "https://www.facebook.com/mercarijp", target: "blank" do
+          %i.fab.fa-facebook-square
+    .item-index__footer__nav__infomation-top-right
+      %h2.item-index__footer__nav__heading ヘルプ＆ガイド
+      %ul.item-index__footer__nav-list
+        %li
+          = link_to "メルカリガイド", "/jp/help_center/", class: "infomation"
+        %li
+          = link_to "らくらくメルカリ便", "/jp/rakuraku-mercari/", class: "infomation"
+        %li
+          = link_to "ゆうゆうメルカリ便", "/jp/yuyu-mercari/", class: "infomation"
+        %li
+          = link_to "大型メルカリ便", "/jp/rakuraku-ogata/", class: "infomation"
+        %li
+          = link_to "車体取引ガイド", "/jp/guide/car/", class: "infomation"
+        %li
+          = link_to "メルカリあんしん・あんぜん宣言！", "/jp/safe/description/", class: "infomation", target: "blank"
+        %li
+          = link_to "偽ブランド品撲滅への取り組み",  "/jp/authenticity/", class: "infomation"
+        %li
+          = link_to "メルカリボックス", "/jp/box/", class: "infomation"
+    .item-index__footer__nav__infomation-middle
+      .item-index__footer__nav__infomation-middle-left
+        %h2.item-index__footer__nav__heading.privacy プライバシーと利用規約
+        %ul.item-index__footer__nav-list
+          %li
+            = link_to "プライバシーポリシー", "/jp/privacy/", class: "infomation"
+          %li
+            = link_to "メルカリ利用規約", "/jp/tos/", class: "infomation"
+          %li
+            = link_to "あんしんスマホサポート制度に関する利用特約", "/jp/tos_smartphone_support/", class: "infomation"
+          %li
+            = link_to "コンプライアンスポリシー", "/jp/compliance/", class: "infomation"
+      .item-index__footer__nav__infomation-middle-right
+        %ul.footer__nav-list
+          %li
+            = link_to "個人データの安全管理に係る基本方針", "/jp/data_security/", class: "infomation"
+          %li
+            = link_to "特定商取引に関する表記", "/jp/tokutei/", class: "infomation"
+          %li
+            = link_to "資金決済法に基づく表示", "/jp/shikin_kessai/", class: "infomation"
+          %li
+            = link_to "法令順守と犯罪抑止のために", "https://about.mercari.com/csr/safety/", class: "infomation"
+    .item-index__footer__nav__infomation-bottom
+      %h2.footer__nav__heading 国
+      %ul.footer__nav-list
+        %li
+          =link_to "日本", "/jp/", class: "cuntory"
+          =link_to "United States", "#", class: "cuntory"
+  .item-index__footer__bottom
+    = link_to "#", class: "bottom" do
+      = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", alt: 'Mercari', class: 'mercari-img'
+    %span.copy-right © 2019 Mercari
