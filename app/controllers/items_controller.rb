@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
   
   def create
-    binding.pry
     @item = Item.new(create_items_params)
     # 写真0枚のエラーメッセージ用
     @image = Image.new
