@@ -3,7 +3,8 @@
     .signup-container
       %h2.signup-container__head
         住所入力
-      = form_with url: step4_users_path, local: true, class: "information" do |f|
+
+      = form_for @user, url: create_user_registration_path, method: :post, html: { class: 'information' } do |f|
         .information__group
           = f.label "郵便番号"
           %span.information__group__require  必須
@@ -31,5 +32,3 @@
           %span.information__group__arbitrary  任意
           = f.text_field :phone_number, placeholder: "例) 09012345678", class: "information__group__text"
         = f.submit "次へ進む", class: "information__submit"
-
-  

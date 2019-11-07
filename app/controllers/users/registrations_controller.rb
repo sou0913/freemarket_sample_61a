@@ -23,6 +23,54 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new # 新規インスタンス作成
   end
 
+  def new_address
+    # smsで入力された値をsessionに保存
+    session[:phone_number] = user_params[:phone_number]
+    @user = User.new # 新規インスタンス作成
+  end
+
+  # def new_card
+  #   # new_addressで入力された値をsessionに保存
+  #   session[:postal_code] = user_params[:postal_code]
+  #   session[:prefectures] = user_params[:prefectures]
+  #   session[:city] = user_params[:city]
+  #   session[:house_number] = user_params[:house_number]
+  #   session[:building_name] = user_params[:building_name]
+  #   session[:phone_number] = user_params[:phone_number]
+  #   @user = User.new # 新規インスタンス作成
+  # end
+
+  def create
+    @user = User.new(
+      nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      family_name: session[:family_name],
+      first_name: session[:first_name],
+      family_kana: session[:family_kana],
+      first_kana: session[:first_kana],
+      birthday: session[:birthday],
+      phone_number: session[:phone_number],
+      postal_code: session[:postal_code],
+      prefectures: session[:prefectures],
+      city: session[:city],
+      house_number: session[:house_number],
+      building_name: session[:building_name],
+      phone_number: session[:phone_number],
+    )
+
+    if @user.save
+    # ログインするための情報を保管
+      session[:id] = @user.id
+      redirect_to complete_users_path
+    else
+      render '/users/registrations/index'
+    end
+  end
+
+
+
   private
   # 許可するキーを設定します
   def user_params
@@ -36,13 +84,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :family_name, 
       :first_name,
       :family_kana,
-      :first_kana, 
+      :first_kana,
       :birthday,
       :postal_code, 
       :prefectures,
       :city,
       :house_number,
       :building_name,
+      :phone_number,
   )
   end
   

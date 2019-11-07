@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     put    'users',                          to: 'users/registrations#update'
     delete 'users',                          to: 'users/registrations#destroy'
     post   'signup/registration',            to: 'users/registrations#create',  as: :create_user_registration
-    get    'signup/sms_confirmation',         to: 'users/registrations#sms',    as: :sms_user_registration
+    get    'signup/sms_confirmation',        to: 'users/registrations#sms',     as: :sms_user_registration
+    get    'signup/new_address',             to: 'users/registrations#new_address',  as: :new_address_users
+    get    'signup/new_card',                to: 'users/registrations#new_card',  as: :new_card_users
+    post   'signup/complete',                to: 'users/registrations#complete',  as: :complete_users
     # session
     get    'login',                 to: 'users/sessions#new',          as: :new_user_session
     post   'login',                 to: 'users/sessions#create',       as: :user_session
@@ -24,9 +27,9 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get:logout
-      get "new_address"
-      get "new_card"
-      get "complete"
+      # get "new_address"
+      # get "new_card"
+      # get "complete"
     end
     
     member do

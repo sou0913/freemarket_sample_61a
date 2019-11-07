@@ -18,7 +18,7 @@
       .field
         %span.label ニックネーム
         %span.necessary 必須
-        = f.text_field :nickname, autofocus: true, placeholder: "例）メルカリ太郎"
+        = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例）メルカリ太郎"
 
       .field
         %span.label メールアドレス
@@ -43,14 +43,14 @@
       .field
         %span.label お名前(全角) 
         %span.necessary 必須
-        = f.text_field :nickname, autofocus: true, placeholder: "例）山田"
-        = f.text_field :nickname, autofocus: true, placeholder: "例）彩"
+        = f.text_field :family_name, autofocus: true, placeholder: "例）山田"
+        = f.text_field :first_name, autofocus: true, placeholder: "例）彩"
 
       .field
         %span.label お名前カナ(全角) 
         %span.necessary 必須
-        = f.text_field :nickname, autofocus: true, placeholder: "例）ヤマダ"
-        = f.text_field :nickname, autofocus: true, placeholder: "例）アヤ"
+        = f.text_field :family_kana, autofocus: true, placeholder: "例）ヤマダ"
+        = f.text_field :first_kana, autofocus: true, placeholder: "例）アヤ"
 
       .birthday-select-wrap
         %span.label 生年月日 
