@@ -14,6 +14,9 @@ class Item < ApplicationRecord
     errors.add(:image, "を1枚以上指定してください") if images.size < 1
   end
 
+  # カテゴリー別に最新の10件を取得するscope
+  scope :get_category, -> (id) { where(category_id: id).order(id: :desc).limit(10)}
+
 
   enum delivery_source: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

@@ -31,7 +31,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@ladis.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title メンズ新着アイテム
@@ -39,7 +40,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@mens.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
@@ -47,7 +49,8 @@
         .new__item-collection 
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@electronics.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
@@ -55,7 +58,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@toys.each do |item|
+                =render partial: "item", locals:{item: item} 
     .item-index__main__contents__brands
       %h2.item-index__main__contents__brands-heading 人気のブランド
       .brands__list
@@ -76,7 +80,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -# ブランド作ってから表示
+              -# =render @items
 
       .new__item
         .new__item-header{name: "#"}
@@ -85,7 +90,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -# ブランド作ってから表示
+              -# =render @items
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title シュプリーム新着アイテム
@@ -93,7 +99,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -# ブランド作ってから表示
+              -# =render @items
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title ナイキ新着アイテム
@@ -101,7 +108,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -# ブランド作ってから表示
+              -# =render @items
 / コンテンツここまで
 
 / 出品ボタン

@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.limit(10).order('id')
+    @ladis       = Item.get_category(1)
+    @mens        = Item.get_category(200)
+    @toys        = Item.get_category(730)
+    @electronics = Item.get_category(965)
   end 
 
   def show
