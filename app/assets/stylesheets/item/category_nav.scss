@@ -1,0 +1,27 @@
+.item-index__header__contents-bottom-left-type:hover .category-main__navigation{
+  display: block;
+}
+
+.category-main__navigation {
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  z-index:4;
+  &__class {
+    background: white;
+    width: 200px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    &__object {
+      display: block;
+      flex: 1;
+      text-align: center;
+      &:hover {
+        background: #EEE;
+        cursor: pointer;
+      }
+    }
+  }
+}
