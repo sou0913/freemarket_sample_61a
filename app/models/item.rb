@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validate :check_images
-
+  
   validates :status,:shipping_charge,:shipping_method,:delivery_source,:shipping_day, presence: true
   validates :title, presence: true, length: { maximum: 40}
   validates :price, presence: true, numericality: {greater_than: 299}

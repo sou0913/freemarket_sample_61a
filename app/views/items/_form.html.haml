@@ -45,8 +45,8 @@
           %label 
             カテゴリー
             %span 必須
-          .exhibit-wrapper__main__details-right__select-wrapper
-            =f.select :category, @categories.map {|category| category.name}, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
+          .exhibit-wrapper__main__details-right__select-wrapper.exhibit-wrapper__main__details-right__select-wrapper_category
+            =f.select :category_id, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
           %label 
             商品の状態
             %span 必須

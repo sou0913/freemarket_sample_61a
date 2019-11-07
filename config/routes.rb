@@ -53,7 +53,9 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
-
+  namespace :api do
+    resources :categories, only: :index, defaults: { format: 'json'}
+  end
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"

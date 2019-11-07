@@ -5,9 +5,9 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    childs = @category.children
+    children = @category.children
     wanted_id = []
-    childs.each do |child|
+    children.each do |child|
       wanted_id.push(child.children.ids)
       wanted_id.flatten!
     end

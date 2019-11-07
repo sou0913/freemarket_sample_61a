@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
   end
   
   def create
+    binding.pry
     @item = Item.new(create_items_params)
     # 写真0枚のエラーメッセージ用
     @image = Image.new
@@ -59,7 +60,7 @@ class ItemsController < ApplicationController
 
   def create_items_params
     # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, images_attributes: [:image]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, images_attributes: [:image]).merge(user_id: 1)
   end
 
   def set_item
@@ -68,7 +69,7 @@ class ItemsController < ApplicationController
 
   def update_items_params
     # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
   end
 
 end
