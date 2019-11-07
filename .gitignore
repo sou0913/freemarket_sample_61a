@@ -29,4 +29,5 @@ public/uploads/test/image
 config/secrets.yml
 .DS_Store
 db/seeds.rb
+/.env
 public/uploads
