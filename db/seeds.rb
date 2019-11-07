@@ -1,6 +1,6 @@
 require "csv"
 CSV.foreach("db/categories.csv", headers: true) do |row|
-  Category.create(
+  Category.create!(
     name: row['name'],
     parent_id: row['parent_id']
   )
