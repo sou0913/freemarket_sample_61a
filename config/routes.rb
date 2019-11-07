@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "logout" => "users#logout"
   resources :users do
     collection do
-      get:logout
+      get "logout"
       get "new_address"
       get "new_card"
       get "complete"
