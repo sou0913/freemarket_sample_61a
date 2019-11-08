@@ -3,7 +3,7 @@
     .signup-container
       %h2.signup-container__head
         住所入力
-      = form_with url: step4_users_path, local: true, class: "information" do |f|
+      = form_with url: "#", local: true, class: "information" do |f|
         .information__group
           = f.label "郵便番号"
           %span.information__group__require  必須
