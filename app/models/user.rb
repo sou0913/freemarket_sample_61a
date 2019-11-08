@@ -16,8 +16,8 @@ validates :nickname,
   length: { maximum: 19 }
 validates :profile,
   presence: true
-validates :image,
-  presence: true
+# validates :image,
+#   presence: true
 validates :email,
   presence: true,
   uniqueness: { message: "メールアドレスに誤りがあります。ご確認いただき、正しく変更してください。" },
