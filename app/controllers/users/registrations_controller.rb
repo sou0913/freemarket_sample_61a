@@ -10,6 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sms
+    # binding.pry
     # newで入力された値をsessionに保存
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
@@ -19,7 +20,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:first_name] = user_params[:first_name]
     session[:family_kana] = user_params[:family_kana]
     session[:first_kana] = user_params[:first_kana]
-    session[:birthday] = user_params[:birthday]
+    session["birthday(1i)"] = user_params["birthday(1i)"]
+    session["birthday(2i)"] = user_params["birthday(2i)"]
+    session["birthday(3i)"] = user_params["birthday(3i)"]
     @user = User.new # 新規インスタンス作成
   end
 
@@ -51,13 +54,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
       family_kana: session[:family_kana],
       first_kana: session[:first_kana],
       birthday: session[:birthday],
+      "birthday(1i)" => session["birthday(1i)"],
+      "birthday(2i)" => session["birthday(2i)"],
+      "birthday(3i)" => session["birthday(3i)"],
       phone_number: session[:phone_number],
-      postal_code: session[:postal_code],
-      prefectures: session[:prefectures],
-      city: session[:city],
-      house_number: session[:house_number],
-      building_name: session[:building_name],
-      phone_number: session[:phone_number],
+      postal_code: user_params[:postal_code],
+      prefectures: user_params[:prefectures],
+      city: user_params[:city],
+      house_number: user_params[:house_number],
+      building_name: user_params[:building_name],
+      phone_number: user_params[:phone_number]
     )
 
     if @user.save
@@ -69,11 +75,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def complete
+    sign_in User.find(session[:id]) unless user_signed_in?
+  end
 
 
   private
   # 許可するキーを設定します
   def user_params
+
     params.require(:user).permit(
       :nickname, 
       :profile,
@@ -85,7 +95,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :first_name,
       :family_kana,
       :first_kana,
-      :birthday,
+      "birthday(1i)",
+      "birthday(2i)",
+      "birthday(3i)",
       :postal_code, 
       :prefectures,
       :city,
