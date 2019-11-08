@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(create_items_params)
+    10.times { @item.images.build }
     # 写真0枚のエラーメッセージ用
     @image = Image.new
     if @item.save
