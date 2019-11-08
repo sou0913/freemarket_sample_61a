@@ -1,4 +1,4 @@
-=form_with model: item, local: true do |f|
+=form_with model: item do |f|
   .exhibit-wrapper
     .exhibit-wrapper__header
       .exhibit-wrapper__header__logo
@@ -23,20 +23,20 @@
               =i.file_field :image, readonly: false, class: "exhibit-wrapper__main__image__drag__form"
               =i.check_box :_destroy, disabled: true, class: "exhibit-wrapper__main__image__drag__check-box"
             .exhibit-wrapper__main__image__cards_anchor
-        = render partial: "errors", locals: {model: @item, column: :image}              
+        .error-append__image
       .exhibit-wrapper__main__item
         .exhibit-wrapper__main__item__name
           %label 
             商品名
             %span 必須
           =f.text_field :title, class: "exhibit-wrapper__main__item__name__field", placeholder: "商品名（必須40文字まで）"
-          = render partial: "errors", locals: {model: @item, column: :title}
+          .error-append__title
         .exhibit-wrapper__main__item__content
           %label 
             商品の説明
             %span 必須
           =f.text_area :description, rows:"6", class: "exhibit-wrapper__main__item__content__area" , placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-          = render partial: "errors", locals: {model: @item, column: :description}
+          .error-append__detail
       .exhibit-wrapper__main__details
         .exhibit-wrapper__main__details-left
           %p 商品の詳細
@@ -52,7 +52,7 @@
             %span 必須
           .exhibit-wrapper__main__details-right__select-wrapper
             =f.select :status, Item.statuses.keys, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"
-            = render partial: "errors", locals: {model: @item, column: :status}
+            .error-append__details
       .exhibit-wrapper__main__delivery
         .exhibit-wrapper__main__delivery-left
           %p 配送について
@@ -62,25 +62,25 @@
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
             =f.select :shipping_charge, Item.shipping_charges.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select exhibit__shipping-charges"
-            = render partial: "errors", locals: {model: @item, column: :shipping_charge}
+            .error-append__shipping-charge
           %label.exhibit__delivery-method
             配送の方法
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper.exhibit__delivery-method
             =f.select :shipping_method, Item.shipping_methods.keys, {prompt: "---"}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
-            = render partial: "errors", locals: {model: @item, column: :shipping_method}
+            .error-append__shipping-method
           %label 
             発送元の地域
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
             =f.select :delivery_source, Item.delivery_sources.keys, {prompt: '---'}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
-            = render partial: "errors", locals: {model: @item, column: :delivery_source}
+            .error-append__delivery-source
           %label 
             発送までの日数
             %span 必須
           .exhibit-wrapper__main__delivery-right__select-wrapper
             =f.select :shipping_day, Item.shipping_days.keys, {prompt: '---'}, class: "exhibit-wrapper__main__delivery-right__select-wrapper__select"
-            = render partial: "errors", locals: {model: @item, column: :shipping_day}
+            .error-append__shipping-day
       .exhibit-wrapper__main__price
         .exhibit-wrapper__main__price-left
           %p 販売価格(300~9,999,999)
@@ -91,7 +91,7 @@
               %span 必須
             .exhibit-wrapper__main__price-right__top__form
               =f.text_field :price, class: "exhibit-wrapper__main__price-right__top__form__field", placeholder: "例）300"
-              = render partial: "errors", locals: {model: @item, column: :price}
+              .error-append__price
           .exhibit-wrapper__main__price-right__center
             %p 販売手数料(10%)
             %p -
