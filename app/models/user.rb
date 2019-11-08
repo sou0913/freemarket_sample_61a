@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: %i[facebook google_oauth2]
 
 has_many :items
 has_many :purchaces
@@ -13,8 +14,8 @@ has_one :address
 validates :nickname,
   presence: true,
   length: { maximum: 19 }
-# validates :profile,
-#   presence: true
+validates :profile,
+  presence: true
 # validates :image,
 #   presence: true
 validates :email,
@@ -28,6 +29,7 @@ validates :password,
   format: { with: /\A(?=.*[^\d])+/, allow_blank: true, message: "数字のみのパスワードは設定できません" }
 validates :password_confirmation,
   presence: true
+
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
