@@ -55,6 +55,10 @@ Rails.application.routes.draw do
       # 自分の商品個別ページ
       get :my_item
     end
+    collection do
+      # 検索と結果表示
+      get :search
+    end
   end
 
   resources :categories, only: [:index, :show]

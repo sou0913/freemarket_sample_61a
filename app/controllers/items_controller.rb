@@ -62,6 +62,10 @@ class ItemsController < ApplicationController
 
   end
 
+  def search
+    keyword = params[:keyword]
+  end
+
   private
 
   def create_items_params

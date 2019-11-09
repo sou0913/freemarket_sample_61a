@@ -26,10 +26,12 @@
               .item-index__header__contents-top-logo
                 = link_to root_path do
                   = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
-              %form.search
-                %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
-                %button.search__button
-                  %i.fas.fa-search
+              =form_with url: search_items_path ,class:"search", method: :get do |f|
+                =f.text_field :keyword, placeholder: "何かお探しですか？", class: "search__form"
+                =f.submit class:"search-submit-btn"
+                =f.label "commit" do
+                  %button.search__button
+                    %i.fas.fa-search
             .item-index__header__contents-bottom
               .item-index__header__contents-bottom-left
                 .item-index__header__contents-bottom-left-type
