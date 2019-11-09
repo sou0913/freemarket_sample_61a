@@ -1,3 +1,5 @@
-.item-new_error_explanation {
-  color: red;  
+.item-new_error_explanation{
+  & p {
+    color: red;
+  }  
 }

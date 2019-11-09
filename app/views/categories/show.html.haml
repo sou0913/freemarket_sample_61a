@@ -1,115 +1,21 @@
+
 / ヘッダーここまで
 
 / コンテンツ
 .item-index__main__wrapper
   .item-index__main__contents
-    .item-index__main__contents__header
-      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?465897195'
-    .item-index__main__contents__header-page
-      .item-index__main__contents__header-page--prev
-        %i.fas.fa-chevron-left
-      .item-index__main__contents__header-page--next
-        %i.fas.fa-chevron-right
-
-    .item-index__main__contents__categories
-      %h2.item-index__main__contents__categories-heading 人気のカテゴリー
-      .categories__list
-        %ul.categories__list-item
-          %li
-            = link_to "レディース", "#", class: "type" 
-          %li
-            = link_to "メンズ", "#", class: "type"
-          %li
-            = link_to "家電・スマホ・カメラ", "#", class: "type"
-          %li
-            = link_to "おもちゃ・ホビー・グッズ", "#", class: "type"
     .item-index__main__contents__categories-wrapper
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title レディース新着アイテム
+          %h3.new__item-header-title 
+            = @category.name
+            の商品一覧
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              -@ladis.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title メンズ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@mens.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection 
-          %div
-            %ul.new__item-collection-list
-              -@electronics.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@toys.each do |item|
-                =render partial: "item", locals:{item: item} 
-    .item-index__main__contents__brands
-      %h2.item-index__main__contents__brands-heading 人気のブランド
-      .brands__list
-        %ul.brands__list-item
-          %li
-            = link_to "シャネル", "#", class: "brands"
-          %li
-            = link_to "ルイヴィトン", "#", class: "brands" 
-          %li
-            = link_to "シュプリーム", "#", class:  "brands" 
-          %li
-            = link_to "ナイキ", "#", class: "brands" 
-    .item-index__main__contents__brands-wrapper
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title シャネル新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
+              =render @items
 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title ルイヴィトン新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title シュプリーム新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title ナイキ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
 / コンテンツここまで
 
 / 出品ボタン

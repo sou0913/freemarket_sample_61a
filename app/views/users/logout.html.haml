@@ -1,10 +1,6 @@
 .item-index__wrapper
-  .item-index__container
-
+  .item-index__container 
     .mypage-container
       .mypage__content
         .logout
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout__link'
-
-      .side-mypage
-        = render 'side_bar'

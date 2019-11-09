@@ -1,10 +1,11 @@
 class Item < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validate :check_images
-
+  
   validates :status,:shipping_charge,:shipping_method,:delivery_source,:shipping_day, presence: true
   validates :title, presence: true, length: { maximum: 40}
   validates :price, presence: true, numericality: {greater_than: 299}
@@ -13,6 +14,9 @@ class Item < ApplicationRecord
   def check_images
     errors.add(:image, "を1枚以上指定してください") if images.size < 1
   end
+
+  # カテゴリー別に最新の10件を取得するscope
+  scope :get_category, -> (id) { where(category_id: id).order(id: :desc).limit(10)}
 
 
   enum delivery_source: {
