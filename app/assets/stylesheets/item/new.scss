@@ -221,6 +221,19 @@ $link-color: #78C1F0;
           flex-direction: column;
           @include select;
         }
+        &__brand {
+          & input {
+            line-height: 45px;
+            border: solid 1px $border-form;
+          }
+          &-optional {
+            background: white!important;
+            color: gray!important;
+          }
+        }
+        .exhibit-brand {
+          display: none;
+        }
       }
     }
     &__delivery {
