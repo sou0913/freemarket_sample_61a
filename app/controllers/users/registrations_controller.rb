@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'sign_up', only: [:new, :sms]
+  layout 'sign_up', only: [:new, :sms, :new_address]
 
   def index
   end
