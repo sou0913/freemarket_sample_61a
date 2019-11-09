@@ -17,7 +17,8 @@ class Item < ApplicationRecord
 
   # カテゴリー別に最新の10件を取得するscope
   scope :get_category, -> (id) { where(category_id: id).order(id: :desc).limit(10)}
-
+  # 以下ブランド検索にも使おうとしたが、ransackを使えば必要ないかもしれない。
+  # scope :get_brand,    -> (name, name2) { where(brand LIKE ? OR brand LIKE ?, "%#{name}%", "%#{name2}%")}
 
   enum delivery_source: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

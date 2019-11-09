@@ -46,7 +46,12 @@
             カテゴリー
             %span 必須
           .exhibit-wrapper__main__details-right__select-wrapper.exhibit-wrapper__main__details-right__select-wrapper_category
-            =f.select :category_id, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select" 
+            =f.select :category_id, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}, class: "exhibit-category-l exhibit-wrapper__main__details-right__select-wrapper__select" 
+          %label.exhibit-brand
+            ブランド
+            %span.exhibit-wrapper__main__details-right__brand-optional 任意
+          .exhibit-wrapper__main__details-right__brand.exhibit-brand
+            =f.text_field :brand, class: "exhibit-wrapper__main__item__name__field", placeholder: "ブランド名を入力してください"
           %label
             商品の状態
             %span 必須
