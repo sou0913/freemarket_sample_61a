@@ -49,7 +49,7 @@
 |shipping_method|integer|null: false|
 |dealing|integer|null: false default: 0|
 |user|references|null: false, foreign_key: true|
-|brand|references|null: false, foreign_key: true|
+|brand|string||
  
 ### Association
 - belongs_to :user
@@ -78,14 +78,6 @@
 
 ### Association
 - belongs_to :user
- 
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :items
  
 ## categoriesテーブル
 |Column|Type|Options|
