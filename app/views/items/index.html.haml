@@ -65,51 +65,40 @@
       .brands__list
         %ul.brands__list-item
           %li
-            = link_to "シャネル", "#", class: "brands"
+            = link_to "シャネル", "#chanel-items", class: "brands"
           %li
-            = link_to "ルイヴィトン", "#", class: "brands" 
+            = link_to "ルイヴィトン", "#louisvuitton-items", class: "brands" 
           %li
-            = link_to "シュプリーム", "#", class:  "brands" 
-          %li
-            = link_to "ナイキ", "#", class: "brands" 
+            = link_to "ナイキ", "#nike-items", class: "brands" 
     .item-index__main__contents__brands-wrapper
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title シャネル新着アイテム
+          %h3.new__item-header-title#chanel-items シャネル新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
+              -@chanels.each do |item|
+                =render partial: "item", locals:{item: item} 
 
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title ルイヴィトン新着アイテム
+          %h3.new__item-header-title#louisvuitton-items ルイヴィトン新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
+              -@louisvuittons.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title シュプリーム新着アイテム
+          %h3.new__item-header-title#nike-items ナイキ新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title ナイキ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -# ブランド作ってから表示
-              -# =render @items
+              -@nikes.each do |item|
+                =render partial: "item", locals:{item: item} 
 / コンテンツここまで
 
 / 出品ボタン

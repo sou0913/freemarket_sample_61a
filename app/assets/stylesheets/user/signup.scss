@@ -95,3 +95,89 @@
     }
   }
 }
+
+.signup_header {
+  height: 128px;
+  text-align: center;
+  &__logo {
+    display: inline-block;
+    margin-top: 40px;
+    &__link {
+      line-height: 49px;
+      margin-right: 8px;
+      &__image {
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }
+  &__bar {
+    padding: 40px 0 0 44px;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    &__group {
+      .signup_header_list {
+        margin-right: 40px;
+        min-width: 60px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        font-size: 12px;
+        &:not(:first-child)::before{
+          right: 50%;
+          position: absolute;
+          bottom: 5px;
+          z-index: -1;
+          display: block;
+          content: '';
+          width: 100%;
+          height: 2px;
+          background-color: #ccc;
+        }
+        &:not(:last-child)::after{
+          left: 50%;
+          position: absolute;
+          bottom: 5px;
+          z-index: -1;
+          display: block;
+          content: '';
+          width: 100%;
+          height: 2px;
+          background-color: #ccc;
+        }
+        .signup_status {
+          width: 12px;
+          height: 12px;
+          margin: 8px auto 0;
+          border-radius: 50%;
+          background: #ccc;
+        }
+      }
+      .signup_active {
+        font-weight: 600;
+        color: #ea352d;
+        &:not(:first-child)::before{
+          background-color: #ea352d;
+        }
+        &:not(:last-child)::after{
+          background-color: #ccc;
+        }
+        .signup_status {
+          background: #ea352d;
+        }
+      }
+      .signup_through {
+        &:not(:first-child)::before{
+          background-color: #ea352d;
+        }
+        &:not(:last-child)::after{
+          background-color: #ea352d;
+        }
+        .signup_status {
+          background: #ea352d;
+        }
+      }
+    }
+  }
+}

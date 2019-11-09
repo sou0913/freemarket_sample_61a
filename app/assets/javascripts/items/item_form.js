@@ -87,4 +87,16 @@ $(document).on('turbolinks:load', function(){
   $(".exhibit__shipping-charges").on("change", function(e){
     $(".exhibit__delivery-method").css("display", "block")
   })
+  // もしすでに選択されていたら、表示
+  if ($(".exhibit__shipping-charges").val() != "") {
+    $(".exhibit__delivery-method").css("display", "block")
+  }
+  // カテゴリーが選択されたら、ブランドを表示
+  $(".exhibit-category-l").on("change", function(e){
+    $(".exhibit-brand").css("display", "block")
+  })
+  // もしすでに選択されていたら、表示
+  if ($(".exhibit-category-l").val() != "") {
+    $(".exhibit-brand").css("display", "block")
+  }
 })
