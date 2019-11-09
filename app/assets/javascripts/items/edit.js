@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function(){
   var action = $('body').data("action");
   var counter = $(".exhibit-wrapper__main__image__cards");
   try {
-    if (controller != "items" || action != "edit"){throw new Error(e)}
+    if (controller != "items"){throw new Error(e)}
   function buildHTML(img, number){ 
   html = `<div class="exhibit-wrapper__main__image__cards__card">
             <div class="exhibit-wrapper__main__image__cards__card__image">
@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', function(){
   return html;
   }
   for (var i=0; i<10; i++) {
-    if (document.getElementById(`item_images_attributes_${i}_id`) != null) {
+    if ($(`.item-edit__image-${i}`).attr("src") != "") {
       var number = counter.attr("data-exhibitid");
       var new_number = Number(number)   + 1;
       counter.attr("data-exhibitid", new_number);

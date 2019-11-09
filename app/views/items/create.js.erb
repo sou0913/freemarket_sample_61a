@@ -1,0 +1,18 @@
+$(".error-append__image").empty();
+$(".error-append__title").empty();
+$(".error-append__detail").empty();
+$(".error-append__details").empty();
+$(".error-append__shipping-charge").empty();
+$(".error-append__shipping-method").empty();
+$(".error-append__delivery-source").empty();
+$(".error-append__shipping-day").empty();
+$(".error-append__price").empty();
+$(".error-append__image").append(`<%=render partial: "errors", locals: {model: @item, column: :image}%>`);
+$(".error-append__title").append(`<%=render partial: "errors", locals: {model: @item, column: :title}%>`);
+$(".error-append__detail").append(`<%=render partial: "errors", locals: {model: @item, column: :description}%>`);
+$(".error-append__details").append(`<%=render partial: "errors", locals: {model: @item, column: :status}%>`);
+$(".error-append__shipping-charge").append(`<%=render partial: "errors", locals: {model: @item, column: :shipping_charge}%>`);
+$(".error-append__shipping-method").append(`<%=render partial: "errors", locals: {model: @item, column: :shipping_method}%>`);
+$(".error-append__delivery-source").append(`<%=render partial: "errors", locals: {model: @item, column: :delivery_source}%>`);
+$(".error-append__shipping-day").append(`<%=render partial: "errors", locals: {model: @item, column: :shipping_day}%>`);
+$(".error-append__price").append(`<%=render partial: "errors", locals: {model: @item, column: :price}%>`);
