@@ -14,8 +14,8 @@ has_one :address
 validates :nickname,
   presence: true,
   length: { maximum: 19 }
-validates :profile,
-  presence: true
+# validates :profile,
+#   presence: true
 # validates :image,
 #   presence: true
 validates :email,

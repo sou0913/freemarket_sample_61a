@@ -3,7 +3,7 @@
     .signup-container
       %h2.signup-container__head
         支払い方法
-      = form_with url: "", local: true do |f|
+      = form_with url: complete_users_path, method: :get, local: true do |f|
         .information
           .information__group
             = f.label "カード番号"
