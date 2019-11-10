@@ -16,14 +16,14 @@
   /詳細検索フォーム
   =search_form_for @search, url: search_items_path, html:{class: "detail-search-form"} do |f|
     %h3 詳細検索
-    -# =f.sort_fields do |s|
-    -#   =s.sort_select
+    .detail-search-form__sorts.detail-search-form__contents
+      =f.select( :sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc'}, {selected: params[:q][:sorts]}, {onschange: 'this.form.submit()'})
     .detail-search-form__title.detail-search-form__contents
       =f.label :title, "キーワードを追加する"
       =f.text_field :title_or_description_cont
-    .detail-search-form__category.detail-search-form__contents
+    .detail-search-form__categories.detail-search-form__contents
       =f.label :category_id, "カテゴリーを選択する"
-      =f.select :category_id_eq, @categories.map {|category| [category.name, category.id]}  
+      =f.select :category_id_eq, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}
     .detail-search-form__title.detail-search-form__contents
       =f.label :brand, "ブランド名から探す"
       =f.text_field :brand_cont
