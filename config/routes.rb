@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users,
-    skip: :all,
-    controllers: {
-    registrations: 'users/registrations',
-    sessions: "users/sessions",
+  skip: [
+    :registration,
+    :session
+  ],
+  controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
-  } 
+  }
 
   devise_scope :user do
     # registration
     get    'signup',                         to: 'users/registrations#index',   as: :start_user_registration
     get    'signup/registration',            to: 'users/registrations#new',     as: :new_user_registration
+    get    'signup/registration/sns',        to: 'users/registrations#sns',     as: :users_sns
     patch  'users',                          to: 'users/registrations#update',  as: :user_registration
     put    'users',                          to: 'users/registrations#update'
     delete 'users',                          to: 'users/registrations#destroy'
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
     get    'login',                 to: 'users/sessions#new',          as: :new_user_session
     post   'login',                 to: 'users/sessions#create',       as: :user_session
     delete 'logout',                to: 'users/sessions#destroy',      as: :destroy_user_session
+
   end
 
   get "logout" => "users#logout"
