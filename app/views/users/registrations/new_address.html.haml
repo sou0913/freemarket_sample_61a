@@ -13,7 +13,7 @@
           %span.information__group__require  必須
           .information__group__box
             %i.fa.fa-chevron-down.information__group__box__icon
-            = f.select :prefectures, Item.delivery_sources.keys,{}, class: "information__group__box__select"
+            = f.select :prefectures, User.prefectures.keys,{}, class: "information__group__box__select"
         .information__group
           = f.label "市区町村"
           %span.information__group__require  必須
