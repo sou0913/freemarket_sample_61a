@@ -1,22 +1,34 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'sign_up', only: [:new, :sms, :new_address]
+  layout 'sign_up', only: [:new, :sms, :new_address, :sns, :complete]
 
   def index
   end
 
   def new
+    # sns認証のセッションが残っている場合、リセットします。
+    reset_session
     @user = User.new # 新規インスタンス作成
   end
 
+  def sns
+    # sns先で使われている名前とメールアドレスをテキストボックスに入った状態をつくります
+    @user = User.new(
+      nickname:              session[:user_attributes]["nickname"],
+      email:                 session[:user_attributes]["email"]
+    )
+  end
+
   def sms
-    # binding.pry
+    # sns認証で持っているパスワードのセッションが消えないようにします。メールアドレスの登録の場合は新しくセッションに保存します。
+    if session[:password].nil?
+      session[:password] = user_params[:password]
+      session[:password_confirmation] = user_params[:password_confirmation]
+    end
     # newで入力された値をsessionに保存
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
     session[:family_name] = user_params[:family_name]
     session[:first_name] = user_params[:first_name]
     session[:family_kana] = user_params[:family_kana]
@@ -64,10 +76,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       city: user_params[:city],
       house_number: user_params[:house_number],
       building_name: user_params[:building_name],
-      phone_number: user_params[:phone_number]
+      phone_number: user_params[:phone_number],
     )
-
+    if session[:user_attributes].present?
+      @user.uid = session[:user_attributes]["uid"]
+      @user.provider = session[:user_attributes]["provider"]
+    end
     if @user.save
+      reset_session
     # ログインするための情報を保管
       session[:id] = @user.id
       redirect_to complete_users_path
@@ -79,7 +95,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete
     sign_in User.find(session[:id]) unless user_signed_in?
   end
-
 
   private
   # 許可するキーを設定します
