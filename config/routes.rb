@@ -41,11 +41,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit] do
     resources :private_informations, only: [:new]
-    resources :cards, only: [:index]
+    resources :cards, only: [:index, :new, :show, :create]
   end
 
   resources :items do
-    resources :purchases
+    resources :purchases 
     member do
       # 自分の商品個別ページ
       get :my_item
@@ -54,5 +54,5 @@ Rails.application.routes.draw do
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"
-
+  post "/pay" => "purchases#pay"
 end
