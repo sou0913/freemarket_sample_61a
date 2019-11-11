@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
   belongs_to :user
-  belongs_to :purchase
+  belongs_to :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validate :check_images
-
+  
   validates :status,:shipping_charge,:shipping_method,:delivery_source,:shipping_day, presence: true
   validates :title, presence: true, length: { maximum: 40}
   validates :price, presence: true, numericality: {greater_than: 299}
@@ -15,6 +15,10 @@ class Item < ApplicationRecord
     errors.add(:image, "を1枚以上指定してください") if images.size < 1
   end
 
+  # カテゴリー別に最新の10件を取得するscope
+  scope :get_category, -> (id) { where(category_id: id).order(id: :desc).limit(10)}
+  # 以下ブランド検索にも使おうとしたが、ransackを使えば必要ないかもしれない。
+  # scope :get_brand,    -> (name, name2) { where(brand LIKE ? OR brand LIKE ?, "%#{name}%", "%#{name2}%")}
 
   enum delivery_source: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

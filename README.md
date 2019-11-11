@@ -3,19 +3,27 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_kana|string|null: false|
+|first_kana|string|null: false|
+|birthday|date|null: false|
+|postal_code|string|null: false|
+|prefectures|integer|null: false|
+|city|string|null: false|
+|house_number|string|null: false|
+|building_name|string|null: false|
+|phone_number|string|null: false, unique: true|
 |profile|text||
 |image|string|default: ""|
 |email|string|default: "", index: true, unique: true|
 |encrypted_password|string|null: false|
 |reset_password_token|string|index: true|
 
- 
 ### Association
 - has_many :items
 - has_many :purchaces
 - has_many :cards
-- has_one :private_information
-- has_one :address
  
 ## imagesテーブル
 |Column|Type|Options|
@@ -26,22 +34,6 @@
 ### Association
 - belongs_to :item
  
-## private_informationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|family_kana|string|null: false|
-|first_kana|string|null: false|
-|birthday|date|null: false|
-|postal_code|string|null: false|
-|prefectures|integer|null: false|
-|city|string|null: false|
-|house_number|string|null: false|
-|building_name|string|null: false|
-|user|references|null: false, foreign_key: true|
- 
-### Association
-- belongs_to :user
  
 ## itemsテーブル
 |Column|Type|Options|
@@ -57,7 +49,7 @@
 |shipping_method|integer|null: false|
 |dealing|integer|null: false default: 0|
 |user|references|null: false, foreign_key: true|
-|brand|references|null: false, foreign_key: true|
+|brand|string||
  
 ### Association
 - belongs_to :user
@@ -87,14 +79,6 @@
 ### Association
 - belongs_to :user
  
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :items
- 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -115,21 +99,3 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
- 
-## addressesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_kana|string|null: false|
-|first_kana|string|null: false|
-|postal_code|string|null: false|
-|prefectures|string|null: false|
-|city|string|null: false|
-|house_number|string|null: false|
-|building_name|string|null: false|
-|phone_number|string|null: false, unique: true|
-|user|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user

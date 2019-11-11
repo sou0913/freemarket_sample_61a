@@ -21,7 +21,8 @@ class UsersController < ApplicationController
   
   end
 
-  def completed
+  def complete
   
   end
+
 end

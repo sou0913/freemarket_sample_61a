@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: :all,
+  devise_for :users,
+    skip: :all,
     controllers: {
     registrations: 'users/registrations',
     sessions: "users/sessions",
+    omniauth_callbacks: 'users/omniauth_callbacks'
   } 
 
   devise_scope :user do
@@ -13,20 +15,23 @@ Rails.application.routes.draw do
     put    'users',                          to: 'users/registrations#update'
     delete 'users',                          to: 'users/registrations#destroy'
     post   'signup/registration',            to: 'users/registrations#create',  as: :create_user_registration
-    get    'signup/sms_confirmation',         to: 'users/registrations#sms',    as: :sms_user_registration
+    get    'signup/sms_confirmation',        to: 'users/registrations#sms',     as: :sms_user_registration
+    get    'signup/new_address',             to: 'users/registrations#new_address',  as: :new_address_users
+    get    'signup/new_card',                to: 'users/registrations#new_card',  as: :new_card_users
+    get   'signup/complete',                to: 'users/registrations#complete',  as: :complete_users
     # session
     get    'login',                 to: 'users/sessions#new',          as: :new_user_session
     post   'login',                 to: 'users/sessions#create',       as: :user_session
     delete 'logout',                to: 'users/sessions#destroy',      as: :destroy_user_session
   end
 
-  # get "logout" => "users#logout"
+  get "logout" => "users#logout"
   resources :users do
     collection do
       get:logout
-      get "new_address"
-      get "new_card"
-      get "complete"
+      # get "new_address"
+      # get "new_card"
+      # get "complete"
     end
     
     member do
@@ -50,6 +55,11 @@ Rails.application.routes.draw do
       # 自分の商品個別ページ
       get :my_item
     end
+  end
+
+  resources :categories, only: [:index, :show]
+  namespace :api do
+    resources :categories, only: :index, defaults: { format: 'json'}
   end
   resources :tests, only: [:index, :new, :show]
 

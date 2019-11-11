@@ -31,7 +31,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@ladis.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title メンズ新着アイテム
@@ -39,7 +40,8 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@mens.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
@@ -47,7 +49,8 @@
         .new__item-collection 
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@electronics.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
@@ -55,53 +58,47 @@
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@toys.each do |item|
+                =render partial: "item", locals:{item: item} 
     .item-index__main__contents__brands
       %h2.item-index__main__contents__brands-heading 人気のブランド
       .brands__list
         %ul.brands__list-item
           %li
-            = link_to "シャネル", "#", class: "brands"
+            = link_to "シャネル", "#chanel-items", class: "brands"
           %li
-            = link_to "ルイヴィトン", "#", class: "brands" 
+            = link_to "ルイヴィトン", "#louisvuitton-items", class: "brands" 
           %li
-            = link_to "シュプリーム", "#", class:  "brands" 
-          %li
-            = link_to "ナイキ", "#", class: "brands" 
+            = link_to "ナイキ", "#nike-items", class: "brands" 
     .item-index__main__contents__brands-wrapper
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title シャネル新着アイテム
+          %h3.new__item-header-title#chanel-items シャネル新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@chanels.each do |item|
+                =render partial: "item", locals:{item: item} 
 
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title ルイヴィトン新着アイテム
+          %h3.new__item-header-title#louisvuitton-items ルイヴィトン新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
+              -@louisvuittons.each do |item|
+                =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title シュプリーム新着アイテム
+          %h3.new__item-header-title#nike-items ナイキ新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              =render @items
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title ナイキ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              =render @items
+              -@nikes.each do |item|
+                =render partial: "item", locals:{item: item} 
 / コンテンツここまで
 
 / 出品ボタン
@@ -202,6 +199,7 @@
       = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", alt: 'Mercari', class: 'mercari-img'
     %span.copy-right © 2019 Mercari
 / フッターここまで
+
 
 %script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
 :cdata
