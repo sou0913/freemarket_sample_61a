@@ -2,11 +2,11 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    callback_for(:facebook)
+    callback_for :facebook
   end
 
   def google_oauth2
-    callback_for(:google)
+    callback_for :google
   end
 
   private
@@ -15,22 +15,23 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provider = provider.to_s
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    # データベースに保存済みか確認
     if @user.persisted?
-      # データベースに保存済みか確認
-      flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
+      # ログイン
       sign_in_and_redirect @user, event: :authentication
     else
       # 新規登録
-      session[:nickname] = @user.nickname
-      session[:email]    = @user.email
-      session[:provider] = @user.provider
-      session[:uid]      = @user.uid
-      redirect_to new_user_registration_path
+      session[:password] = @user.password
+      session[:password_confirmation] = @user.password
+      session[:user_attributes] = @user
+      redirect_to users_sns_path
     end
 
-    def failurere
+    def failure
+      # コールバックにエラーが起きた場合、リダイレクトします
       redirect_to root_path
     end
+
   end
   
   
