@@ -1,7 +1,7 @@
 class Card < ApplicationRecord
   belongs_to :user
 
-  # validates :number, :expiration_month, :expiration_year, :user, :security_code, presence: true
+  validates :user_id, :customer_id, :card_id, presence: true
 
   enum expiration_month: {
     "01":1, "02":2, "03":3, "04":4, "05":5, "06":6,

@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
   require "payjp"
 
   def pay
-    item = Item.find_by(item_id: params[:id])
+    item = Item.where(params[:item_id]).first
     Payjp.api_key = "sk_test_daf29bfafb257c13449505f8"
     charge = Payjp::Charge.create(
       amount: item.price,
