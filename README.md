@@ -84,7 +84,7 @@
 |------|----|-------|
 |name|string|null: false|
 |text|text||
-|parent|references|index: true|
+|ancestry|string|index: true|
 
 ### Association
 - belongs_to :parent, class_name: :Category

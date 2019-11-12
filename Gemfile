@@ -89,3 +89,5 @@ gem 'dotenv-rails'
 # デプロイに使用
 gem 'unicorn'
 gem 'fog-aws'
+# カテゴリー管理に使用
+gem 'ancestry'

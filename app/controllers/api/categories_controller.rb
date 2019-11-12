@@ -1,15 +1,10 @@
 class Api::CategoriesController < ApplicationController
 
   def index
-    # binding.pry
-    parent_name = params[:keyword]
-    parent = Category.find_by(name: parent_name)
-    children = parent.children
-    @data = []
-    children.each do |child|
-      @data.push(child.name)
-    end
-    # binding.pry
+    parent_id = params[:keyword].to_i
+    parent = Category.find(parent_id)
+    @children = parent.children
+    @type = params[:type]
     render "index.js.erb"
   end
 end
