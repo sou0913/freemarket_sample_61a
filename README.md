@@ -73,8 +73,9 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|integer|null: false|
 |user|references|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ### Association
 - belongs_to :user
