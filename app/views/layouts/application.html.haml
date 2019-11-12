@@ -43,9 +43,8 @@
                     .category-main__navigation__class.category-main__navigation-l
                       - @categories.each do |category|
                         =render partial: "categories/category_object", locals: {category: category}
-                    -# カテゴリーの階層構造。余裕があれば作る。（手動で非同期通信。子、孫を取得）
-                    -# .category-main__navigation__class.category-main__navigation-m
-                    -# .category-main__navigation__class.category-main__navigation-s
+                    .category-main__navigation__class.category-main__navigation-m
+                    .category-main__navigation__class.category-main__navigation-s
                 .item-index__header__contents-bottom-left-type
                   = link_to "/items/1/purchases/new" do
                     %i.fas.fa-tags.icon

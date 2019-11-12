@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_categories
-    @categories = Category.where(parent_id: 0)
+    @categories = Category.roots
   end
 
   def set_search
