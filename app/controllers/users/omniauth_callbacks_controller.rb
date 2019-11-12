@@ -12,9 +12,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def callback_for(provider)
-    provider = provider.to_s
-    @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    @user = User.from_omniauth(request.env["omniauth.auth"])
     # データベースに保存済みか確認
     if @user.persisted?
       # ログイン
