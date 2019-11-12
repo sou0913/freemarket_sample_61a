@@ -1,16 +1,21 @@
 class PurchasesController < ApplicationController
+  require "payjp"
+  require "dotenv"
+  Dotenv.load
 
-  def new
-    @item = Item.find(params[:item_id])
+  def item_infomation
+    @item = Item.where(params[:item_id]).first
   end
 
-  require "payjp"
+  def new
+    item_infomation
+  end
 
   def pay
-    item = Item.where(params[:item_id]).first
-    Payjp.api_key = "sk_test_daf29bfafb257c13449505f8"
+    item_infomation
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     charge = Payjp::Charge.create(
-      amount: item.price,
+      amount: @item.price,
       card: params['payjp-token'],
       currency: 'jpy'
     )

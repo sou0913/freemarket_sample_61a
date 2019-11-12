@@ -1,4 +1,4 @@
-=form_with url: "/pay" do |f|
+=form_with url: pay_item_purchases_path(@item) do |f|
   .perchace-new
     .perchace-new__header
       .perchace-new__header__logo
@@ -22,7 +22,6 @@
           %p 支払い金額
           %p 
             = @item.price
-        -# .perchace-new__main__content__submit 購入する
         -# pay.jpフォームへ変更
         %script.payjp-button{"data-key" => "pk_test_a2c13e209c813bb43fed001f", src: "https://checkout.pay.jp", type: "text/javascript", "data-text" => "購入する"} 
       .perchace-new__main__address

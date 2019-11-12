@@ -1,5 +1,7 @@
 class CardsController < ApplicationController
   require "payjp"
+  require "dotenv"
+  Dotenv.load
 
   def index
     @card = Card.where(user_id: 1).first
@@ -14,7 +16,7 @@ class CardsController < ApplicationController
 
   def create
     # テスト秘密鍵
-    Payjp.api_key = "sk_test_daf29bfafb257c13449505f8"
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     customer = Payjp::Customer.create(card: params["payjp-token"])
     @card = Card.new(user_id: 1, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
@@ -24,16 +26,20 @@ class CardsController < ApplicationController
     end
   end
 
-  def show
+  def card_token_infomation
     @card = Card.where(user_id: 1).first
-    Payjp.api_key = "sk_test_daf29bfafb257c13449505f8"
+  end
+
+  def show
+    card_token_infomation
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @card_infomation = customer.cards.retrieve(@card.card_id)
   end
 
   def destroy
-    @card = Card.where(user_id: 1).first
-    Payjp.api_key = "sk_test_daf29bfafb257c13449505f8"
+    card_token_infomation
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy

@@ -30,4 +30,3 @@ config/secrets.yml
 .DS_Store
 /.env
 public/uploads
-config/setting.rb
