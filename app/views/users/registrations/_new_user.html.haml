@@ -9,22 +9,36 @@
       %span.label ニックネーム
       %span.necessary 必須
       = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例）メルカリ太郎"
-    
+      - if @user.errors.messages[:nickname].any?
+        - @user.errors.messages[:nickname].each do |message|
+          %p.user_error
+            = message
     .field
       %span.label メールアドレス
       %span.necessary 必須
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+      - if @user.errors.messages[:email].any?
+        - @user.errors.messages[:email].each do |message|
+          %p.user_error
+            = message
 
-    - if session[:password].nil?
+    - if session[:user_attributes].nil?
       .field
         %span.label パスワード
         %span.necessary 必須
         = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上"
-
+      - if @user.errors.messages[:password].any?
+        - @user.errors.messages[:password].each do |message|
+          %p.user_error
+            = message
       .field
         %span.label パスワード（確認）
         %span.necessary 必須
         = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上"
+      - if @user.errors.messages[:password_confirmation].any?
+        - @user.errors.messages[:password_confirmation].each do |message|
+          %p.user_error
+            = message
 
     .identification
       %p 本人確認
@@ -36,14 +50,24 @@
       %span.necessary 必須
       = f.text_field :family_name, autofocus: true, placeholder: "例）山田"
       = f.text_field :first_name, autofocus: true, placeholder: "例）彩"
+      - if @user.errors.messages[:family_name].any?
+        %p.user_error
+          = @user.errors.messages[:family_name][0]
+      - if @user.errors.messages[:first_name].any?
+        %p.user_error
+          = @user.errors.messages[:first_name][0]
 
     .field
       %span.label お名前カナ(全角) 
       %span.necessary 必須
       = f.text_field :family_kana, autofocus: true, placeholder: "例）ヤマダ"
       = f.text_field :first_kana, autofocus: true, placeholder: "例）アヤ"
-
-
+      - if @user.errors.messages[:family_kana].any?
+        %p.user_error
+          = @user.errors.messages[:family_kana][0]
+      - if @user.errors.messages[:first_kana].any?
+        %p.user_error
+          = @user.errors.messages[:first_kana][0]
 
     .birthday-select-wrap
       %label{for: "birthday"} 生年月日 
@@ -230,6 +254,10 @@
       -#   %span 日
 
         %input{name: "birthday", type: "hidden", value: ""}/
+      - if @user.errors.messages[:birthday].any?
+        %p.user_error
+          = @user.errors.messages[:birthday][0]
+
     .notice
       %p.form-info-text
         ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
