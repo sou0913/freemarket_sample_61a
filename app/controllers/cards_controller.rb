@@ -6,6 +6,7 @@ class CardsController < ApplicationController
   end
 
   def new
+    # 後で修正する
     # current_user.idへ
     @card = Card.where(user_id: 1).first
     # redirect_to action: "index" if @card.present?
