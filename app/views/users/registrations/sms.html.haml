@@ -8,7 +8,9 @@
       %span.label 携帯電話の番号
       %span.necessary 必須
       = f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "携帯電話の番号を入力"
-
+      - if @user.errors.messages[:phone_number].any?
+        %p.user_error
+          = @user.errors.messages[:phone_number][0]
     %h2.describe 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
     .actions
       = f.submit "SMSを送信する",class:"btn-default btn-red"

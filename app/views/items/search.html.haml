@@ -1,0 +1,203 @@
+
+/ コンテンツ
+.item-index__main__wrapper.detail-search-wrapper
+  .item-index__main__contents.detail-search-wrapper__contents
+    .item-index__main__contents__categories-wrapper
+      .new__item
+        .new__item-header{name: "#"}
+          %h3.new__item-header-title 
+            = @name
+            検索結果
+          = link_to "もっと見る", "#", class: "look"
+        .new__item-collection
+          %div
+            %ul.new__item-collection-list
+              =render @items
+  /詳細検索フォーム
+  =search_form_for @search, url: search_items_path, html:{class: "detail-search-form"} do |f|
+    %h3 詳細検索
+    .detail-search-form__sorts.detail-search-form__contents
+      =f.select( :sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc'}, {selected: params[:q][:sorts]}, {onschange: 'this.form.submit()'})
+    .detail-search-form__title.detail-search-form__contents
+      =f.label :title, "キーワードを追加する"
+      =f.text_field :title_or_description_cont
+    .detail-search-form__categories.detail-search-form__contents
+      =f.label :category_id, "カテゴリーを選択する"
+      =f.select :category_id_eq, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}
+    .detail-search-form__title.detail-search-form__contents
+      =f.label :brand, "ブランド名から探す"
+      =f.text_field :brand_cont
+    .detail-search-form__price.detail-search-form__contents
+      =f.label :price, "値段"
+      =f.number_field :price_gteq
+      以上〜
+      =f.number_field :price_lt
+      未満
+    .detail-search-form__status-boxes.detail-search-form__contents
+      =f.label :status, "商品の状態"
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, "", checked: true
+        指定なし
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 1 
+        新品、未使用
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 2 
+        未使用に近い
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 3 
+        目立った傷や汚れなし
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 4 
+        やや傷や汚れあり
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 5 
+        傷や汚れあり
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 6 
+        全体的に状態が悪い
+    .detail-search-form__charges-boxes.detail-search-form__contents
+      =f.label :shipping_charge, "配送料の負担"
+      .detail-search-form__charges-boxes__tips
+        =f.radio_button :shipping_charge, "", checked: true
+        指定なし
+      .detail-search-form__charges-boxes__tips
+        =f.radio_button :shipping_charge, 1
+        送料込み(出品者負担)
+      .detail-search-form__charges-boxes__tips
+        =f.radio_button :shipping_charge, 2
+        着払い(購入者負担)
+    /後で
+    -# =f.button "クリア"
+    =f.submit "検索", class: "detail-search-form__submit"
+
+/ コンテンツここまで
+
+/ 出品ボタン
+.exhibit
+  = link_to new_item_path, class: "exhibit-button" do
+    .exhibit-item
+      .style 出品
+      %i.fas.fa-camera
+      / 出品ボタンここまで
+
+/ aside
+%aside
+  .aside__menu
+  .aside__menu__list
+    .aside__menu__list-item
+      .aside__menu__list-item-left
+        .aside__menu__list-item-left-text1 スマホでかんたんフリマアプリ
+        .aside__menu__list-item-left-text2 今すぐ無料ダウンロード！
+        .aside__menu__list-item-left-logos
+          = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png", class: 'mercari-icon'
+          = link_to "#", target: "blank", class: "store" do
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", class: 'itunes'
+          = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", target: "blank", class: "store" do
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg", class: 'google'
+      %figure.aside__menu__list-item-right
+        = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", class: 'aside__menu__list-item-right-img'
+      / asideここまで
+
+/ フッター
+.item-index__footer
+  %nav.item-index__footer__nav__infomation
+    .item-index__footer__nav__infomation-top-left
+      %h2.item-index__footer__nav__heading メルカリについて
+      %ul.item-index__footer__nav-list
+        %li
+          = link_to "会社概要（運営会社）", "https://about.mercari.com/", class: "infomation"
+        %li
+          = link_to "採用情報", "/jp/jobs/", class: "infomation"
+        %li
+          = link_to "プレスリリース", "https://about.mercari.com/press/news/", class: "infomation"
+        %li
+          = link_to "公式ブログ", "https://jp-news.mercari.com/", class: "infomation", target: "blank"
+        %li
+          = link_to "メルカリロゴ利用ガイドライン", "/jp/logo-guidelines/", class: "infomation"
+        = link_to "https://twitter.com/mercari_jp", target: "blank" do
+          %i.fab.fa-twitter
+        = link_to "https://www.facebook.com/mercarijp", target: "blank" do
+          %i.fab.fa-facebook-square
+    .item-index__footer__nav__infomation-top-right
+      %h2.item-index__footer__nav__heading ヘルプ＆ガイド
+      %ul.item-index__footer__nav-list
+        %li
+          = link_to "メルカリガイド", "/jp/help_center/", class: "infomation"
+        %li
+          = link_to "らくらくメルカリ便", "/jp/rakuraku-mercari/", class: "infomation"
+        %li
+          = link_to "ゆうゆうメルカリ便", "/jp/yuyu-mercari/", class: "infomation"
+        %li
+          = link_to "大型メルカリ便", "/jp/rakuraku-ogata/", class: "infomation"
+        %li
+          = link_to "車体取引ガイド", "/jp/guide/car/", class: "infomation"
+        %li
+          = link_to "メルカリあんしん・あんぜん宣言！", "/jp/safe/description/", class: "infomation", target: "blank"
+        %li
+          = link_to "偽ブランド品撲滅への取り組み",  "/jp/authenticity/", class: "infomation"
+        %li
+          = link_to "メルカリボックス", "/jp/box/", class: "infomation"
+    .item-index__footer__nav__infomation-middle
+      .item-index__footer__nav__infomation-middle-left
+        %h2.item-index__footer__nav__heading.privacy プライバシーと利用規約
+        %ul.item-index__footer__nav-list
+          %li
+            = link_to "プライバシーポリシー", "/jp/privacy/", class: "infomation"
+          %li
+            = link_to "メルカリ利用規約", "/jp/tos/", class: "infomation"
+          %li
+            = link_to "あんしんスマホサポート制度に関する利用特約", "/jp/tos_smartphone_support/", class: "infomation"
+          %li
+            = link_to "コンプライアンスポリシー", "/jp/compliance/", class: "infomation"
+      .item-index__footer__nav__infomation-middle-right
+        %ul.footer__nav-list
+          %li
+            = link_to "個人データの安全管理に係る基本方針", "/jp/data_security/", class: "infomation"
+          %li
+            = link_to "特定商取引に関する表記", "/jp/tokutei/", class: "infomation"
+          %li
+            = link_to "資金決済法に基づく表示", "/jp/shikin_kessai/", class: "infomation"
+          %li
+            = link_to "法令順守と犯罪抑止のために", "https://about.mercari.com/csr/safety/", class: "infomation"
+    .item-index__footer__nav__infomation-bottom
+      %h2.footer__nav__heading 国
+      %ul.footer__nav-list
+        %li
+          =link_to "日本", "/jp/", class: "cuntory"
+          =link_to "United States", "#", class: "cuntory"
+  .item-index__footer__bottom
+    = link_to "#", class: "bottom" do
+      = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg", alt: 'Mercari', class: 'mercari-img'
+    %span.copy-right © 2019 Mercari
+/ フッターここまで
+
+
+%script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
+:cdata
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KLPT5L5');
+%script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
+:cdata
+  window.dataLayer = window.dataLayer || [];
+%script{nonce: "M2ZhNWYzNDYtOWVkNC00ZmQ3LTk5ZWYtYzg3ZDU5NGFjZWYz"}
+:cdata
+  if ('serviceWorker' in navigator && true) {
+  window.addEventListener('load', function () {navigator.serviceWorker.register('/jp/service-worker.js').catch(function () {});
+  });
+  }
+%div{style: "display: none; visibility: hidden;"}
+:javascript
+  !function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1964320460558899");fbq("track","PageView");
+%noscript
+%div{style: "display: none; visibility: hidden;"}
+:javascript
+  var yahoo_ss_retargeting_id=1000300638,yahoo_sstag_custom_params=window.yahoo_sstag_params,yahoo_ss_retargeting=!0;
+%script{src: "https://s.yimg.jp/images/listing/tool/cv/conversion.js", type: "text/javascript"}
+%noscript
+%script{id: "", type: "text/javascript"}
+:cdata
+  window.yjDataLayer=window.yjDataLayer||[];function ytag(){yjDataLayer.push(arguments)}ytag({type:"ycl_cookie"});

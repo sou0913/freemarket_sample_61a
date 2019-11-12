@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-
   def show
     # 管理者
     @user = User.find(1)
+    @items = @user.items
   end
 
   def logout
   end
   
   def edit
+    @user = User.find(params[:id])
   end
 
   def listing
@@ -18,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def in_progress
-  
   end
 
   def complete

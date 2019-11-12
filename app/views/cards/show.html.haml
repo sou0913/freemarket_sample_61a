@@ -1,0 +1,30 @@
+.item-index__wrapper
+  .item-index__container 
+    .bread-crumds
+      %ul.bread-crumds__list
+        %li
+          = link_to "" do
+            %span<> 
+              メルカリ
+          %i.fas.chevron-right
+        %li マイページ
+    
+    .mypage-container
+      .card__content
+        %p 支払い方法
+        .card__content__box
+          %p クレジットカード一覧
+          = form_with url: "/users/1/cards/1", method: :delete, id: "charge-form", local: true do |f| 
+            .card-infomation
+              .card-inofomation-number
+                = " **** **** **** #{@card_infomation.last4}"
+              .card-inofomation-number
+                = @card_infomation.exp_month.to_s + " " "/" 
+                = @card_infomation.exp_year.to_s
+            .delete-button
+              = f.submit "削除する", { type: "submit", class: "payment-remove" } 
+            .payment
+              = link_to '支払い方法について＞', 'https://www.mercari.com/jp/help_center/category/6/', method: :get, class: 'payment__link'
+
+      .side-mypage
+        = render 'users/side_bar'

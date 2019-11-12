@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
 
-  before_action :basic_auth, :set_categories
+  before_action :basic_auth, :set_categories, :set_search
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -22,4 +22,7 @@ class ApplicationController < ActionController::Base
     @categories = Category.roots
   end
 
+  def set_search
+    @search = Item.ransack(params[:q])
+  end
 end

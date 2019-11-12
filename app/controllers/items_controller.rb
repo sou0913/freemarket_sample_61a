@@ -65,6 +65,13 @@ class ItemsController < ApplicationController
 
   end
 
+  def search
+      if params[:q][:title_or_description_cont] != ""
+        @name = params[:q][:title_or_description_cont] + " の"
+      end
+      @items = @search.result
+  end
+
   private
 
   def create_items_params
