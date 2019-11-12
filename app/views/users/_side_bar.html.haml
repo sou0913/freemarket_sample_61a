@@ -1,7 +1,7 @@
 %nav.side-nav
   %ul.side-nav__list
     %li
-      = link_to user_path(@user), class: "side-nav__list__item active" do
+      = link_to user_path(1), class: "side-nav__list__item active" do
         マイページ
         %i.fa.fa-chevron-right.side-nav__list__item__icon
     %li
@@ -21,7 +21,7 @@
         出品する
         %i.fa.fa-chevron-right
     %li.side-nav__list__item-listing
-      = link_to item_path, class: "side-nav__list__item" do
+      = link_to item_path(:id), class: "side-nav__list__item" do
         出品した商品 - 出品中
         %i.fa.fa-chevron-right
     %li
@@ -71,7 +71,7 @@
   %h3.side-nav__head 設定
   %ul.side-nav__list
     %li
-      = link_to edit_user_path(@user), class: "side-nav__list__item" do
+      = link_to edit_user_path(:id), class: "side-nav__list__item" do
         プロフィール
         %i.fa.fa-chevron-right
     %li
@@ -79,7 +79,7 @@
         発送元・お届け先住所変更
         %i.fa.fa-chevron-right
     %li
-      = link_to user_cards_path(@user), class: "side-nav__list__item" do
+      = link_to user_cards_path(:id), class: "side-nav__list__item" do
         支払い方法
         %i.fa.fa-chevron-right
     %li
@@ -87,7 +87,7 @@
         メール/パスワード
         %i.fa.fa-chevron-right
     %li
-      = link_to new_user_private_information_path(@user), class: "side-nav__list__item" do
+      = link_to new_user_private_information_path(:id), class: "side-nav__list__item" do
         本人情報
         %i.fa.fa-chevron-right
     %li

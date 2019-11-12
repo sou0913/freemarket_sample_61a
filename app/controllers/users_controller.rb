@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     # 管理者
-    @user = User.find(params[:id])
+    @user = User.find(1)
     @items = @user.items
   end
 

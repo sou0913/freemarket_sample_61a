@@ -2,17 +2,9 @@ class PurchasesController < ApplicationController
   require "payjp"
   require "dotenv"
   Dotenv.load
-
-  def item_infomation
-    @item = Item.where(params[:item_id]).first
-  end
-
-  def new
-    item_infomation
-  end
+  before_action :set_item
 
   def pay
-    item_infomation
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     charge = Payjp::Charge.create(
       amount: @item.price,
@@ -21,4 +13,14 @@ class PurchasesController < ApplicationController
     )
     redirect_to root_path
   end
+
+  def new
+  end
+
+  private
+
+  def set_item
+    @item = Item.where(params[:item_id]).first
+  end
+
 end
