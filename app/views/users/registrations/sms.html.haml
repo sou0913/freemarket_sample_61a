@@ -3,7 +3,7 @@
 
 .devise-main__registration
   %h2.devise-main__registration__head 電話番号の確認
-  = form_for @user, url: new_address_users_path, method: :get, html: { class: 'devise-main__registration__form' } do |f|
+  = form_for @user, url: new_address_users_path, method: :get, html: { class: 'devise-main__registration__form', id: 'form' } do |f|
     .field
       %span.label 携帯電話の番号
       %span.necessary 必須
