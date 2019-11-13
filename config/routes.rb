@@ -49,14 +49,22 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit] do
     resources :private_informations, only: [:new]
-    resources :cards, only: [:index]
+    resources :cards, only: [:index, :new, :show, :create, :destroy]
   end
 
   resources :items do
-    resources :purchases
+    resources :purchases do
+      collection do 
+        post :pay
+      end
+    end
     member do
       # 自分の商品個別ページ
       get :my_item
+    end
+    collection do
+      # 検索と結果表示
+      get :search
     end
   end
 
@@ -64,6 +72,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :categories, only: :index, defaults: { format: 'json'}
   end
+
   resources :tests, only: [:index, :new, :show]
 
   root to: "items#index"

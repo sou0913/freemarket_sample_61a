@@ -75,8 +75,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # ログインするための情報を保管
       session[:id] = @user.id
       redirect_to complete_users_path
-    else
-      redirect_to root_path
     end
   end
 
@@ -173,7 +171,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       house_number:          "仮",
       building_name:         "仮"
     )
-    render :sms unless @user.valid?
+    render :sms unless @user.valid?(:sms)
   end
 
   def validates_address

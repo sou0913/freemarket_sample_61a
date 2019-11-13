@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable,
-         omniauth_providers: %i[facebook google_oauth2]
+        :recoverable, :rememberable, :validatable, :omniauthable,
+        omniauth_providers: %i[facebook google_oauth2]
 
   has_many :items
   has_many :purchaces
@@ -38,8 +38,7 @@ class User < ApplicationRecord
   validates :prefectures,   presence: true
   validates :city,          presence: true
   validates :house_number,  presence: true
-  validates :building_name, presence: true
-  validates :phone_number,  presence: true
+  validates :phone_number,  presence: true, on: :sms
 
   enum prefectures: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

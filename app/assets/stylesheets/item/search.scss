@@ -1,0 +1,86 @@
+.search-submit-btn {
+  display: none;
+}
+.detail-search-wrapper {
+  max-width: 100%!important;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  &__contents {
+    flex-basis: 70%;
+  }
+}
+.detail-search-form {
+  margin: 20px 0 100px;
+  background: white;
+  padding: 10px;
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  & input {
+    line-height: 25px;
+  }
+  & h3 {
+    font-weight: bold;
+  }
+  & label {
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  &__contents {
+    padding: 10px 0;
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+  }
+  &__category {
+    display: flex;
+    flex-direction: column;
+    & select {
+      display: block;
+    }
+  }
+  &__price {
+    display: flex;
+    flex-direction: column;
+  }
+  &__status-boxes {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    & label {
+      flex-basis: 100%;
+      box-sizing: border-box;
+    }
+    &__tips {
+      flex-basis: 50%; 
+      box-sizing: border-box;
+      padding: 10px;
+      display: flex;
+      & input {
+      }
+    }
+  }
+  &__charges-boxes {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    & label {
+      flex-basis: 100%;
+      box-sizing: border-box;
+    }
+    &__tips {
+      flex-basis: 50%; 
+      box-sizing: border-box;
+      padding: 10px;
+    }
+  }
+  &__submit {
+    width: 40%;
+    background: red;
+    color: white;
+    align-self: center
+  }
+}

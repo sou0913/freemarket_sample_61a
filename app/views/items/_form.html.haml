@@ -46,7 +46,10 @@
             カテゴリー
             %span 必須
           .exhibit-wrapper__main__details-right__select-wrapper.exhibit-wrapper__main__details-right__select-wrapper_category
-            =f.select :category_id, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}, class: "exhibit-category-l exhibit-wrapper__main__details-right__select-wrapper__select" 
+            =f.select :category_id, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}, class: "exhibit-category-l exhibit-wrapper__main__details-right__select-wrapper__select"
+            %i.fas.fa-angle-down.exhibit-wrapper__main__details-right__select-wrapper__icon
+          .exhibit-wrapper__main__details-right__select-wrapper.exhibit-wrapper__main__details-right__select-wrapper_category.category-append-m
+          .exhibit-wrapper__main__details-right__select-wrapper.exhibit-wrapper__main__details-right__select-wrapper_category.category-append-s
           %label.exhibit-brand
             ブランド
             %span.exhibit-wrapper__main__details-right__brand-optional 任意

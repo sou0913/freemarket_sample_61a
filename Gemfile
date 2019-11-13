@@ -86,6 +86,10 @@ gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+# pay.jpに使用
+gem 'payjp'
 # デプロイに使用
 gem 'unicorn'
 gem 'fog-aws'
+# カテゴリー管理に使用
+gem 'ancestry'
