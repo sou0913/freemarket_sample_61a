@@ -44,16 +44,19 @@ Rails.application.routes.draw do
       get :in_progress
       # 売却済み商品
       get :completed
+      # 個人情報編集ページ
+      get :private_information
+      # 配送先編集ページ
+      get :address
     end
   end
 
   resources :users, only: [:show, :edit] do
-    resources :private_informations, only: [:new]
     resources :cards, only: [:index, :new, :show, :create, :destroy]
   end
 
   resources :items do
-    resources :purchases do
+    resources :purchases, only: [:new, :show] do
       collection do 
         post :pay
       end

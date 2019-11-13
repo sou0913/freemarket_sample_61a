@@ -12,17 +12,36 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def listing
-    # 後々current_userに変更
+  def update
     @user = User.find(params[:id])
-    @items = @user.items
+    if @user.update(update_params)
+      redirect_to :root
+    else
+      render 'edit'
+    end  
+  end
+
+  def listing
+    @items = current_user.items.where(dealing: 0)
   end
 
   def in_progress
+    @items = current_user.items.where(dealing: 1)
   end
 
   def complete
+  end
+
+  def private_information
+  end
   
+  def address
+  end
+
+  private
+
+  def update_params
+    params.require(:user).permit(:nickname, :profile)
   end
 
 end

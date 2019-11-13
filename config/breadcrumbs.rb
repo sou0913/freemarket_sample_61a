@@ -3,11 +3,11 @@ crumb :root do
 end
 
 crumb :user do |user|
-  link 'マイページ', user_path(user)
+  link 'マイページ', user_path(current_user)
 end
 
 crumb :listing_user do |user|
-  link '出品した商品-出品中', listing_user_path(user)
+  link '出品した商品-出品中', listing_user_path(current_user)
   parent :user, user
 end
 

@@ -8,6 +8,7 @@
 @import "mixin/mixin-information";
 @import "modules/devise";
 @import "purchase/new.scss";
+@import "purchase/show.scss";
 @import "user/mypage";
 @import "user/private-informations.scss";
 @import "user/profile.scss";
@@ -22,4 +23,5 @@
 @import "user/listing.scss";
 @import "item/my_item.scss";
 @import "item/category_nav.scss";
-@import "item/search.scss"
+@import "item/search.scss";
+@import "item/brand_nav.scss";

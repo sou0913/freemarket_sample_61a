@@ -92,8 +92,12 @@
     %span.shipping-free
       = @item.shipping_charge === "送料込み(出品者負担)" ? "送料込み" : "着払い"
     .item-buy
-      = link_to new_item_purchase_path(@item.id), class: "item-buy-btn" do
-        = "購入画面に進む"
+      -if user_signed_in?
+        = link_to new_item_purchase_path(@item.id), class: "item-buy-btn" do
+          = "購入画面に進む"
+      -else
+        = link_to new_user_session_path, class: "item-buy-btn" do
+          = "購入画面に進む"
   .item--description
     %p.item--description-text
       = @item.description

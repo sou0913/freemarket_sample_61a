@@ -14,7 +14,6 @@ class User < ApplicationRecord
   validates :nickname,
   presence: true,
   length: { maximum: 19 }
-  #   presence: true
   # validates :image,
   #   presence: true
   validates :email,
@@ -26,9 +25,10 @@ class User < ApplicationRecord
   presence: true,
   confirmation: { message: "パスワードとパスワード（確認）が一致しません" },
   length: { in: 6..128, message: "パスワードは6文字以上128文字以下で入力してください" },
-  format: { with: /\A(?=.*[^\d])+/, allow_blank: true, message: "数字のみのパスワードは設定できません" }
+  format: { with: /\A(?=.*[^\d])+/, allow_blank: true, message: "数字のみのパスワードは設定できません" },
+  on: :create
 
-  validates :password_confirmation, presence: true
+  validates :password_confirmation, presence: true,  on: :create
 
   validates :family_name,   presence: true
   validates :first_name,    presence: true
@@ -39,8 +39,7 @@ class User < ApplicationRecord
   validates :prefectures,   presence: true
   validates :city,          presence: true
   validates :house_number,  presence: true
-  validates :building_name, presence: true
-  validates :phone_number,  presence: true
+  validates :phone_number,  presence: true, on: :sms
 
   enum prefectures: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

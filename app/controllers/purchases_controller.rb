@@ -6,21 +6,27 @@ class PurchasesController < ApplicationController
 
   def pay
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    charge = Payjp::Charge.create(
+    Payjp::Charge.create(
       amount: @item.price,
       card: params['payjp-token'],
       currency: 'jpy'
     )
-    redirect_to root_path
+    redirect_to action: :show, id: @item.id
+  end
+
+  def create
   end
 
   def new
   end
 
+  def show
+  end
+
   private
 
   def set_item
-    @item = Item.where(params[:item_id]).first
+    @item = Item.find(params[:item_id])
   end
 
 end

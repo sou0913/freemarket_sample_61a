@@ -3,14 +3,14 @@
     .signup-container
       %h2.signup-container__head
         住所入力
-      = form_for @user, url: create_user_registration_path, method: :post, html: { class: 'information' } do |f|
+      = form_for @user, url: create_user_registration_path, method: :post, html: { class: 'information', id: 'form' } do |f|
         .information__group
           = f.label "郵便番号"
           %span.information__group__require  必須
           = f.text_field :postal_code, placeholder: "例) 1234567", class: "information__group__text"
-          - if @user.errors.messages[:phone_number].any?
+          - if @user.errors.messages[:postal_code].any?
             %p.user_error
-              = @user.errors.messages[:phone_number][0]
+              = @user.errors.messages[:postal_code][0]
 
         .information__group
           = f.label "都道府県"
@@ -42,16 +42,13 @@
           = f.label "建物名"
           %span.information__group__arbitrary  任意
           = f.text_field :building_name, placeholder: "例) 柳ビル103", class: "information__group__text"
-          - if @user.errors.messages[:building_name].any?
-            %p.user_error
-              = @user.errors.messages[:building_name][0]
 
         .information__group
           = f.label "電話"
           %span.information__group__arbitrary  任意
-          = f.text_field :phone_number, placeholder: "例) 09012345678", class: "information__group__text"
-          - if @user.errors.messages[:phone_number].any?
+          = f.text_field :phone_number_deliver, placeholder: "例) 09012345678", class: "information__group__text"
+          - if @user.errors.messages[:phone_number_deliver].any?
             %p.user_error
-              = @user.errors.messages[:phone_number][0]
+              = @user.errors.messages[:phone_number_deliver][0]
 
         = f.submit "次へ進む", class: "information__submit"
