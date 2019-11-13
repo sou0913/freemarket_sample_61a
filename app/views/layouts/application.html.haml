@@ -53,32 +53,32 @@
                     -# %ul
                       -# li 
               %ul.item-index__header__contents-bottom__list
-                %li.item-index__header__contents-bottom__list-item
-                  = link_to "#" do
-                    -# %i
-                %li.item-index__header__contents-bottom__list-item
-                  = link_to new_user_session_path do
-                    %i.far.fa-bell
-                    お知らせ
-                %li.item-index__header__contents-bottom__list-item
-                  = link_to new_user_session_path do
-                    %i.fas.fa-check
-                    やることリスト
-                %li.item-index__header__contents-bottom__list-item
-                  = link_to "/users/1" do
-                    = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
-                    マイページ
-                %li.item-index__header__contents-bottom__list-item
-                  =link_to "新規会員登録", start_user_registration_path 
-                %li.item-index__header__contents-bottom__list-item
-                  =link_to "ログイン", new_user_session_path
-                %li.item-index__header__contents-bottom__list-item
-                  =link_to "登録完了", complete_users_path
-                %li.item-index__header__contents-bottom__list-item
-                  =link_to "クレジット",  new_card_users_path
-                %li.item-index__header__contents-bottom__list-item
-                  =link_to "ログアウト",  logout_users_path
-                %li.item-index__header__contents-bottom__list-item
-                  =link_to "住所", new_address_users_path                   
+                -# 今回は使用しなかったタブです。
+                -# %li.item-index__header__contents-bottom__list-item
+                -#   = link_to new_user_session_path do
+                -#     %i.far.fa-bell
+                -#     お知らせ
+                -# %li.item-index__header__contents-bottom__list-item
+                -#   = link_to new_user_session_path do
+                -#     %i.fas.fa-check
+                -#     やることリスト
+                - if user_signed_in?
+                  %li.item-index__header__contents-bottom__list-item
+                    = link_to "/users/1" do
+                      = image_tag "https://msp.c.yimg.jp/yjimage?q=orl70awXyLHbWRUG_LCztRx6JYnp58wm3PFbNTESvckyr8NSp_VM_EOzYfO8my3helZRZHMgQS9wd8zt0ERVymJ_I3cZtXVR3f.uyYHx7LkjdOHrzRCaJKFQ3VONJ6mc8JAz9cjvqGJ6W_wxjR2A&sig=13a5kqspk&x=246&y=205", class: "current-user"
+                      マイページ
+                - else
+                  %li.item-index__header__contents-bottom__list-item.item-index__header__contents-bottom__list-item__registration
+                    =link_to "新規会員登録", start_user_registration_path
+                  %li.item-index__header__contents-bottom__list-item.item-index__header__contents-bottom__list-item__session
+                    =link_to "ログイン", new_user_session_path
+                -# %li.item-index__header__contents-bottom__list-item
+                -#   =link_to "登録完了", complete_users_path
+                -# %li.item-index__header__contents-bottom__list-item
+                -#   =link_to "クレジット",  new_card_users_path
+                -# %li.item-index__header__contents-bottom__list-item
+                -#   =link_to "ログアウト",  logout_users_path
+                -# %li.item-index__header__contents-bottom__list-item
+                -#   =link_to "住所", new_address_users_path                   
         = breadcrumbs separator: "&rsaquo; "  
         = yield

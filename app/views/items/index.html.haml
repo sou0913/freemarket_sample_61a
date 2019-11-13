@@ -26,6 +26,15 @@
     .item-index__main__contents__categories-wrapper
       .new__item
         .new__item-header{name: "#"}
+          %h3.new__item-header-title 最新の10件
+          = link_to "もっと見る", "#", class: "look"
+        .new__item-collection
+          %div
+            %ul.new__item-collection-list
+              -@items.each do |item|
+                =render partial: "item", locals:{item: item} 
+      .new__item
+        .new__item-header{name: "#"}
           %h3.new__item-header-title レディース新着アイテム
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
@@ -134,65 +143,66 @@
       %h2.item-index__footer__nav__heading メルカリについて
       %ul.item-index__footer__nav-list
         %li
-          = link_to "会社概要（運営会社）", "https://about.mercari.com/", class: "infomation"
+          = link_to "会社概要（運営会社）", "#", class: "infomation"
         %li
-          = link_to "採用情報", "/jp/jobs/", class: "infomation"
+          = link_to "採用情報", "#", class: "infomation"
         %li
-          = link_to "プレスリリース", "https://about.mercari.com/press/news/", class: "infomation"
+          = link_to "プレスリリース", "#", class: "infomation"
         %li
-          = link_to "公式ブログ", "https://jp-news.mercari.com/", class: "infomation", target: "blank"
+          = link_to "公式ブログ", "#", class: "infomation", target: "blank"
         %li
-          = link_to "メルカリロゴ利用ガイドライン", "/jp/logo-guidelines/", class: "infomation"
-        = link_to "https://twitter.com/mercari_jp", target: "blank" do
+          = link_to "メルカリロゴ利用ガイドライン", "#", class: "infomation"
+        = link_to "#", target: "blank" do
           %i.fab.fa-twitter
-        = link_to "https://www.facebook.com/mercarijp", target: "blank" do
+        = link_to "#", target: "blank" do
           %i.fab.fa-facebook-square
     .item-index__footer__nav__infomation-top-right
       %h2.item-index__footer__nav__heading ヘルプ＆ガイド
       %ul.item-index__footer__nav-list
         %li
-          = link_to "メルカリガイド", "/jp/help_center/", class: "infomation"
+          = link_to "メルカリガイド", "#", class: "infomation"
         %li
-          = link_to "らくらくメルカリ便", "/jp/rakuraku-mercari/", class: "infomation"
+          = link_to "らくらくメルカリ便", "#", class: "infomation"
         %li
-          = link_to "ゆうゆうメルカリ便", "/jp/yuyu-mercari/", class: "infomation"
+          = link_to "ゆうゆうメルカリ便", "#", class: "infomation"
         %li
-          = link_to "大型メルカリ便", "/jp/rakuraku-ogata/", class: "infomation"
+          = link_to "大型メルカリ便", "#", class: "infomation"
         %li
-          = link_to "車体取引ガイド", "/jp/guide/car/", class: "infomation"
+          = link_to "車体取引ガイド", "#", class: "infomation"
         %li
-          = link_to "メルカリあんしん・あんぜん宣言！", "/jp/safe/description/", class: "infomation", target: "blank"
+          = link_to "メルカリあんしん・あんぜん宣言！", "#", class: "infomation", target: "blank"
         %li
-          = link_to "偽ブランド品撲滅への取り組み",  "/jp/authenticity/", class: "infomation"
+          = link_to "偽ブランド品撲滅への取り組み",  "#", class: "infomation"
         %li
-          = link_to "メルカリボックス", "/jp/box/", class: "infomation"
+          = link_to "メルカリボックス", "#", class: "infomation"
     .item-index__footer__nav__infomation-middle
       .item-index__footer__nav__infomation-middle-left
         %h2.item-index__footer__nav__heading.privacy プライバシーと利用規約
         %ul.item-index__footer__nav-list
           %li
-            = link_to "プライバシーポリシー", "/jp/privacy/", class: "infomation"
+            = link_to "プライバシーポリシー", "#", class: "infomation"
           %li
-            = link_to "メルカリ利用規約", "/jp/tos/", class: "infomation"
+            = link_to "メルカリ利用規約", "#", class: "infomation"
           %li
-            = link_to "あんしんスマホサポート制度に関する利用特約", "/jp/tos_smartphone_support/", class: "infomation"
+            = link_to "あんしんスマホサポート制度に関する利用特約", "#", class: "infomation"
           %li
-            = link_to "コンプライアンスポリシー", "/jp/compliance/", class: "infomation"
+            = link_to "コンプライアンスポリシー", "#", class: "infomation"
       .item-index__footer__nav__infomation-middle-right
         %ul.footer__nav-list
           %li
-            = link_to "個人データの安全管理に係る基本方針", "/jp/data_security/", class: "infomation"
+            = link_to "個人データの安全管理に係る基本方針", "#", class: "infomation"
           %li
-            = link_to "特定商取引に関する表記", "/jp/tokutei/", class: "infomation"
+            = link_to "特定商取引に関する表記", "#", class: "infomation"
           %li
-            = link_to "資金決済法に基づく表示", "/jp/shikin_kessai/", class: "infomation"
+            = link_to "資金決済法に基づく表示", "#", class: "infomation"
           %li
-            = link_to "法令順守と犯罪抑止のために", "https://about.mercari.com/csr/safety/", class: "infomation"
+            = link_to "法令順守と犯罪抑止のために", "#", class: "infomation"
     .item-index__footer__nav__infomation-bottom
       %h2.footer__nav__heading 国
       %ul.footer__nav-list
         %li
-          =link_to "日本", "/jp/", class: "cuntory"
+          =link_to "日本", "#", class: "cuntory"
+        %li
           =link_to "United States", "#", class: "cuntory"
   .item-index__footer__bottom
     = link_to "#", class: "bottom" do

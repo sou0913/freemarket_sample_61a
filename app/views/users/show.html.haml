@@ -8,16 +8,17 @@
             .mypage-user__image
               = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png"
             .mypage-user__name
-              田中太郎
+              = current_user.nickname
             .mypage-user__number
               .mypage-user__number--left
-                評価
-                %span<>
-                  0
+                -# 未実装
+                -# 評価
+                -# %span<>
+                -#   0
               .mypage-user__number--right
                 出品数
                 %span<>
-                  0
+                  = current_user.items.length
         .mypage-notification
           %ui.mypage-notification__tabs
             %li.mypage-notification__tabs__list.active

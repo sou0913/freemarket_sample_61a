@@ -3,14 +3,15 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
 
   def index
-    @items = Item.limit(10).order('id')
+    # 開発中動作を確認しやすくするため最新の10個取得
+    @items        = Item.all.order(id: :desc).limit(10)
     @ladis         = Item.get_category(1)
     @mens          = Item.get_category(200)
     @toys          = Item.get_category(730)
     @electronics   = Item.get_category(965)
-    @chanels       = Item.ransack(brand_cont_any: ["シャネル","CHANEL"]).result
-    @louisvuittons = Item.ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result
-    @nikes          = Item.ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result
+    @chanels       = Item.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(10)
+    @louisvuittons = Item.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(10)
+    @nikes          = Item.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(10)
   end 
 
   def show
