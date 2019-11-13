@@ -17,10 +17,10 @@
       = link_to new_user_registration_path, class: 'devise-main__registration__link__email' do
         %i.fa.fa-envelope
         メールアドレスで登録
-      = link_to "#", method: :post, class: 'devise-main__registration__link__facebook'  do
+      = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'devise-main__registration__link__facebook'  do
         %i.fab.fa-facebook-square
         Facebookで登録
-      = link_to "#", method: :post, class: 'devise-main__registration__link__google' do
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'devise-main__registration__link__google' do
         %i.fab.fa-google
         Googleで登録
 

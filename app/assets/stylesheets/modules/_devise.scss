@@ -1,16 +1,14 @@
 .new-devise__wrapper {
   min-height: 80vh;
-  background-color: $gray;
 }
 
 // --------------------- devise ヘッダー --------------------- //
 // ヘッダー
 .new-devise__header {
-  background-color: $gray;
   position: relative;
   z-index: 3;
   display: block;
-  height: 100px;
+  height: 128px;
   &__contents {
     width: 700px;
     margin: 0px auto;
@@ -336,7 +334,7 @@
 
       .select-wrap {
         display: flex;
-        position: relative;
+
         top: 10px;
       }
 
@@ -380,11 +378,16 @@
   top: 25px;
 }
 
+.notice {
+  position: relative;
+  top: 40px;
+}
+
 
 // --------------------- devise フッター --------------------- //
 .new-devise__single-footer {
-  background-color: $gray;
-  padding-top: 50px;
+  padding: 50px 0;
+  height: 200px;
   @include flex-center;
   & nav {
     display: flex;

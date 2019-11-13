@@ -4,10 +4,13 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.limit(10).order('id')
-    @ladis       = Item.get_category(1)
-    @mens        = Item.get_category(200)
-    @toys        = Item.get_category(730)
-    @electronics = Item.get_category(965)
+    @ladis         = Item.get_category(1)
+    @mens          = Item.get_category(200)
+    @toys          = Item.get_category(730)
+    @electronics   = Item.get_category(965)
+    @chanels       = Item.ransack(brand_cont_any: ["シャネル","CHANEL"]).result
+    @louisvuittons = Item.ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result
+    @nikes          = Item.ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result
   end 
 
   def show
@@ -62,11 +65,18 @@ class ItemsController < ApplicationController
 
   end
 
+  def search
+      if params[:q][:title_or_description_cont] != ""
+        @name = params[:q][:title_or_description_cont] + " の"
+      end
+      @items = @search.result
+  end
+
   private
 
   def create_items_params
     # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, images_attributes: [:image]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: 1)
   end
 
   def set_item
@@ -75,7 +85,7 @@ class ItemsController < ApplicationController
 
   def update_items_params
     # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
   end
 
 end

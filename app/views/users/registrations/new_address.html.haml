@@ -3,33 +3,55 @@
     .signup-container
       %h2.signup-container__head
         住所入力
-      = form_with url: "#", local: true, class: "information" do |f|
+      = form_for @user, url: create_user_registration_path, method: :post, html: { class: 'information' } do |f|
         .information__group
           = f.label "郵便番号"
           %span.information__group__require  必須
           = f.text_field :postal_code, placeholder: "例) 1234567", class: "information__group__text"
+          - if @user.errors.messages[:phone_number].any?
+            %p.user_error
+              = @user.errors.messages[:phone_number][0]
+
         .information__group
           = f.label "都道府県"
           %span.information__group__require  必須
           .information__group__box
             %i.fa.fa-chevron-down.information__group__box__icon
-            = f.select :prefectures, Item.delivery_sources.keys,{}, class: "information__group__box__select"
+            = f.select :prefectures, User.prefectures.keys,{}, class: "information__group__box__select"
+          - if @user.errors.messages[:prefectures].any?
+            %p.user_error
+              = @user.errors.messages[:prefectures][0]
+
         .information__group
           = f.label "市区町村"
           %span.information__group__require  必須
           = f.text_field :city, placeholder: "例) 横浜市緑区", class: "information__group__text"
+          - if @user.errors.messages[:city].any?
+            %p.user_error
+              = @user.errors.messages[:city][0]
+
         .information__group
           = f.label "番地"
           %span.information__group__require  必須
           = f.text_field :house_number, placeholder: "例) 青山1-1-1", class: "information__group__text"
+          - if @user.errors.messages[:house_number].any?
+            %p.user_error
+              = @user.errors.messages[:house_number][0]
+
         .information__group
           = f.label "建物名"
           %span.information__group__arbitrary  任意
           = f.text_field :building_name, placeholder: "例) 柳ビル103", class: "information__group__text"
+          - if @user.errors.messages[:building_name].any?
+            %p.user_error
+              = @user.errors.messages[:building_name][0]
+
         .information__group
           = f.label "電話"
           %span.information__group__arbitrary  任意
           = f.text_field :phone_number, placeholder: "例) 09012345678", class: "information__group__text"
-        = f.submit "次へ進む", class: "information__submit"
+          - if @user.errors.messages[:phone_number].any?
+            %p.user_error
+              = @user.errors.messages[:phone_number][0]
 
-  
+        = f.submit "次へ進む", class: "information__submit"

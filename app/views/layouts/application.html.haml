@@ -12,13 +12,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     // gem "font-awesome-sass" だと、本番（CentOS 6.7）で "sass" インストールができないため
     %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous")
+    -# payjp読み込み
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
 
   %body{"data-controller" => controller_name, "data-action" => action_name}
     %noscript
       %iframe{height: "0", src: "https://www.googletagmanager.com/ns.html?id=GTM-KLPT5L5", style: "display:none;visibility:hidden", title: "googletagmanager", width: "0"}
     .item-index__wrapper
       .item-index__container
-
         / ヘッダー
         .item-index__header
           .item-index__header__contents
@@ -26,10 +27,12 @@
               .item-index__header__contents-top-logo
                 = link_to root_path do
                   = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
-              %form.search
-                %input.search__form{name: "keyword", placeholder: "何かお探しですか？", type: "search", value: ""}/
-                %button.search__button
-                  %i.fas.fa-search
+              =search_form_for @search, url: search_items_path ,html:{class:"search"} do |f|
+                =f.text_field :title_or_description_cont, placeholder: "何かお探しですか？", class: "search__form"
+                =f.submit class:"search-submit-btn"
+                =f.label "commit" do
+                  %button.search__button
+                    %i.fas.fa-search
             .item-index__header__contents-bottom
               .item-index__header__contents-bottom-left
                 .item-index__header__contents-bottom-left-type
@@ -40,9 +43,8 @@
                     .category-main__navigation__class.category-main__navigation-l
                       - @categories.each do |category|
                         =render partial: "categories/category_object", locals: {category: category}
-                    -# カテゴリーの階層構造。余裕があれば作る。（手動で非同期通信。子、孫を取得）
-                    -# .category-main__navigation__class.category-main__navigation-m
-                    -# .category-main__navigation__class.category-main__navigation-s
+                    .category-main__navigation__class.category-main__navigation-m
+                    .category-main__navigation__class.category-main__navigation-s
                 .item-index__header__contents-bottom-left-type
                   = link_to "/items/1/purchases/new" do
                     %i.fas.fa-tags.icon
@@ -55,7 +57,7 @@
                   = link_to "#" do
                     -# %i
                 %li.item-index__header__contents-bottom__list-item
-                  = link_to "/users/sign_up" do
+                  = link_to new_user_session_path do
                     %i.far.fa-bell
                     お知らせ
                 %li.item-index__header__contents-bottom__list-item

@@ -49,7 +49,7 @@
 |shipping_method|integer|null: false|
 |dealing|integer|null: false default: 0|
 |user|references|null: false, foreign_key: true|
-|brand|references|null: false, foreign_key: true|
+|brand|string||
  
 ### Association
 - belongs_to :user
@@ -73,26 +73,19 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|integer|null: false|
 |user|references|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ### Association
 - belongs_to :user
- 
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :items
  
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |text|text||
-|parent|references|index: true|
+|ancestry|string|index: true|
 
 ### Association
 - belongs_to :parent, class_name: :Category

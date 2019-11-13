@@ -66,21 +66,30 @@ group :test do
   gem "faker"
 end
 
-gem 'unicorn'
-gem 'carrierwave'
-gem 'pry-rails'
-gem 'fog-aws'
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 基本的な記述に使用
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'jquery-rails'
+gem 'pry-rails'
+# 画像アップロードに使用
+gem 'carrierwave'
+# パンくずリストに使用
+gem 'gretel'
+# 検索機能に使用
+gem 'ransack'
+# 認証に使用
 gem 'devise'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
-gem 'pry-rails'
-gem 'carrierwave'
-gem 'gretel'
+# pay.jpに使用
+gem 'payjp'
+# デプロイに使用
+gem 'unicorn'
+gem 'fog-aws'
+# カテゴリー管理に使用
+gem 'ancestry'

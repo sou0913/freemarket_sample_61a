@@ -1,104 +1,76 @@
-/ ヘッダーここまで
 
 / コンテンツ
-.item-index__main__wrapper
-  .item-index__main__contents
-    .item-index__main__contents__header
-      = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?465897195'
-    .item-index__main__contents__header-page
-      .item-index__main__contents__header-page--prev
-        %i.fas.fa-chevron-left
-      .item-index__main__contents__header-page--next
-        %i.fas.fa-chevron-right
-
-    .item-index__main__contents__categories
-      %h2.item-index__main__contents__categories-heading 人気のカテゴリー
-      .categories__list
-        %ul.categories__list-item
-          %li
-            = link_to "レディース", "#", class: "type" 
-          %li
-            = link_to "メンズ", "#", class: "type"
-          %li
-            = link_to "家電・スマホ・カメラ", "#", class: "type"
-          %li
-            = link_to "おもちゃ・ホビー・グッズ", "#", class: "type"
+.item-index__main__wrapper.detail-search-wrapper
+  .item-index__main__contents.detail-search-wrapper__contents
     .item-index__main__contents__categories-wrapper
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title レディース新着アイテム
+          %h3.new__item-header-title 
+            = @name
+            検索結果
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
-              -@ladis.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title メンズ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@mens.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection 
-          %div
-            %ul.new__item-collection-list
-              -@electronics.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@toys.each do |item|
-                =render partial: "item", locals:{item: item} 
-    .item-index__main__contents__brands
-      %h2.item-index__main__contents__brands-heading 人気のブランド
-      .brands__list
-        %ul.brands__list-item
-          %li
-            = link_to "シャネル", "#chanel-items", class: "brands"
-          %li
-            = link_to "ルイヴィトン", "#louisvuitton-items", class: "brands" 
-          %li
-            = link_to "ナイキ", "#nike-items", class: "brands" 
-    .item-index__main__contents__brands-wrapper
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title#chanel-items シャネル新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@chanels.each do |item|
-                =render partial: "item", locals:{item: item} 
+              =render @items
+  /詳細検索フォーム
+  =search_form_for @search, url: search_items_path, html:{class: "detail-search-form"} do |f|
+    %h3 詳細検索
+    .detail-search-form__sorts.detail-search-form__contents
+      =f.select( :sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc'}, {selected: params[:q][:sorts]}, {onschange: 'this.form.submit()'})
+    .detail-search-form__title.detail-search-form__contents
+      =f.label :title, "キーワードを追加する"
+      =f.text_field :title_or_description_cont
+    .detail-search-form__categories.detail-search-form__contents
+      =f.label :category_id, "カテゴリーを選択する"
+      =f.select :category_id_eq, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}
+    .detail-search-form__title.detail-search-form__contents
+      =f.label :brand, "ブランド名から探す"
+      =f.text_field :brand_cont
+    .detail-search-form__price.detail-search-form__contents
+      =f.label :price, "値段"
+      =f.number_field :price_gteq
+      以上〜
+      =f.number_field :price_lt
+      未満
+    .detail-search-form__status-boxes.detail-search-form__contents
+      =f.label :status, "商品の状態"
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, "", checked: true
+        指定なし
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 1 
+        新品、未使用
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 2 
+        未使用に近い
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 3 
+        目立った傷や汚れなし
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 4 
+        やや傷や汚れあり
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 5 
+        傷や汚れあり
+      .detail-search-form__status-boxes__tips
+        =f.radio_button :status_eq, 6 
+        全体的に状態が悪い
+    .detail-search-form__charges-boxes.detail-search-form__contents
+      =f.label :shipping_charge, "配送料の負担"
+      .detail-search-form__charges-boxes__tips
+        =f.radio_button :shipping_charge, "", checked: true
+        指定なし
+      .detail-search-form__charges-boxes__tips
+        =f.radio_button :shipping_charge, 1
+        送料込み(出品者負担)
+      .detail-search-form__charges-boxes__tips
+        =f.radio_button :shipping_charge, 2
+        着払い(購入者負担)
+    /後で
+    -# =f.button "クリア"
+    =f.submit "検索", class: "detail-search-form__submit"
 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title#louisvuitton-items ルイヴィトン新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@louisvuittons.each do |item|
-                =render partial: "item", locals:{item: item} 
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title#nike-items ナイキ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              -@nikes.each do |item|
-                =render partial: "item", locals:{item: item} 
 / コンテンツここまで
 
 / 出品ボタン

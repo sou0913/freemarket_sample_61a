@@ -1,3 +1,38 @@
-// 今後実施。二個目のselectbox
-var html = `<%=select :category,:name, @data, {prompt: "---"}, class: "exhibit-wrapper__main__details-right__select-wrapper__select"%>`
-$(".exhibit-wrapper__main__details-right__select-wrapper_category").append(html)
+switch ("<%=@type%>"){
+  case "l":
+    var html = `<%=select :item, :category_id, @children.map {|child| [child.name, child.id]}, {prompt: "---"}, class: "exhibit-category-m exhibit-wrapper__main__details-right__select-wrapper__select"%>
+                <i class="fas fa-angle-down exhibit-wrapper__main__details-right__select-wrapper__icon"></i>`;
+    if ($(".exhibit-category-m").length > 0) {
+      $(".exhibit-category-m").remove();
+    };
+    $(".category-append-m").append(html);
+    break;
+  case "m":
+    var html = `<%=select :item, :category_id, @children.map {|child| [child.name, child.id]}, {prompt: "---"}, class: "exhibit-category-s exhibit-wrapper__main__details-right__select-wrapper__select"%>
+                <i class="fas fa-angle-down exhibit-wrapper__main__details-right__select-wrapper__icon"></i>`;
+    if ($(".exhibit-category-s").length > 0) {
+      $(".exhibit-category-s").remove();
+    };
+    $(".category-append-s").append(html);
+    break;
+  case "t":
+  // ヘッダーlカテゴリーマウスホバー時
+    var appendhtml = ""
+    <%@children.limit(13).each do |child|%>
+      appendhtml += `<%=render partial: "category_object_m.html.erb", locals: {category: child}%>`;
+    <% end %> 
+    $(".category-main__navigation-m").empty();
+    $(".category-main__navigation-m").append(appendhtml);
+    break;
+  case "u":
+  // ヘッダーmカテゴリーマウスホバー時
+    var appendhtml2 = ""
+    <%@children.limit(13).each do |child|%>
+      appendhtml2 += `<%=render partial: "category_object_s.html.erb", locals: {category: child}%>`;
+    <% end %> 
+    $(".category-main__navigation-s").empty();
+    $(".category-main__navigation-s").append(appendhtml2);
+    break;
+  default:
+    console.log("index.js.erbでエラーが起きています");
+}
