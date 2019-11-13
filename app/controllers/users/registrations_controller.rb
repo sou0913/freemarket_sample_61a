@@ -44,7 +44,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     # カード情報のページをスキップしているためここでaddressのバリデーションチェックをします。本来はnew_cardで行います。
     validates_address
-    # binding.pry
     @user = User.new(
       nickname:              session[:nickname], # sessionに保存された値をインスタンスに渡す
       email:                 session[:email],
@@ -154,7 +153,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def validates_sms
     # smsで入力された値をsessionに保存
-    # binding.pry
     session[:phone_number] = user_params[:phone_number]
     @user = User.new(
       phone_number:          session[:phone_number],
@@ -184,7 +182,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:city]          = user_params[:city]
     session[:house_number]  = user_params[:house_number]
     session[:building_name] = user_params[:building_name]
-    # session[:phone_number]  = user_params[:phone_number]
     session[:phone_number_deliver]  = user_params[:phone_number_deliver]
 
     @user = User.new(
