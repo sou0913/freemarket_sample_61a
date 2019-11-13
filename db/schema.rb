@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_050319) do
     t.integer "prefectures", null: false
     t.string "city", null: false
     t.string "house_number", null: false
-    t.string "building_name", null: false
+    t.string "building_name"
     t.string "phone_number", null: false
     t.string "phone_number_deliver"
     t.index ["email"], name: "index_users_on_email", unique: true

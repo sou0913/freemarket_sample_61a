@@ -9,7 +9,7 @@ class Add11ColumnsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :prefectures, :integer, null: false
     add_column :users, :city, :string, null: false
     add_column :users, :house_number, :string, null: false
-    add_column :users, :building_name, :string, null: false
+    add_column :users, :building_name, :string
     add_column :users, :phone_number, :string, null: false, unique: true
   end
 end
