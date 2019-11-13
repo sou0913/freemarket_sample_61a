@@ -28,7 +28,7 @@
                 = link_to root_path do
                   = image_tag('https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg', class: 'mercari-logo', alt: 'Mercari')
               =search_form_for @search, url: search_items_path ,html:{class:"search"} do |f|
-                =f.text_field :title_or_description_cont, placeholder: "何かお探しですか？", class: "search__form"
+                =f.text_field :title_or_description_or_brand_cont, placeholder: "何かお探しですか？", class: "search__form"
                 =f.submit class:"search-submit-btn"
                 =f.label "commit" do
                   %button.search__button
@@ -36,7 +36,7 @@
             .item-index__header__contents-bottom
               .item-index__header__contents-bottom-left
                 .item-index__header__contents-bottom-left-type
-                  = link_to "#" do
+                  = link_to "#", class: "category-main__navigation__class__object" do
                     %i.fas.fa-bars.icon
                     カテゴリーから探す
                   .category-main__navigation
@@ -45,10 +45,15 @@
                         =render partial: "categories/category_object", locals: {category: category}
                     .category-main__navigation__class.category-main__navigation-m
                     .category-main__navigation__class.category-main__navigation-s
-                .item-index__header__contents-bottom-left-type
+                .item-index__header__contents-bottom-left-type.item-index__header__contents-bottom-left-type-brand
                   = link_to "/items/1/purchases/new" do
                     %i.fas.fa-tags.icon
                     ブランドから探す
+                  .brand-main__navigation
+                    .brand-main__navigation__class
+                      =link_to "シャネル", search_items_path(q:{brand_cont: "シャネル"}), class: "brand-main__navigation__class__object"
+                      =link_to "ルイヴィトン", search_items_path(q:{brand_cont: "ルイヴィトン"}), class: "brand-main__navigation__class__object"
+                      =link_to "ナイキ", search_items_path(q:{brand_cont: "ナイキ"}), class: "brand-main__navigation__class__object"
                   -# %div 
                     -# %ul
                       -# li 

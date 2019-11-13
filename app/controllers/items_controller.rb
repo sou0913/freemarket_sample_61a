@@ -4,14 +4,14 @@ class ItemsController < ApplicationController
 
   def index
     # 開発中動作を確認しやすくするため最新の10個取得
-    @items        = Item.all.order(id: :desc).limit(10)
-    @ladis         = Item.get_category(1)
-    @mens          = Item.get_category(200)
-    @toys          = Item.get_category(730)
-    @electronics   = Item.get_category(965)
-    @chanels       = Item.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(10)
-    @louisvuittons = Item.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(10)
-    @nikes          = Item.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(10)
+    @items        = Item.all.order(id: :desc).limit(8)
+    @ladis         = Item.where(category_id: Category.find(1).subtree_ids).limit(8)
+    @mens          = Item.where(category_id: Category.find(200).subtree_ids).limit(8)
+    @toys          = Item.where(category_id: Category.find(685).subtree_ids).limit(8)
+    @electronics   = Item.where(category_id: Category.find(898).subtree_ids).limit(8)
+    @chanels       = Item.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(8)
+    @louisvuittons = Item.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(8)
+    @nikes          = Item.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(8)
   end 
 
   def show
@@ -67,8 +67,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-      if params[:q][:title_or_description_cont] != ""
-        @name = params[:q][:title_or_description_cont] + " の"
+      if params[:q][:title_or_description_or_brand_cont].present?
+        @name = params[:q][:title_or_description_or_brand_cont] + " の"
       end
       @items = @search.result
   end

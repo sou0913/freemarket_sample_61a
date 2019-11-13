@@ -26,7 +26,7 @@
     .item-index__main__contents__categories-wrapper
       .new__item
         .new__item-header{name: "#"}
-          %h3.new__item-header-title 最新の10件
+          %h3.new__item-header-title 最新の8件
           = link_to "もっと見る", "#", class: "look"
         .new__item-collection
           %div
@@ -36,7 +36,7 @@
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title レディース新着アイテム
-          = link_to "もっと見る", "#", class: "look"
+          = link_to "もっと見る", category_path(id: 1), class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
@@ -45,7 +45,7 @@
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title メンズ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
+          = link_to "もっと見る", category_path(id:200), class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
@@ -54,7 +54,7 @@
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title 家電・スマホ・カメラ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
+          = link_to "もっと見る", category_path(id:898), class: "look"
         .new__item-collection 
           %div
             %ul.new__item-collection-list
@@ -63,7 +63,7 @@
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title おもちゃ・ホビー・グッズ新着アイテム
-          = link_to "もっと見る", "#", class: "look"
+          = link_to "もっと見る", category_path(id:685), class: "look"
         .new__item-collection
           %div
             %ul.new__item-collection-list
