@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
 $(function(){
   //フォーム指定
   $('#form').validate({
@@ -8,13 +9,18 @@ $(function(){
         required: true
       },
       "user[email]": {
-        required: true
+        required: true,
+        email: true
       },
       "user[password]": {
-        required: true
+        required: true,
+        minlength: 6,
+        maxlength: 128
       },
       "user[password_confirmation]": {
-        required: true
+        required: true,
+        minlength: 6,
+        maxlength: 128
       },
       "user[family_name]": {
         required: true
@@ -38,10 +44,15 @@ $(function(){
         required: true
       },
       "user[phone_number]": {
-        required: true
+        required: true,
+        number: true
+      },
+      "user[phone_number_deliver]": {
+        number: true
       },
       "user[postal_code]": {
-        required: true
+        required: true,
+        number: true
       },
       "user[prefectures]": {
         required: true
@@ -60,13 +71,18 @@ $(function(){
         required: '名前を入力してください'
       },
       "user[email]": {
-        required: 'メールアドレスを入力してください'
+        required: 'メールアドレスを入力してください',
+        email: 'メールアドレスを正確に入力してください'
       },
       "user[password]": {
-        required: 'パスワードを入力してください'
+        required: 'パスワードを入力してください',
+        minlength: '6文字以上で入力してください',
+        maxlength: '128文字以下で入力してください'
       },
       "user[password_confirmation]": {
-        required: 'パスワードを入力してください'
+      required: 'パスワードを入力してください',
+      minlength: '6文字以上で入力してください',
+      maxlength: '128文字以下で入力してください'
       },
       "user[family_name]": {
         required: '名字を入力してください'
@@ -90,10 +106,15 @@ $(function(){
         required: '生まれた日を入力してください'
       },
       "user[phone_number]": {
-        required: '電話番号を入力してください'
+        required: '電話番号を入力してください',
+        number: '数字のみ入力してください'
+      },
+      "user[phone_number_deliver]": {
+        number: '数字のみ入力してください'
       },
       "user[postal_code]": {
-        required: '郵便番号を入力してください'
+        required: '郵便番号を入力してください',
+        number: '数字のみ入力してください'
       },
       "user[prefectures]": {
         required: '都道府県を入力してください'
@@ -106,12 +127,12 @@ $(function(){
       }
     },
 
-    //電話番号
 
-    //エラーメッセージ出力箇所
+    // エラーメッセージ出力箇所
     // errorPlacement: function(error, element){
     //   error.insertAfter(element);
     // },
     // debug: true
   });
 });
+})
