@@ -93,3 +93,6 @@ gem 'unicorn'
 gem 'fog-aws'
 # カテゴリー管理に使用
 gem 'ancestry'
+# おすすめ機能に使用
+gem 'redis-rails'
+gem 'recommendify'
