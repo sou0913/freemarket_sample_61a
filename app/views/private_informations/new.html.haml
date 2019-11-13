@@ -25,13 +25,16 @@
                 %i.fa.fa-chevron-right
             .information__group
               = f.label "お名前"
-              %p 田中太郎
+              %p #{current_user.family_name}#{current_user.first_name}
+              -# %p 田中太郎
             .information__group
               = f.label "お名前カナ"
-              %p タナカタロウ
+              %p #{current_user.family_kana}#{current_user.first_kana}
+              -# %p タナカタロウ
             .information__group
               = f.label "生年月日"
-              %p 2000/01/01
+              %p #{current_user.birthday}
+              -# %p 2000/01/01
             .information__group
               = f.label "郵便番号"
               %span.information__group__arbitrary  任意
