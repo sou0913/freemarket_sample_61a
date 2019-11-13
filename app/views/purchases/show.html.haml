@@ -1,0 +1,31 @@
+.perchace-new 
+  = render "purchases/header"
+
+  .perchace-show__main
+    .perchace-show__main__header 
+      %span
+        %i.far.fa-clock
+        %h4 発送をお待ちください 
+        %br
+        %p 出品者からの発送通知をお待ちください
+    .perchace-show__main__title
+      .perchace-show__main__title-wrap
+        %h3 購入が完了しました
+
+    .perchace-show__main__content
+      .perchace-show__main__content__item
+        .perchace-show__main__content__item__image
+          -# アイテム画像
+          = image_tag @item.images[0].image.url, alt: 'アイテム画像です', height: '200px', width: '200px', class: ''
+          .perchace-show__main__content__item__name 
+            = @item.title
+
+    .perchace-show__main__price
+      .perchace-show__main__price-wrap
+        %h4 
+          = "￥ #{@item.price}"
+        %p
+          = @item.shipping_charge === "送料込み(出品者負担)" ? "送料込み" : "着払い"
+
+  = render "purchases/footer"      
+

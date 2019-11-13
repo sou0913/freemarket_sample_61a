@@ -1,6 +1,6 @@
 .signup-container {
   width: 700px;
-  margin: 0 auto;
+  margin: 50px auto;
   background-color: #fff;
   padding-bottom: 34px;
   &__head {
@@ -186,4 +186,13 @@
   color: #ea352d;
   line-height: 1.5;
   font-size: 14px;
+}
+
+label.error {
+  display: block;
+  width: 100%;
+  margin: 5px 0 0 0;
+  color: red;
+  font-size: 0.9em;
+  font-weight: bolder;
 }

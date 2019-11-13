@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
-    resources :purchases do
+    resources :purchases, only: [:new, :show] do
       collection do 
         post :pay
       end

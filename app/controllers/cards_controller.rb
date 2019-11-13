@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   Dotenv.load
   before_action :set_card, except: :create
   before_action :pay_key, only: [:create, :show, :destroy]
+  before_action :user_set, only: [:index, :new, :show]
 
   def index
   end
@@ -44,6 +45,10 @@ class CardsController < ApplicationController
 
   def pay_key 
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+  end
+
+  def user_set
+    @user = User.find(1)
   end
 
 end
