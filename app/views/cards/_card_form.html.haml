@@ -1,0 +1,41 @@
+.information
+  .information__group
+    = f.label "カード番号"
+    %span.information__group__require  必須
+    = f.text_field :number, placeholder: "半角数字のみ", class: "information__group__text", id: "card_number"
+    %ul.information__group__cards-list
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?465897195", width: 49, height: 20
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?465897195", width: 34, height: 20
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?465897195", width: 30, height: 20
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?465897195", width: 32, height: 20
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?465897195", width: 21, height: 20
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?465897195", width: 32, height: 20
+      %li
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?465897195", width: 32, height: 20
+  .information__group
+    = f.label "有効期限"
+    %span.information__group__require  必須
+    %br
+    .information__group__half-box
+      = f.select :expiration_month, Card.expiration_months.keys,{}, class: "information__group__half-box__select", id: "card_month"
+      %i.fa.fa-chevron-down.information__group__half-box__icon
+      %span 月
+    .information__group__half-box
+      = f.select :prefectures, [2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029],{}, class: "information__group__half-box__select", id: "card_year"
+      %i.fa.fa-chevron-down.information__group__half-box__icon
+      %span 年
+    .information__group
+      = f.label "セキュリティコード"
+      %span.information__group__require  必須
+      = f.text_field "", placeholder: "カード背面４桁もしくは３桁の番号", class: "information__group__text", id: "card_cvc"
+    %p.information__link
+      = link_to "#" do
+        カード裏面の番号とは?
+  
+  = f.submit "追加する", class: "information__submit", id: "token_submit"

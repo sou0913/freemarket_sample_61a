@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
-
+  before_action :set_canbuy, only: :index
   def index
-    # 開発中動作を確認しやすくするため最新の10個取得
-    @items        = Item.all.order(id: :desc).limit(8)
-    @ladis         = Item.where(category_id: Category.find(1).subtree_ids).limit(8)
-    @mens          = Item.where(category_id: Category.find(200).subtree_ids).limit(8)
-    @toys          = Item.where(category_id: Category.find(685).subtree_ids).limit(8)
-    @electronics   = Item.where(category_id: Category.find(898).subtree_ids).limit(8)
-    @chanels       = Item.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(8)
-    @louisvuittons = Item.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(8)
-    @nikes          = Item.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(8)
+    # 開発中動作を確認しやすくするため最新の8個取得
+    @items        = @canBuy.order(id: :desc).limit(8)
+    @ladis         = @canBuy.where(category_id: Category.find(1).subtree_ids).limit(8)
+    @mens          = @canBuy.where(category_id: Category.find(200).subtree_ids).limit(8)
+    @toys          = @canBuy.where(category_id: Category.find(685).subtree_ids).limit(8)
+    @electronics   = @canBuy.where(category_id: Category.find(898).subtree_ids).limit(8)
+    @chanels       = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(8)
+    @louisvuittons = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(8)
+    @nikes          = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(8)
   end 
 
   def show
@@ -82,6 +82,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_canbuy
+    @canBuy = Item.where(dealing: 0)
   end
 
   def update_items_params

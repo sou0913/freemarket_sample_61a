@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         $("#token_submit").append(
           $('<input type="hidden" name="payjp-token">').val(response.id)
         );
+        // document.inputForm.submit();
         document.inputForm.submit();
           alert("登録が完了しました");
         } else {
