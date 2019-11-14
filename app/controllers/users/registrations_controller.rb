@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'sign_up', only: [:new, :sms, :new_address, :sns, :complete]
-
+  layout 'sign_up', only: [:new, :sms, :new_address, :sns, :new_card, :complete]
+  before_action :pay_key, only: [:new_card]
   def index
   end
 
@@ -30,20 +30,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user = User.new # 新規インスタンス作成
   end
 
-  # def new_card
-  #   # new_addressで入力された値をsessionに保存
-  #   session[:postal_code] = user_params[:postal_code]
-  #   session[:prefectures] = user_params[:prefectures]
-  #   session[:city] = user_params[:city]
-  #   session[:house_number] = user_params[:house_number]
-  #   session[:building_name] = user_params[:building_name]
-  #   session[:phone_number] = user_params[:phone_number]
-  #   @user = User.new # 新規インスタンス作成
-  # end
+  def new_card
+    validates_address
+    @card = Card.new
+  end
 
   def create
     # カード情報のページをスキップしているためここでaddressのバリデーションチェックをします。本来はnew_cardで行います。
-    validates_address
     @user = User.new(
       nickname:              session[:nickname], # sessionに保存された値をインスタンスに渡す
       email:                 session[:email],
@@ -63,14 +56,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
       city:                  session[:city],
       house_number:          session[:house_number],
       building_name:         session[:building_name],
-      phone_number:          session[:phone_number]
+      phone_number:          session[:phone_number],
+      phone_number_deliver:  session[:phone_number_deliver]
     )
     if session[:user_attributes].present?
       @user.uid           = session[:user_attributes]["uid"]
       @user.provider      = session[:user_attributes]["provider"]
     end
-
-    if @user.save
+    @user.save
+    customer = Payjp::Customer.create(card: params["payjp-token"])
+    @card = Card.new(user_id: @user.id, customer_id: customer.id, card_id: customer.default_card)
+    if @card.save
       reset_session
       # ログインするための情報を保管
       session[:id] = @user.id
@@ -104,7 +100,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :city,
       :house_number,
       :building_name,
-      :phone_number
+      :phone_number,
+      :phone_number_deliver
   )
   end
 
@@ -153,7 +150,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # smsで入力された値をsessionに保存
     session[:phone_number] = user_params[:phone_number]
     @user = User.new(
-      phone_number:          user_params[:phone_number],
+      phone_number:          session[:phone_number],
       nickname:              session[:nickname],
       email:                 session[:email],
       password:              session[:password],
@@ -180,7 +177,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:city]          = user_params[:city]
     session[:house_number]  = user_params[:house_number]
     session[:building_name] = user_params[:building_name]
-    session[:phone_number]  = user_params[:phone_number]
+    session[:phone_number_deliver]  = user_params[:phone_number_deliver]
 
     @user = User.new(
       nickname:              session[:nickname],
@@ -199,8 +196,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       city:                  user_params[:city],
       house_number:          user_params[:house_number],
       building_name:         user_params[:building_name],
-      phone_number:          user_params[:phone_number],
+      phone_number:          session[:phone_number],
+      phone_number_deliver:  user_params[:phone_number_deliver]
     )
     render :new_address unless @user.valid?
+  end
+
+  def pay_key 
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
   end
 end

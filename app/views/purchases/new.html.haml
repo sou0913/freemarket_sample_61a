@@ -21,8 +21,8 @@
           %p 支払い金額
           %p 
             = @item.price
-        -# pay.jpフォームへ変更
-        %script.payjp-button{"data-key" => "pk_test_a2c13e209c813bb43fed001f", src: "https://checkout.pay.jp", type: "text/javascript", "data-text" => "購入する"} 
+        =form_with url: pay_item_purchases_path(@item), local: true do |f|
+          =f.submit "購入する",class:"purchase-final-button" 
       .perchace-new__main__address
         .perchace-new__main__address-wrap
           %h4 配送先
