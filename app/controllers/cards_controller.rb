@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   require "payjp"
   require "dotenv"
   Dotenv.load
-  before_action :set_card, except: :create
+  before_action :set_card, except: [:new,:create]
   before_action :pay_key, only: [:create, :show, :destroy]
   before_action :user_set, only: [:index, :new, :show]
 
@@ -10,6 +10,7 @@ class CardsController < ApplicationController
   end
 
   def new
+    @card = Card.new
   end
 
   def create

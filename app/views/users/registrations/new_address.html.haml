@@ -3,7 +3,7 @@
     .signup-container
       %h2.signup-container__head
         住所入力
-      = form_for @user, url: create_user_registration_path, method: :post, html: { class: 'information', id: 'form' } do |f|
+      = form_for @user, url: new_card_users_path, method: :get, html: { class: 'information', id: 'form' } do |f|
         .information__group
           = f.label "郵便番号"
           %span.information__group__require  必須
