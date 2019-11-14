@@ -52,10 +52,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # 管理者
-    user = User.find(1) 
     if @item.destroy
-      redirect_to listing_user_path(user)
+      redirect_to listing_user_path(current_user)
     else
       flash.now[:alert] = "削除が失敗しました"
       render action: :index
@@ -76,8 +74,7 @@ class ItemsController < ApplicationController
   private
 
   def create_items_params
-    # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -89,8 +86,7 @@ class ItemsController < ApplicationController
   end
 
   def update_items_params
-    # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: current_user.id)
   end
 
 end
