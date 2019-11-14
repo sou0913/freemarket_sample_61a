@@ -25,9 +25,10 @@ class User < ApplicationRecord
   presence: true,
   confirmation: { message: "パスワードとパスワード（確認）が一致しません" },
   length: { in: 6..128, message: "パスワードは6文字以上128文字以下で入力してください" },
-  format: { with: /\A(?=.*[^\d])+/, allow_blank: true, message: "数字のみのパスワードは設定できません" }
+  format: { with: /\A(?=.*[^\d])+/, allow_blank: true, message: "数字のみのパスワードは設定できません" },
+  on: :create
 
-  validates :password_confirmation, presence: true
+  validates :password_confirmation, presence: true,  on: :create
 
   validates :family_name,   presence: true
   validates :first_name,    presence: true
