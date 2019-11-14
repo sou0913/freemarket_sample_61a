@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
-
+  before_action :set_canbuy, only: :index
   def index
-    # 開発中動作を確認しやすくするため最新の10個取得
-    @items        = Item.all.order(id: :desc).limit(8)
-    @ladis         = Item.where(category_id: Category.find(1).subtree_ids).limit(8)
-    @mens          = Item.where(category_id: Category.find(200).subtree_ids).limit(8)
-    @toys          = Item.where(category_id: Category.find(685).subtree_ids).limit(8)
-    @electronics   = Item.where(category_id: Category.find(898).subtree_ids).limit(8)
-    @chanels       = Item.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(8)
-    @louisvuittons = Item.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(8)
-    @nikes          = Item.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(8)
+    # 開発中動作を確認しやすくするため最新の8個取得
+    @items        = @canBuy.order(id: :desc).limit(8)
+    @ladis         = @canBuy.where(category_id: Category.find(1).subtree_ids).limit(8)
+    @mens          = @canBuy.where(category_id: Category.find(200).subtree_ids).limit(8)
+    @toys          = @canBuy.where(category_id: Category.find(685).subtree_ids).limit(8)
+    @electronics   = @canBuy.where(category_id: Category.find(898).subtree_ids).limit(8)
+    @chanels       = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(8)
+    @louisvuittons = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(8)
+    @nikes          = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(8)
   end 
 
   def show
@@ -52,10 +52,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # 管理者
-    user = User.find(1) 
     if @item.destroy
-      redirect_to listing_user_path(user)
+      redirect_to listing_user_path(current_user)
     else
       flash.now[:alert] = "削除が失敗しました"
       render action: :index
@@ -76,17 +74,19 @@ class ItemsController < ApplicationController
   private
 
   def create_items_params
-    # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
 
+  def set_canbuy
+    @canBuy = Item.where(dealing: 0)
+  end
+
   def update_items_params
-    # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: current_user.id)
   end
 
 end

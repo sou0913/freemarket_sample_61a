@@ -8,9 +8,11 @@ class PurchasesController < ApplicationController
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
-      card: params['payjp-token'],
+      customer: current_user.cards[0].customer_id,
       currency: 'jpy'
     )
+    Purchase.create(item_id: @item.id, user_id: current_user.id)
+    @item.update(dealing: 1)
     redirect_to action: :show, id: @item.id
   end
 

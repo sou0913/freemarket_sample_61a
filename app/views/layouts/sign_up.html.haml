@@ -12,7 +12,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     // gem "font-awesome-sass" だと、本番（CentOS 6.7）で "sass" インストールができないため
     %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous")
-    
+    -# payjp読み込み
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     
   %body{"data-controller" => controller_name, "data-action" => action_name}
 
