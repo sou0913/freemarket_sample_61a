@@ -63,7 +63,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       city:                  session[:city],
       house_number:          session[:house_number],
       building_name:         session[:building_name],
-      phone_number:          session[:phone_number]
+      phone_number:          session[:phone_number],
+      phone_number_deliver:  session[:phone_number_deliver]
     )
     if session[:user_attributes].present?
       @user.uid           = session[:user_attributes]["uid"]
@@ -104,7 +105,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :city,
       :house_number,
       :building_name,
-      :phone_number
+      :phone_number,
+      :phone_number_deliver
   )
   end
 
@@ -153,7 +155,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # smsで入力された値をsessionに保存
     session[:phone_number] = user_params[:phone_number]
     @user = User.new(
-      phone_number:          user_params[:phone_number],
+      phone_number:          session[:phone_number],
       nickname:              session[:nickname],
       email:                 session[:email],
       password:              session[:password],
@@ -180,7 +182,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:city]          = user_params[:city]
     session[:house_number]  = user_params[:house_number]
     session[:building_name] = user_params[:building_name]
-    session[:phone_number]  = user_params[:phone_number]
+    session[:phone_number_deliver]  = user_params[:phone_number_deliver]
 
     @user = User.new(
       nickname:              session[:nickname],
@@ -199,7 +201,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       city:                  user_params[:city],
       house_number:          user_params[:house_number],
       building_name:         user_params[:building_name],
-      phone_number:          user_params[:phone_number],
+      phone_number:          session[:phone_number],
+      phone_number_deliver:  user_params[:phone_number_deliver]
     )
     render :new_address unless @user.valid?
   end
