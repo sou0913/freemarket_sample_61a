@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:edit,:update,:destroy,:my_item]
+  before_action :set_item, only: [:edit,:update,:destroy,:my_item,:show]
   before_action :set_canbuy, only: :index
   def index
     # 開発中動作を確認しやすくするため最新の8個取得
@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
   end 
 
   def show
-    @item = Item.find(params[:id])
     @items = Item.limit(6).order('id')
   end
 

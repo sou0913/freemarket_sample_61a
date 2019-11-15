@@ -31,8 +31,9 @@ describe ItemsController do
   describe "GET #show" do
     it "assigns the requested item to @item" do
       item = create(:item)
-      get :show, params: { id: 1 }
-      expect(assigns(:item)).to eq(item)
+      user = create(:user)
+      get :show, params: { id: item.id }
+      expect(assigns(:item)).to match(item)
     end
     it "renders the :show template" do
       get :show, params: { id: 1 }
