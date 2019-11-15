@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', function(){
               <img src= '${img}' class: 'exhibit-image'>
             </div>
             <div class="exhibit-wrapper__main__image__cards__card__button">
-              <p>編集(仮)</p> 
               <p class="item-image__delete-button__append" data-image=${number}>削除</p>
             </div>
           </div>`;
