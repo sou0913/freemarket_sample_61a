@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:edit,:update,:destroy,:my_item,:show]
   before_action :set_canbuy, only: :index
+  skip_before_action :set_search, only: :search
   def index
     # 開発中動作を確認しやすくするため最新の8個取得
     @items        = @canBuy.order(id: :desc).limit(8)
@@ -51,10 +52,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # 管理者
-    user = User.find(1) 
     if @item.destroy
-      redirect_to listing_user_path(user)
+      redirect_to listing_user_path(current_user)
     else
       flash.now[:alert] = "削除が失敗しました"
       render action: :index
@@ -69,14 +68,19 @@ class ItemsController < ApplicationController
       if params[:q][:title_or_description_or_brand_cont].present?
         @name = params[:q][:title_or_description_or_brand_cont] + " の"
       end
+      if params[:q][:category_id_in].present?
+        root_id = params[:q][:category_id_in]
+        children_ids = Category.find(root_id).subtree_ids
+        params[:q][:category_id_in] = children_ids
+      end
+      @search = Item.ransack(params[:q])
       @items = @search.result
   end
 
   private
 
   def create_items_params
-    # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -88,8 +92,7 @@ class ItemsController < ApplicationController
   end
 
   def update_items_params
-    # 認証機能できたらcurrent_userに変更する
-    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: 1)
+    params.require(:item).permit(:title, :description, :status, :shipping_charge, :delivery_source, :shipping_day, :shipping_method, :price, :category_id, :brand, images_attributes: [:image, :id, :_destroy]).merge(user_id: current_user.id)
   end
 
 end

@@ -14,7 +14,7 @@
   .devise-main__registration
     %h2.devise-main__registration__head 新規会員登録
     .devise-main__registration__link
-      = link_to new_user_registration_path, class: 'devise-main__registration__link__email' do
+      = link_to new_user_registration_path, class: 'devise-main__registration__link__email',data:{turbolinks:{action:"replace"}} do
         %i.fa.fa-envelope
         メールアドレスで登録
       = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'devise-main__registration__link__facebook'  do

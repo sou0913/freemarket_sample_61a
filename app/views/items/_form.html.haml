@@ -15,8 +15,7 @@
         .exhibit-wrapper__main__image__cards{data:{exhibitid:0}}
           %label.exhibit-wrapper__main__image__drag-wrapper
             .exhibit-wrapper__main__image__drag
-              %p ドラッグアンドドロップ
-              %p またはクリックしてファイルをアップロード
+              %p クリックしてファイルをアップロード
             - item.images.each_with_index do |image, j|
               =image_tag image.image.to_s, class: "item-edit__image item-edit__image-#{j}"
             = f.fields_for :images do |i|
