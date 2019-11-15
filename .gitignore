@@ -30,3 +30,5 @@ config/secrets.yml
 .DS_Store
 /.env
 public/uploads
+db/seeds.rb
+db/fixtures/
