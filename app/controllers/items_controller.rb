@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
   before_action :set_canbuy, only: :index
+  skip_before_action :set_search, only: :search
   def index
     if user_signed_in?
       @recommends = self.class.helpers.recommend(current_user, @canBuy)
@@ -71,6 +72,12 @@ class ItemsController < ApplicationController
       if params[:q][:title_or_description_or_brand_cont].present?
         @name = params[:q][:title_or_description_or_brand_cont] + " の"
       end
+      if params[:q][:category_id_in].present?
+        root_id = params[:q][:category_id_in]
+        children_ids = Category.find(root_id).subtree_ids
+        params[:q][:category_id_in] = children_ids
+      end
+      @search = Item.ransack(params[:q])
       @items = @search.result.where(dealing: 0)
   end
 
