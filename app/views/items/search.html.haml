@@ -24,7 +24,7 @@
         =f.text_field :title_or_description_cont
       .detail-search-form__categories.detail-search-form__contents
         =f.label :category_id, "カテゴリーを選択する"
-        =f.select :category_id_eq, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}
+        =f.select :category_id_in, @categories.map {|category| [category.name, category.id]}, {prompt: "---"}
       .detail-search-form__title.detail-search-form__contents
         =f.label :brand, "ブランド名から探す"
         =f.text_field :brand_cont
