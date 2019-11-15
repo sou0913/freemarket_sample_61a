@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function(){
   var controller = $('body').data("controller");
-  var action = $('body').data("action");
   var counter = $(".exhibit-wrapper__main__image__cards");
   try {
     if (controller != "items"){throw new Error(e)}

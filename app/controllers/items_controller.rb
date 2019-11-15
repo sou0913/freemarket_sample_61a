@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
   before_action :set_canbuy, only: :index
+  skip_before_action :set_search, only: :search
   def index
     # 開発中動作を確認しやすくするため最新の8個取得
     @items        = @canBuy.order(id: :desc).limit(8)
@@ -68,6 +69,12 @@ class ItemsController < ApplicationController
       if params[:q][:title_or_description_or_brand_cont].present?
         @name = params[:q][:title_or_description_or_brand_cont] + " の"
       end
+      if params[:q][:category_id_in].present?
+        root_id = params[:q][:category_id_in]
+        children_ids = Category.find(root_id).subtree_ids
+        params[:q][:category_id_in] = children_ids
+      end
+      @search = Item.ransack(params[:q])
       @items = @search.result
   end
 
