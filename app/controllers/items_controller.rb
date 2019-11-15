@@ -3,8 +3,11 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
   before_action :set_canbuy, only: :index
   def index
+    if user_signed_in?
+      @recommends = self.class.helpers.recommend(current_user, @canBuy)
+    end
     # 開発中動作を確認しやすくするため最新の8個取得
-    @items        = @canBuy.order(id: :desc).limit(8)
+    @items         = @canBuy.order(id: :desc).limit(8)
     @ladis         = @canBuy.where(category_id: Category.find(1).subtree_ids).limit(8)
     @mens          = @canBuy.where(category_id: Category.find(200).subtree_ids).limit(8)
     @toys          = @canBuy.where(category_id: Category.find(685).subtree_ids).limit(8)
@@ -68,7 +71,7 @@ class ItemsController < ApplicationController
       if params[:q][:title_or_description_or_brand_cont].present?
         @name = params[:q][:title_or_description_or_brand_cont] + " の"
       end
-      @items = @search.result
+      @items = @search.result.where(dealing: 0)
   end
 
   private
@@ -82,7 +85,11 @@ class ItemsController < ApplicationController
   end
 
   def set_canbuy
-    @canBuy = Item.where(dealing: 0)
+    if user_signed_in?
+      @canBuy = Item.where(dealing: 0).where.not(user_id: current_user.id)
+    else
+      @canBuy = Item.where(dealing: 0)
+    end
   end
 
   def update_items_params
