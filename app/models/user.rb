@@ -8,8 +8,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchaces
   has_many :cards
-  has_one :private_information
-  has_one :address
+  has_one  :private_information
 
   validates :nickname,
   presence: true,
