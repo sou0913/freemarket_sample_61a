@@ -96,4 +96,4 @@ gem 'ancestry'
 # おすすめ機能に使用
 gem 'redis-rails'
 gem 'hiredis'
-gem 'recommendify'
+gem 'recommendify', git: "https://github.com/danmorin/recommendify.git", branch: "native"
