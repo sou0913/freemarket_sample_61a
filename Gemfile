@@ -95,4 +95,5 @@ gem 'fog-aws'
 gem 'ancestry'
 # おすすめ機能に使用
 gem 'redis-rails'
+gem 'hiredis'
 gem 'recommendify'
