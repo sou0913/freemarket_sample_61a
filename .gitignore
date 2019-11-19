@@ -30,4 +30,4 @@ config/secrets.yml
 .DS_Store
 /.env
 public/uploads
-db/fixtures/
+

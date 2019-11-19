@@ -418,7 +418,7 @@ end
 end
 
 [*(1..300)].each do |i|
-  Image.create(image: open("#{Rails.root}/db/fixtures/sample#{image.sample}.jpg"), item_id:i)
+  Image.create(image: open("#{Rails.root}/db/fixtures/sample.jpg"), item_id:i)
 end
 [*(301..310)].each do |i|
   Image.create(image: open("#{Rails.root}/db/fixtures/earphone.jpg"), item_id:i)
