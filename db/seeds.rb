@@ -1,5 +1,5 @@
 User.create(nickname: 'admin', profile: 'hello!', email: 'admin@example.com', password: 'password', password_confirmation: "password",
-family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+family_name: "mercari", first_name: "teama", family_kana: "メルカリ", first_kana: "チームA", birthday: "2019/02/02", postal_code:"a",prefectures:2,
 city: "c", house_number:"1", building_name:"2", phone_number:"3")
 User.create(nickname: 'admin', profile: 'hello!', email: 'admin1@example.com', password: 'password', password_confirmation: "password",
 family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
@@ -390,7 +390,21 @@ end
   category_id: categories.sample, 
   brand: brands.sample)
 end
-[*(301..310)].each do |i|
+[*(301..305)].each do |i|
+  Item.create!(price: price.sample, 
+  description: "イヤホン#{i}です", 
+  title: "イヤホン#{i}", 
+  status: status.sample, 
+  shipping_charge: shipping_charge.sample, 
+  delivery_source: delivery_source.sample,
+  shipping_day: shipping_day.sample, 
+  shipping_method: shipping_method.sample,
+  user_id: 1,
+  category_id: 942, 
+  brand: brands.sample,
+  dealing: 1)
+end
+[*(306..310)].each do |i|
   Item.create!(price: price.sample, 
   description: "イヤホン#{i}です", 
   title: "イヤホン#{i}", 
@@ -403,7 +417,22 @@ end
   category_id: 942, 
   brand: brands.sample)
 end
-[*(311..320)].each do |i|
+[*(311..315)].each do |i|
+  Item.create!(price: price.sample, 
+  description: "ダンベル#{i}です", 
+  title: "ダンベル#{i}", 
+  status: status.sample, 
+  shipping_charge: shipping_charge.sample, 
+  delivery_source: delivery_source.sample,
+  shipping_day: shipping_day.sample, 
+  shipping_method: shipping_method.sample,
+  user_id: 1,
+  category_id: 1013, 
+  brand: brands.sample,
+  dealing: 1)
+end
+
+[*(316..320)].each do |i|
   Item.create!(price: price.sample, 
   description: "ダンベル#{i}です", 
   title: "ダンベル#{i}", 
