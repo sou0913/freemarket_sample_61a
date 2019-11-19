@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:edit,:update,:destroy,:my_item]
   before_action :set_canbuy, only: :index
+  before_action :authenticate_user!, except: [:index, :show, :search]
   skip_before_action :set_search, only: :search
   def index
     if user_signed_in?
