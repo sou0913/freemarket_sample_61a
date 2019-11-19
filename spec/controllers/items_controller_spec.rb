@@ -28,6 +28,25 @@ describe ItemsController do
       expect(assigns(:item)).to match(item)
     end
   end
+  describe "GET #show" do
+    it "assigns the requested item to @item" do
+      item = create(:item)
+      get :show, params: { id: 1 }
+      expect(assigns(:item)).to eq(item)
+    end
+    it "renders the :show template" do
+      get :show, params: { id: 1 }
+      expect(response).to render_template :show
+    end
+  end
+  describe "DELETE #destroy" do
+    it "redirect to listing_user_path" do
+      user = create(:user)
+      item = create(:item)
+      delete :destroy, params: {id: item.id}
+      expect(response).to redirect_to(listing_user_path(user))
+    end
+  end 
   describe "DELETE #destroy" do
     it "redirect to listing_user_path" do
       user = create(:user)
@@ -37,4 +56,3 @@ describe ItemsController do
     end
   end 
 end
-

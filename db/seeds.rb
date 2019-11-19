@@ -1,6 +1,34 @@
 User.create(nickname: 'admin', profile: 'hello!', email: 'admin@example.com', password: 'password', password_confirmation: "password",
 family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
 city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin1@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin2@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin3@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin4@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin5@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin6@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin7@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin8@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+User.create(nickname: 'admin', profile: 'hello!', email: 'admin9@example.com', password: 'password', password_confirmation: "password",
+family_name: "sasaki", first_name: "sou", family_kana: "ササキ", first_kana: "ソウ", birthday: "2019/02/02", postal_code:"a",prefectures:2,
+city: "c", house_number:"1", building_name:"2", phone_number:"3")
+
 
 
 # レディース
@@ -349,7 +377,7 @@ roots.each do |root|
   end
 end
 
-[*(1..200)].each do |i|
+[*(1..300)].each do |i|
   Item.create!(price: price.sample, 
   description: "サンプルデータ#{i}です", 
   title: "サンプル#{i}", 
@@ -362,7 +390,50 @@ end
   category_id: categories.sample, 
   brand: brands.sample)
 end
+[*(301..310)].each do |i|
+  Item.create!(price: price.sample, 
+  description: "イヤホン#{i}です", 
+  title: "イヤホン#{i}", 
+  status: status.sample, 
+  shipping_charge: shipping_charge.sample, 
+  delivery_source: delivery_source.sample,
+  shipping_day: shipping_day.sample, 
+  shipping_method: shipping_method.sample,
+  user_id: 1,
+  category_id: 942, 
+  brand: brands.sample)
+end
+[*(311..320)].each do |i|
+  Item.create!(price: price.sample, 
+  description: "ダンベル#{i}です", 
+  title: "ダンベル#{i}", 
+  status: status.sample, 
+  shipping_charge: shipping_charge.sample, 
+  delivery_source: delivery_source.sample,
+  shipping_day: shipping_day.sample, 
+  shipping_method: shipping_method.sample,
+  user_id: 1,
+  category_id: 1013, 
+  brand: brands.sample)
+end
 
-[*(1..200)].each do |i|
+[*(1..300)].each do |i|
   Image.create(image: open("#{Rails.root}/db/fixtures/sample#{image.sample}.jpg"), item_id:i)
 end
+[*(301..310)].each do |i|
+  Image.create(image: open("#{Rails.root}/db/fixtures/earphone.jpg"), item_id:i)
+end
+[*(311..320)].each do |i|
+  Image.create(image: open("#{Rails.root}/db/fixtures/dumbbells.jpg"), item_id:i)
+end
+
+Purchase.create(user_id: 2, item_id: 301)
+Purchase.create(user_id: 2, item_id: 311)
+Purchase.create(user_id: 3, item_id: 302)
+Purchase.create(user_id: 3, item_id: 312)
+Purchase.create(user_id: 4, item_id: 303)
+Purchase.create(user_id: 4, item_id: 313)
+Purchase.create(user_id: 5, item_id: 304)
+Purchase.create(user_id: 5, item_id: 314)
+Purchase.create(user_id: 6, item_id: 305)
+Purchase.create(user_id: 6, item_id: 315)

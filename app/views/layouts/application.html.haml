@@ -14,7 +14,7 @@
     %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous")
     -# payjp読み込み
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
-
+    = favicon_link_tag('favicon.ico')
   %body{"data-controller" => controller_name, "data-action" => action_name}
     %noscript
       %iframe{height: "0", src: "https://www.googletagmanager.com/ns.html?id=GTM-KLPT5L5", style: "display:none;visibility:hidden", title: "googletagmanager", width: "0"}

@@ -1,4 +1,5 @@
 Rails.application.configure do
+  ENV["REDIS"] = "localhost:6379"
   # config.web_console.whitelisted_ips = "0.0.0.0/0"
   # Settings specified here will take precedence over those in config/application.rb.
 
