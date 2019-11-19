@@ -1,4 +1,7 @@
-Recommendify.redis = Redis.new(host: "localhost", port: "6379")
+require 'redis'
+
+uri = URI.parse(ENV['REDIS'])
+Recommendify.redis = Redis.new(host: uri.host, port: uri.port)
 
 class MyRecommender < Recommendify::Base
 

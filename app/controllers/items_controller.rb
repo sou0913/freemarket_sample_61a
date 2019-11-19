@@ -33,9 +33,11 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(create_items_params)
+    
     # 写真0枚のエラーメッセージ用
     @image = Image.new
     if @item.save
+
       redirect_to :root
     end
   end

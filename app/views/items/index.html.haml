@@ -24,16 +24,17 @@
           %li
             = link_to "おもちゃ・ホビー・グッズ", "#", class: "type"
     .item-index__main__contents__categories-wrapper
-      .new__item
-        .new__item-header{name: "#"}
-          %h3.new__item-header-title あなたへのおすすめ
-          = link_to "もっと見る", "#", class: "look"
-        .new__item-collection
-          %div
-            %ul.new__item-collection-list
-              - if @recommends.present?
-                -@recommends.each do |item|
-                  =render partial: "item", locals:{item: item} 
+      -if user_signed_in?
+        .new__item
+          .new__item-header{name: "#"}
+            %h3.new__item-header-title あなたへのおすすめ
+            = link_to "もっと見る", "#", class: "look"
+          .new__item-collection
+            %div
+              %ul.new__item-collection-list
+                - if @recommends.present?
+                  -@recommends.each do |item|
+                    =render partial: "item", locals:{item: item} 
       .new__item
         .new__item-header{name: "#"}
           %h3.new__item-header-title レディース新着アイテム
