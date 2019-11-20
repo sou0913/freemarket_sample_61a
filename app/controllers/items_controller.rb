@@ -8,8 +8,6 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @recommends = self.class.helpers.recommend(current_user, @canBuy)
     end
-    # 開発中動作を確認しやすくするため最新の8個取得
-    @items         = @canBuy.order(id: :desc).limit(8)
     @ladis         = @canBuy.where(category_id: Category.find(1).subtree_ids).limit(8)
     @mens          = @canBuy.where(category_id: Category.find(200).subtree_ids).limit(8)
     @toys          = @canBuy.where(category_id: Category.find(685).subtree_ids).limit(8)
