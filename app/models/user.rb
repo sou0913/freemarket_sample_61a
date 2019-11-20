@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :omniauthable,
         omniauth_providers: %i[facebook google_oauth2]
@@ -14,8 +14,8 @@ class User < ApplicationRecord
   validates :nickname,
   presence: true,
   length: { maximum: 19 }
-  # validates :image,
-  #   presence: true
+  validates :image, 
+  presence: true
   validates :email,
   presence: true,
   uniqueness: { message: "メールアドレスに誤りがあります。ご確認いただき、正しく変更してください。" },
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   format: { with: /\A(?=.*[^\d])+/, allow_blank: true, message: "数字のみのパスワードは設定できません" },
   on: :create
 
-  validates :password_confirmation, presence: true,  on: :create
+  validates :password_confirmation, presence: true, on: :create
 
   validates :family_name,   presence: true
   validates :first_name,    presence: true

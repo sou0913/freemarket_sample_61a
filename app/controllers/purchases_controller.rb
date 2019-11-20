@@ -16,9 +16,6 @@ class PurchasesController < ApplicationController
     redirect_to action: :show, id: @item.id
   end
 
-  def create
-  end
-
   def new
   end
 

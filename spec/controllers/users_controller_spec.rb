@@ -19,7 +19,7 @@ describe UsersController do
       it 'assigns @user' do
         expect(assigns(:user)).to eq user
       end
-    endp
+    end
   end
 
   describe 'GET #edit' do
