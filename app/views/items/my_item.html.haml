@@ -39,15 +39,15 @@
           %th カテゴリー
           %td
             = link_to "#", class: "infomation" do
-              = "本・音楽・ゲーム"
+              = @item.category.parent.parent.name
             = link_to "#", class: "infomation" do
               .sub-category
                 %i.arrow-right.fas.fa-chevron-right
-                  = "本"
+                  = @item.category.parent.name
             = link_to "#", class: "infomation" do
               .sub-category
                 %i.arrow-right.fas.fa-chevron-right
-                  = "その他"
+                  = @item.category.name
         %tr
           %th ブランド
           %td
