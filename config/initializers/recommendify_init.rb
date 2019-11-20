@@ -1,6 +1,9 @@
 uri = URI.parse(ENV['REDIS'])
-Recommendify.redis = Redis.new(host: "recommend.1zgi2i.ng.0001.apne1.cache.amazonaws.com", port: 6379)
-
+if Rails.env == 'production'
+  Recommendify.redis = Redis.new(host: "recommend.1zgi2i.ng.0001.apne1.cache.amazonaws.com", port: 6379)
+else
+  Recommendify.redis = Redis.new(host: '127.0.0.1', port: 6379)
+end
 class MyRecommender < Recommendify::Base
 
   max_neighbors 50
