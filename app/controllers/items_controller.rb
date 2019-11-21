@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
     # 写真0枚のエラーメッセージ用
     @image = Image.new
     if @item.save
-
       redirect_to :root
     end
   end
@@ -93,11 +92,7 @@ class ItemsController < ApplicationController
   end
 
   def set_canbuy
-    if user_signed_in?
-      @canBuy = Item.where(dealing: 0).where.not(user_id: current_user.id)
-    else
-      @canBuy = Item.where(dealing: 0)
-    end
+    @canBuy = Item.where(dealing: 0)
   end
 
   def update_items_params
