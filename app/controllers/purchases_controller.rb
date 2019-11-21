@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   require "dotenv"
   Dotenv.load
   before_action :set_item
-
+  before_action :set_card, only: :new 
   def pay
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -20,12 +20,18 @@ class PurchasesController < ApplicationController
   end
 
   def new
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @card_infomation = customer.cards.retrieve(@card.card_id)
   end
 
   def show
   end
 
   private
+
+  def set_card
+    @card = Card.where(user_id: current_user.id).first
+  end
 
   def set_item
     @item = Item.find(params[:item_id])
