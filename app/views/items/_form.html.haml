@@ -19,7 +19,7 @@
             - item.images.each_with_index do |image, j|
               =image_tag image.image.to_s, class: "item-edit__image item-edit__image-#{j}"
             = f.fields_for :images do |i|
-              =i.file_field :image, readonly: false, class: "exhibit-wrapper__main__image__drag__form"
+              =i.file_field :image, readonly: false, class: "exhibit-wrapper__main__image__drag__form", accept: "image/*"
               =i.check_box :_destroy, disabled: true, class: "exhibit-wrapper__main__image__drag__check-box"
             .exhibit-wrapper__main__image__cards_anchor
         .error-append__image
