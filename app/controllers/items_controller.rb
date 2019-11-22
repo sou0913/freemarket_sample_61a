@@ -8,13 +8,13 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @recommends = self.class.helpers.recommend(current_user, @canBuy)
     end
-    @ladis         = @canBuy.where(category_id: Category.find(1).subtree_ids).limit(8)
-    @mens          = @canBuy.where(category_id: Category.find(200).subtree_ids).limit(8)
-    @toys          = @canBuy.where(category_id: Category.find(685).subtree_ids).limit(8)
-    @electronics   = @canBuy.where(category_id: Category.find(898).subtree_ids).limit(8)
-    @chanels       = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.limit(8)
-    @louisvuittons = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.limit(8)
-    @nikes          = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.limit(8)
+    @ladis         = @canBuy.where(category_id: Category.find(1).subtree_ids).order(id: :desc).limit(8)
+    @mens          = @canBuy.where(category_id: Category.find(200).subtree_ids).order(id: :desc).limit(8)
+    @toys          = @canBuy.where(category_id: Category.find(685).subtree_ids).order(id: :desc).limit(8)
+    @electronics   = @canBuy.where(category_id: Category.find(898).subtree_ids).order(id: :desc).limit(8)
+    @chanels       = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["シャネル","CHANEL"]).result.order(id: :desc).limit(8)
+    @louisvuittons = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["ルイヴィトン","ルイ・ヴィトン","Louis Vuitton"]).result.order(id: :desc).limit(8)
+    @nikes          = @canBuy.where(dealing: 0).ransack(brand_cont_any: ["nike","NIKE","ナイキ"]).result.order(id: :desc).limit(8)
   end 
 
   def show
