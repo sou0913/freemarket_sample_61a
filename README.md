@@ -15,6 +15,8 @@ rails 5.2.3
 
 自身が実装した部分を中心に紹介いたします。
 
+DB設計はチームメンバー全員の意見を取り入れました。詳細は<a href="/DATABASE.md">こちら</a>(DATABASE.md)になります。
+
 画像などを選択し、商品を出品できます。
 
 <a href="https://gyazo.com/33a56f31c9622b4dbdee51716a721a0e"><img src="https://i.gyazo.com/33a56f31c9622b4dbdee51716a721a0e.gif" alt="Image from Gyazo" width="400"/></a>
