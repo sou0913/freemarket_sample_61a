@@ -44,7 +44,7 @@ rails 5.2.3
 
 <a href="https://gyazo.com/c676d05fd4cf7cc1555c17f38ddc11a1"><img src="https://i.gyazo.com/c676d05fd4cf7cc1555c17f38ddc11a1.gif" alt="Image from Gyazo" width="400"/></a>
 
-<a href="https://gyazo.com/818c27551a249cf5ce389a8263f545ff"><img src="https://i.gyazo.com/818c27551a249cf5ce389a8263f545ff.gif" alt="Image from Gyazo" width="1000"/></a>
+<a href="https://gyazo.com/818c27551a249cf5ce389a8263f545ff"><img src="https://i.gyazo.com/818c27551a249cf5ce389a8263f545ff.gif" alt="Image from Gyazo" width="400"/></a>
 
 
 ## 私が担当した箇所の詳細
