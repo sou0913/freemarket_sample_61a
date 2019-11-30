@@ -39,6 +39,13 @@ rails 5.2.3
 
 <a href="https://gyazo.com/e63868fab767f152b1f43700b582b063"><img src="https://i.gyazo.com/e63868fab767f152b1f43700b582b063.gif" alt="Image from Gyazo" width="400"/></a>
 
+オリジナル機能として、リコメンド機能を実装しました。
+全てのユーザーの購入履歴から、商品のカテゴリーごとの関連性を算出し、関連性の高いカテゴリーを積極的に表示するというものです。
+
+<a href="https://gyazo.com/c676d05fd4cf7cc1555c17f38ddc11a1"><img src="https://i.gyazo.com/c676d05fd4cf7cc1555c17f38ddc11a1.gif" alt="Image from Gyazo" width="400"/></a>
+
+<a href="https://gyazo.com/818c27551a249cf5ce389a8263f545ff"><img src="https://i.gyazo.com/818c27551a249cf5ce389a8263f545ff.gif" alt="Image from Gyazo" width="1000"/></a>
+
 
 ## 私が担当した箇所の詳細
 <a href="https://docs.google.com/document/d/1_NTvcikXDGVj3NlP71i_L6sNUZB-nVwdx5O7FrK_3vU/edit?usp=sharing">
