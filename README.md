@@ -53,7 +53,7 @@ rails 5.2.3
 
 7. デプロイを担当しました。AWSのVPC内に、EC2、S3を用いて環境を構築しました。
 
-<a href="https://gyazo.com/e63868fab767f152b1f43700b582b063"><img src="https://i.gyazo.com/e63868fab767f152b1f43700b582b063.gif" alt="Image from Gyazo" width="400"/></a>  
+<a href="https://gyazo.com/2aa46c36f61704c8ac5bf89e26f02d2d"><img src="https://i.gyazo.com/2aa46c36f61704c8ac5bf89e26f02d2d.png" alt="Image from Gyazo" width="400"/></a>
 
 <br>
 
